@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   viewer.h                                           :+:      :+:    :+:   */
+/*   coordinates.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/14 14:54:03 by brunofer         ###   ########.fr       */
+/*   Created: 2025/09/13 11:29:36 by brunofer          #+#    #+#             */
+/*   Updated: 2025/09/13 11:30:02 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIEWER_H
-# define VIEWER_H
+#ifndef COORDINATES_H
+# define COORDINATES_H
 
-# include "coordinates.h"
-
-typedef struct s_data
+typedef struct s_2d_coords
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
+	int	x;
+	int	y;
+}	t_2d_coords;
+
+typedef struct s_3d_coords
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_3d_coords;
 
 #endif

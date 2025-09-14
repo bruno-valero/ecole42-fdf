@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/09 17:53:17 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/14 15:01:03 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define FDF_H
 
 # include "viewer.h"
+# include <stdio.h>
 
 #endif

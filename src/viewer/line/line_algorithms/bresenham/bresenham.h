@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   viewer.h                                           :+:      :+:    :+:   */
+/*   bresenham.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/14 14:54:03 by brunofer         ###   ########.fr       */
+/*   Created: 2025/09/13 11:31:29 by brunofer          #+#    #+#             */
+/*   Updated: 2025/09/13 11:31:38 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIEWER_H
-# define VIEWER_H
+
+#ifndef BRESENHAM_H
+# define BRESENHAM_H
 
 # include "coordinates.h"
-
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
 
 #endif
