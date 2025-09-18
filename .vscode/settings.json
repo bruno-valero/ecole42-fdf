@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"coordinates.h": "c",
-		"fdf.h": "c"
+		"fdf.h": "c",
+		"minilibx.h": "c"
 	}
 }

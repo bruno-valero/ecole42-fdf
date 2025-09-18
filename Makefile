@@ -20,12 +20,15 @@ MLX = $(MLX_DIR)/libmlx.a
 MLX_DEPENDENCIES = -lXext -lX11 -lm -lbsd
 
 # ============== COMPILATION COMMANDS =================
-INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes -I src/viewer
+INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algorithms/bresenham
+INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER)
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES) $(MLX_DEPENDENCIES)
 
 # ============== SRC FILES =================
-SRC_FILES =
+ALGORITHMS = src/viewer/line/line_algorithms
+SRC_FILES = src/viewer/coordinates.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
+	src/viewer/minilibx/minilibx.c
 
 # ============== PROGRAM FILES =================
 TEST_PROGRAM=teste.c
@@ -54,7 +57,7 @@ $(BONUS): $(SRC_FILES) $(BONUS_PROGRAM) $(LIBFT) $(MLX)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) '$(LIGHT_CYAN)./$@$(RESET)'..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@
 
-test: $(TEST_PROGRAM) $(LIBFT) $(MLX)
+test: $(SRC_FILES) $(TEST_PROGRAM) $(LIBFT) $(MLX)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) '$(LIGHT_CYAN)./$@$(RESET)'..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@
 
