@@ -20,10 +20,10 @@ MLX = $(MLX_DIR)/libmlx.a
 MLX_DEPENDENCIES = -lXext -lX11 -lm -lbsd
 
 # ============== COMPILATION COMMANDS =================
-INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algorithms/bresenham
+INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algorithms/bresenham -I src/viewer/minilibx
 INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER)
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES) $(MLX_DEPENDENCIES)
+CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 # ============== SRC FILES =================
 ALGORITHMS = src/viewer/line/line_algorithms
@@ -59,7 +59,7 @@ $(BONUS): $(SRC_FILES) $(BONUS_PROGRAM) $(LIBFT) $(MLX)
 
 test: $(SRC_FILES) $(TEST_PROGRAM) $(LIBFT) $(MLX)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) '$(LIGHT_CYAN)./$@$(RESET)'..." && sleep $(SLEEP)
-	@$(CC) $(CFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 
 
 $(LIBFT):

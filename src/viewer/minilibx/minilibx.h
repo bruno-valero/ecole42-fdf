@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/17 16:18:56 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/22 20:39:20 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "mlx.h"
 # include "coordinates.h"
+# include <stdlib.h>
 
 typedef struct s_minilib_layer
 {
@@ -26,13 +27,17 @@ typedef struct s_minilib_layer
 }	t_minilib_layer;
 
 
-typedef struct s_minilib_window
+typedef struct s_minilib_window	t_minilib_window;
+
+struct s_minilib_window
 {
 	int		width;
 	int		height;
 	char	*name;
 	void	*ref;
-}	t_minilib_window;
+	void	*mlx_ref;
+	void	(*destroy)(t_minilib_window self);
+};
 
 typedef struct s_pixel
 {
@@ -41,5 +46,10 @@ typedef struct s_pixel
 	int				color;
 }	t_pixel;
 
+t_pixel				make_pixel(
+						t_minilib_layer *layer, t_coord_2d coord, int color);
+void				put_pixel(t_pixel pixel, t_minilib_window window);
+t_minilib_window	new_window(
+						void *mlx_ref, int width, int height, char *name);
 
 #endif

@@ -2,6 +2,8 @@
 	"files.associations": {
 		"coordinates.h": "c",
 		"fdf.h": "c",
-		"minilibx.h": "c"
+		"minilibx.h": "c",
+		"bresenham_utils.h": "c",
+		"mlx.h": "c"
 	}
 }
