@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 15:41:12 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/22 20:38:38 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/22 21:56:09 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ int	main(void)
 
 	mlx = mlx_init();
 	window = new_window(mlx, 1080, 720, "Fil de Fer -> brunofer");
-	layer.img = mlx_new_image(mlx, 1080, 720);
-	layer.addr = mlx_get_minilib_layer_addr(layer.img, &layer.bits_per_pixel, \
-		&layer.line_length, &layer.endian);
+	layer = new_layer(window, 1080, 720);
+
 	// for (int i = 0; i < 10; i++) {
 	// 	for (int j = 0; j < 10; j++)
 	// 		my_mlx_pixel_put(&img, i + 50, j + 50, 0x00FF0000);
@@ -48,5 +47,7 @@ int	main(void)
 	mlx_put_image_to_window(mlx, window.ref, layer.img, 0, 0);
 	mlx_loop(mlx);
 	window.destroy(window);
+	layer.destroy(layer);
+	mlx_destroy_display(mlx);
 	return (0);
 }

@@ -4,6 +4,7 @@
 		"fdf.h": "c",
 		"minilibx.h": "c",
 		"bresenham_utils.h": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"bresenham.h": "c"
 	}
 }

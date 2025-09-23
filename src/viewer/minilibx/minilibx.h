@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/22 20:39:20 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/22 21:50:10 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,19 @@
 # include "coordinates.h"
 # include <stdlib.h>
 
-typedef struct s_minilib_layer
+typedef struct s_minilib_layer	t_minilib_layer;
+
+struct s_minilib_layer
 {
 	void	*img;
 	char	*addr;
+	void	*mlx_ref;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}	t_minilib_layer;
 
+	void	(*destroy)(t_minilib_layer self);
+};
 
 typedef struct s_minilib_window	t_minilib_window;
 
@@ -51,5 +55,6 @@ t_pixel				make_pixel(
 void				put_pixel(t_pixel pixel, t_minilib_window window);
 t_minilib_window	new_window(
 						void *mlx_ref, int width, int height, char *name);
+t_minilib_layer		new_layer(t_minilib_window window, int width, int height);
 
 #endif
