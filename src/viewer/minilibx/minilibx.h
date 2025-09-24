@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/22 21:50:10 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/24 11:21:58 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void				put_pixel(t_pixel pixel, t_minilib_window window);
 t_minilib_window	new_window(
 						void *mlx_ref, int width, int height, char *name);
 t_minilib_layer		new_layer(t_minilib_window window, int width, int height);
+void				put_layer(t_minilib_window window, t_minilib_layer layer);
 
 #endif

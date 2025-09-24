@@ -28,7 +28,7 @@ CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 # ============== SRC FILES =================
 ALGORITHMS = src/viewer/line/line_algorithms
 SRC_FILES = src/viewer/coordinates.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
-	src/viewer/minilibx/minilibx.c
+	src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c
 
 # ============== PROGRAM FILES =================
 TEST_PROGRAM=teste.c

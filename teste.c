@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   teste.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 15:41:12 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/22 21:56:09 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/24 11:59:34 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,17 @@ int	main(void)
 	void				*mlx;
 	t_minilib_layer		layer;
 	t_minilib_window	window;
+	t_line				line1;
+	t_line				line2;
 
 	mlx = mlx_init();
 	window = new_window(mlx, 1080, 720, "Fil de Fer -> brunofer");
 	layer = new_layer(window, 1080, 720);
-
-	// for (int i = 0; i < 10; i++) {
-	// 	for (int j = 0; j < 10; j++)
-	// 		my_mlx_pixel_put(&img, i + 50, j + 50, 0x00FF0000);
-	// }
-	t_coord_2d initial = {50, 200};
-	t_coord_2d final = {10, 10};
-
-	t_coord_2d initial2 = {500, 500};
-	t_coord_2d final2 = {900, 700};
-	// bresenham_lower_slope(initial, final, img);
-	// bresenham_upper_slope(initial, final, img);
-	bresenham(initial, final, layer, window);
-	bresenham(initial2, final2, layer, window);
-	mlx_put_image_to_window(mlx, window.ref, layer.img, 0, 0);
+	line1 = new_line(coord_2d(50, 200), coord_2d(10, 10), layer);
+	line2 = new_line(coord_2d(500, 500), coord_2d(900, 700), layer);
+	draw_line(line1, window, bresenham);
+	draw_line(line2, window, bresenham);
+	put_layer(window, layer);
 	mlx_loop(mlx);
 	window.destroy(window);
 	layer.destroy(layer);

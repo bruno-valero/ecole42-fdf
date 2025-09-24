@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:26:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/22 21:50:38 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/24 11:21:48 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minilibx.h"
 
 static void	destroy_window(t_minilib_window self);
-static void	destroy_layer(t_minilib_layer self);
 
 t_pixel	make_pixel(t_minilib_layer *layer, t_coord_2d coord, int color)
 {
@@ -57,22 +56,4 @@ static void	destroy_window(t_minilib_window self)
 {
 	mlx_destroy_window(self.mlx_ref, self.ref);
 	free(self.ref);
-}
-
-t_minilib_layer	new_layer(t_minilib_window window, int width, int height)
-{
-	t_minilib_layer	layer;
-
-	layer.destroy = destroy_layer;
-	layer.mlx_ref = window.mlx_ref;
-	layer.img = mlx_new_image(layer.mlx_ref, width, height);
-	layer.addr = mlx_get_minilib_layer_addr(layer.img, &layer.bits_per_pixel,
-			&layer.line_length, &layer.endian);
-	return (layer);
-}
-
-static void	destroy_layer(t_minilib_layer self)
-{
-	mlx_destroy_image(self.mlx_ref, self.img);
-	free(self.img);
 }

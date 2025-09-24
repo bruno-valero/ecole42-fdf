@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:31:29 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/22 19:58:58 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/24 11:43:31 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 
 # include "coordinates.h"
 # include "bresenham_utils.h"
+# include "line_interface.h"
 # include "minilibx.h"
 
-void	bresenham(t_coord_2d initial, t_coord_2d final,
-			t_minilib_layer layer, t_minilib_window window);
+typedef struct s_line	t_line;
+
+void	bresenham(t_line line, t_minilib_window window);
 
 #endif

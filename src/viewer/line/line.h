@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:30:34 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/22 22:01:47 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/24 11:58:39 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 
 # include "coordinates.h"
 # include "bresenham.h"
+# include "line_interface.h"
 
-typedef struct s_line
-{
-	t_coord_2d		initial_point;
-	t_coord_2d		final_point;
-	t_minilib_layer	layer;
-}	t_line;
-
+t_line	new_line(t_coord_2d initial_point,
+			t_coord_2d final_point, t_minilib_layer layer);
+void	draw_line(t_line line, t_minilib_window window,
+			void (*algorithm)(t_line line, t_minilib_window window));
 
 #endif

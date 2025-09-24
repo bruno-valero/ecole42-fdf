@@ -5,6 +5,7 @@
 		"minilibx.h": "c",
 		"bresenham_utils.h": "c",
 		"mlx.h": "c",
-		"bresenham.h": "c"
+		"bresenham.h": "c",
+		"line_interface.h": "c"
 	}
 }
