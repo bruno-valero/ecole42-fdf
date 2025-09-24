@@ -20,8 +20,9 @@ MLX = $(MLX_DIR)/libmlx.a
 MLX_DEPENDENCIES = -lXext -lX11 -lm -lbsd
 
 # ============== COMPILATION COMMANDS =================
+INCLUDES_PARSER = -I src/parser
 INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algorithms/bresenham -I src/viewer/minilibx
-INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER)
+INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER) $(INCLUDES_PARSER)
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
@@ -48,45 +49,45 @@ SLEEP = 0.07
 all: $(NAME)
 
 $(NAME): $(SRC_FILES) $(MAIN_PROGRAM) $(LIBFT) $(MLX)
-	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) '$(LIGHT_CYAN)./$@$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@
 
 bonus: $(BONUS)
 
 $(BONUS): $(SRC_FILES) $(BONUS_PROGRAM) $(LIBFT) $(MLX)
-	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) '$(LIGHT_CYAN)./$@$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@
 
 test: $(SRC_FILES) $(TEST_PROGRAM) $(LIBFT) $(MLX)
-	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) '$(LIGHT_CYAN)./$@$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 
 
 $(LIBFT):
-	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) '$(LIGHT_CYAN)./$@$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@make -s -C $(LIBFT_DIR) SLEEP="$(SLEEP)"
 
 $(MLX):
-	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) '$(LIGHT_CYAN)./$@$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@make -s -C $(MLX_DIR) SLEEP="$(SLEEP)"
 
 minilibx:
-	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) '$(LIGHT_CYAN)./$@$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@make -s -C $(MLX_DIR) SLEEP="$(SLEEP)"
 
 
 clean:
-	@echo "$(LIGHT_RED)>> $(BOLD)cleanning$(RESET) '$(LIGHT_CYAN)./$(LIBFT_DIR)$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_RED)>> $(BOLD)cleanning$(RESET) $(LIGHT_CYAN)./$(LIBFT_DIR)$(RESET)..." && sleep $(SLEEP)
 	@make -s -C $(LIBFT_DIR) clean SLEEP="$(SLEEP)"
-	@echo "$(LIGHT_RED)>> $(BOLD)cleanning$(RESET) '$(LIGHT_CYAN)./$(MLX_DIR)$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_RED)>> $(BOLD)cleanning$(RESET) $(LIGHT_CYAN)./$(MLX_DIR)$(RESET)..." && sleep $(SLEEP)
 	@make -s -C $(MLX_DIR) clean SLEEP="$(SLEEP)"
 
 fclean: clean
-	@echo "$(LIGHT_RED)>> $(BOLD)deletting$(RESET) '$(LIGHT_CYAN)./$(LIBFT)$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_RED)>> $(BOLD)deletting$(RESET) $(LIGHT_CYAN)./$(LIBFT)$(RESET)..." && sleep $(SLEEP)
 	@make -s -C $(LIBFT_DIR) fclean SLEEP="$(SLEEP)"
-	@echo "$(LIGHT_RED)>> $(BOLD)deletting$(RESET) '$(LIGHT_CYAN)./$(NAME)$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_RED)>> $(BOLD)deletting$(RESET) $(LIGHT_CYAN)./$(NAME)$(RESET)..." && sleep $(SLEEP)
 	@rm -rf $(NAME)
-	@echo "$(LIGHT_RED)>> $(BOLD)deletting$(RESET) '$(LIGHT_CYAN)./$(BONUS)$(RESET)'..." && sleep $(SLEEP)
+	@echo "$(LIGHT_RED)>> $(BOLD)deletting$(RESET) $(LIGHT_CYAN)./$(BONUS)$(RESET)..." && sleep $(SLEEP)
 	@rm -rf $(BONUS)
 
 re: fclean all
