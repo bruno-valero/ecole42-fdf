@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:17:58 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/25 14:43:15 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/25 16:23:20 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,19 @@ t_reader_matrix	*read_file(char *file_path)
 
 	fd = open(file_path, 0);
 	if (fd < 0)
-		return (read_error("Invalid file path!"));
+		return (read_error("Invalid file path!\n"));
 	line_from_file = remove_last_endl(get_next_line(fd));
 	if (!line_from_file)
-		return (read_error("empty file!"));
+		return (read_error("empty file!\n"));
 	lines = new_reader_matrix();
 	while (line_from_file)
 	{
 		if (!add_line(&lines, line_from_file))
 			return (
-				read_error("Invalid file structure!"));
+				read_error("Invalid file structure!\n"));
 		line_from_file = remove_last_endl(get_next_line(fd));
 	}
+	free(line_from_file);
 	return (lines);
 }
 
@@ -44,7 +45,7 @@ static int	add_line(t_reader_matrix **lines, char *line_from_file)
 	t_reader_list	*columns;
 	char			**splitted_line;
 	int				i;
-	int				add_success;
+	int				add_succeeded;
 
 	splitted_line = ft_split(line_from_file, ' ');
 	free(line_from_file);
@@ -54,10 +55,10 @@ static int	add_line(t_reader_matrix **lines, char *line_from_file)
 		columns->add_node(columns,
 			new_reader_list_node(ft_strdup(splitted_line[i++])));
 	ft_destroy_char_matrix(&splitted_line);
-	add_success = (*lines)->add_node(*lines, new_reader_matrix_node(columns));
-	if (!add_success)
+	add_succeeded = (*lines)->add_node(*lines, new_reader_matrix_node(columns));
+	if (!add_succeeded)
 		(*lines)->destroy(lines);
-	return (add_success);
+	return (add_succeeded);
 }
 
 static void	*read_error(char *message)
@@ -71,7 +72,7 @@ static char	*remove_last_endl(char *line)
 	int	line_length;
 
 	if (!line)
-		return (NULL);
+		return (line);
 	line_length = ft_strlen(line);
 	if (line[line_length - 1] == '\n')
 		line[line_length - 1] = '\0';

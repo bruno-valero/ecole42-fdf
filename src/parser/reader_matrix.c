@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:17:58 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/25 14:48:46 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/25 16:17:00 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,11 @@ static int	reader_matrix_add_node(
 		return (!!(++self->length));
 	}
 	if (self->size != node->list->length)
+	{
+		node->list->destroy(&node->list);
+		free(node);
 		return (0);
+	}
 	self->bottom->next = node;
 	self->bottom = node;
 	return (!!(++self->length));
