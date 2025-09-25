@@ -8,6 +8,7 @@
 		"bresenham.h": "c",
 		"line_interface.h": "c",
 		"parser.h": "c",
-		"reader.h": "c"
+		"reader.h": "c",
+		"fcntl.h": "c"
 	}
 }

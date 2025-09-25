@@ -27,9 +27,10 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 # ============== SRC FILES =================
+SRC_PARSER_FILES = src/parser/reader_list.c src/parser/reader_matrix.c src/parser/reader.c
 ALGORITHMS = src/viewer/line/line_algorithms
 SRC_FILES = src/viewer/coordinates.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
-	src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c
+	src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c $(SRC_PARSER_FILES)
 
 # ============== PROGRAM FILES =================
 TEST_PROGRAM=teste.c
@@ -59,6 +60,10 @@ $(BONUS): $(SRC_FILES) $(BONUS_PROGRAM) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $^ -o $@
 
 test: $(SRC_FILES) $(TEST_PROGRAM) $(LIBFT) $(MLX)
+	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
+	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
+
+test_reader: $(SRC_FILES) test_reader.c $(LIBFT) $(MLX)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 

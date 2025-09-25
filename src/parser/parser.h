@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/24 14:02:52 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/25 12:29:00 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PARSER_H
 
 # include <fcntl.h>
-# include "libft.h"
+# include "reader.h"
 
 typedef struct s_input_point
 {

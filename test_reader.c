@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_destroy_char_matrix.c                           :+:      :+:    :+:   */
+/*   test_reader.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 14:10:28 by valero            #+#    #+#             */
-/*   Updated: 2025/09/25 14:10:29 by valero           ###   ########.fr       */
+/*   Created: 2025/09/25 12:28:10 by valero            #+#    #+#             */
+/*   Updated: 2025/09/25 14:44:47 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstr.h"
+#include "fdf.h"
 
-void	*ft_destroy_char_matrix(char ***reader_matrix_node_ref)
+int	main(int argc, char **argv)
 {
-	int	i;
+	char			*file_path;
+	t_reader_matrix	*matrix;
 
-	i = -1;
-	while ((*reader_matrix_node_ref)[++i])
+	if (argc < 2)
+		return (0);
+	file_path = argv[1];
+	matrix = read_file(file_path);
+	if (matrix)
 	{
-		free((*reader_matrix_node_ref)[i]);
-		(*reader_matrix_node_ref)[i] = NULL;
+		matrix->print(matrix);
+		matrix->destroy(&matrix);
 	}
-	free(*reader_matrix_node_ref);
-	*reader_matrix_node_ref = NULL;
-	return (NULL);
 }

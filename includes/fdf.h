@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/24 13:44:56 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/25 12:38:46 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include "viewer.h"
+# include "parser.h"
 
 typedef struct s_layers
 {
@@ -27,27 +28,5 @@ typedef struct s_fdf
 {
 	t_layers	layers;
 }	t_fdf;
-
-typedef struct s_input_point
-{
-	int				value;
-	unsigned long	color;
-}	t_input_point;
-
-
-typedef struct s_array
-{
-	int				length;
-	t_input_point	*data;
-}	t_array;
-
-
-typedef struct s_matrix
-{
-	int		size;
-	t_array	**data;
-}	t_matrix;
-
-
 
 #endif

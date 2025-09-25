@@ -6,71 +6,74 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:17:58 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/25 09:24:42 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/25 14:43:15 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "reader.h"
 
-static void	destroy_reader_list_node(t_reader_list_node **reader_list_node);
-static void	destroy_reader_matrix_node(
-				t_reader_matrix_node **reader_matrix_node);
+static int	add_line(t_reader_matrix **lines, char *line_from_file);
+static char	*remove_last_endl(char *line);
+static void	*read_error(char *message);
 
-t_reader_list_node	new_reader_list_node(char *str)
+t_reader_matrix	*read_file(char *file_path)
 {
-	t_reader_list_node	*list;
+	int				fd;
+	char			*line_from_file;
+	t_reader_matrix	*lines;
 
-	list = malloc(sizeof(t_reader_list_node));
-	list->str = str;
-	list->destroy = destroy_reader_list_node;
-}
-
-static void	destroy_reader_list_node(t_reader_list_node **reader_list_node)
-{
-	t_reader_list_node	*tmp_reader_list_node;
-	t_reader_list_node	*tmp_reader_list_node_next;
-
-	if (!reader_list_node || !*reader_list_node)
-		return ;
-	tmp_reader_list_node = *reader_list_node;
-	while (tmp_reader_list_node)
+	fd = open(file_path, 0);
+	if (fd < 0)
+		return (read_error("Invalid file path!"));
+	line_from_file = remove_last_endl(get_next_line(fd));
+	if (!line_from_file)
+		return (read_error("empty file!"));
+	lines = new_reader_matrix();
+	while (line_from_file)
 	{
-		tmp_reader_list_node_next = tmp_reader_list_node->next;
-		free(tmp_reader_list_node);
-		tmp_reader_list_node = tmp_reader_list_node_next;
-		if (tmp_reader_list_node)
-			tmp_reader_list_node_next = tmp_reader_list_node->next;
+		if (!add_line(&lines, line_from_file))
+			return (
+				read_error("Invalid file structure!"));
+		line_from_file = remove_last_endl(get_next_line(fd));
 	}
-	*reader_list_node = NULL;
+	return (lines);
 }
 
-t_reader_matrix_node	new_reader_matrix_node(
-							t_reader_list_node *reader_list_node)
+static int	add_line(t_reader_matrix **lines, char *line_from_file)
 {
-	t_reader_matrix_node	*matrix;
+	t_reader_list	*columns;
+	char			**splitted_line;
+	int				i;
+	int				add_success;
 
-	matrix = malloc(sizeof(t_reader_matrix_node));
-	matrix->list = reader_list_node;
-	matrix->destroy = destroy_reader_matrix_node;
+	splitted_line = ft_split(line_from_file, ' ');
+	free(line_from_file);
+	columns = new_reader_list();
+	i = 0;
+	while (splitted_line[i])
+		columns->add_node(columns,
+			new_reader_list_node(ft_strdup(splitted_line[i++])));
+	ft_destroy_char_matrix(&splitted_line);
+	add_success = (*lines)->add_node(*lines, new_reader_matrix_node(columns));
+	if (!add_success)
+		(*lines)->destroy(lines);
+	return (add_success);
 }
 
-static void	destroy_reader_matrix_node(
-				t_reader_matrix_node **reader_matrix_node)
+static void	*read_error(char *message)
 {
-	t_reader_matrix_node	*tmp_reader_matrix_node;
-	t_reader_matrix_node	*tmp_reader_matrix_node_next;
+	ft_putstr_fd(message, 2);
+	return (NULL);
+}
 
-	if (!reader_matrix_node || !*reader_matrix_node)
-		return ;
-	tmp_reader_matrix_node = *reader_matrix_node;
-	while (tmp_reader_matrix_node)
-	{
-		tmp_reader_matrix_node_next = tmp_reader_matrix_node->next;
-		destroy_reader_list_node(tmp_reader_matrix_node->list);
-		free(tmp_reader_matrix_node);
-		tmp_reader_matrix_node = tmp_reader_matrix_node_next;
-		if (tmp_reader_matrix_node)
-			tmp_reader_matrix_node_next = tmp_reader_matrix_node->next;
-	}
-	*reader_matrix_node = NULL;
+static char	*remove_last_endl(char *line)
+{
+	int	line_length;
+
+	if (!line)
+		return (NULL);
+	line_length = ft_strlen(line);
+	if (line[line_length - 1] == '\n')
+		line[line_length - 1] = '\0';
+	return (line);
 }
