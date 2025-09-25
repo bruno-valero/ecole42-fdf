@@ -7,6 +7,7 @@
 		"mlx.h": "c",
 		"bresenham.h": "c",
 		"line_interface.h": "c",
-		"parser.h": "c"
+		"parser.h": "c",
+		"reader.h": "c"
 	}
 }

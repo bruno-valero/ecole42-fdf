@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_destroy_char_matrix.c                           :+:      :+:    :+:   */
+/*   ft_destroy_reader_matrix_node.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,17 +12,17 @@
 
 #include "libstr.h"
 
-void	*ft_destroy_char_matrix(char ***char_matrix_ref)
+void	*ft_destroy_reader_matrix_node(char ***reader_matrix_node_ref)
 {
 	int	i;
 
 	i = -1;
-	while ((*char_matrix_ref)[++i])
+	while ((*reader_matrix_node_ref)[++i])
 	{
-		free((*char_matrix_ref)[i]);
-		(*char_matrix_ref)[i] = NULL;
+		free((*reader_matrix_node_ref)[i]);
+		(*reader_matrix_node_ref)[i] = NULL;
 	}
-	free(*char_matrix_ref);
-	*char_matrix_ref = NULL;
+	free(*reader_matrix_node_ref);
+	*reader_matrix_node_ref = NULL;
 	return (NULL);
 }
