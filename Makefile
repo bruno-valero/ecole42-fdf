@@ -37,6 +37,8 @@ TEST_PROGRAM=teste.c
 MAIN_PROGRAM=src/main.c
 BONUS_PROGRAM=src/checker_bonus.c
 
+PROGRAM=teste
+
 # ============== CUSOM SLEEP =================
 SLEEP = 0.07
 
@@ -66,6 +68,9 @@ test: $(SRC_FILES) $(TEST_PROGRAM) $(LIBFT) $(MLX)
 test_reader: $(SRC_FILES) test_reader.c $(LIBFT) $(MLX)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
+
+valgrind:
+	valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(PROGRAM) reader_tests/42.fdf
 
 
 $(LIBFT):

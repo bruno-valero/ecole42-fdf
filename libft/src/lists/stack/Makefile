@@ -1,7 +1,7 @@
 NAME = libstack.a
 INCLUDES = -I includes
 CC = cc
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 SRC = src
 SRC_FILES = stack_swap_ops.c stack_transfer_ops.c stack_utils.c stack_index_ops.c
 OBJ = obj

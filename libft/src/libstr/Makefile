@@ -1,7 +1,7 @@
 NAME = libstr.a
 INCLUDES = -I includes
 CC = cc
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 SRC = src
 SRC_FILES = ft_atoi.c ft_atol.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \

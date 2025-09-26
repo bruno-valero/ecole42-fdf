@@ -1,7 +1,7 @@
 NAME = libgnl.a
 INCLUDES = -I includes
 CC = cc
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 SRC = src
 SRC_FILES = get_next_line_utils.c get_next_line.c
@@ -12,7 +12,7 @@ OBJ_FILES := $(SRC_FILES:%.c=$(OBJ)/%.o)
 all: $(NAME)
 
 test: $(NAME)
-	@$(CC) $(CFLAGS) -g3 test/main.c $(NAME) -o a.out
+	@$(CC) $(CFLAGS) test/main.c $(NAME) -o a.out
 
 $(NAME): $(OBJ) $(OBJ_FILES)
 	@ar rcs $(NAME) $(OBJ_FILES)

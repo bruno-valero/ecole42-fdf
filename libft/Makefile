@@ -17,7 +17,7 @@ LIBGNL = $(LIBGNL_PATH)/libgnl.a
 # ------------------------ Commands -------------------------------
 INCLUDES = -I ./includes -I $(STACK_PATH)/includes -I $(LIBSTR_PATH)/includes -I $(LIBGNL_PATH)/includes
 CC = cc
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 SLEEP = 0.07
 # ------------------------ Paths / files -------------------------------
 SRC_FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c \

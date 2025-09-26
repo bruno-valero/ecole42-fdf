@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 10:40:10 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 18:28:31 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:49:34 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ char	*get_next_line(int fd)
 
 	last_read = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		free(static_buffer);
+		static_buffer = NULL;
 		return (NULL);
+	}
 	buffer = gnl_strdup("");
 	get_endl(&buffer, fd, &last_read);
 	if (last_read < 0)

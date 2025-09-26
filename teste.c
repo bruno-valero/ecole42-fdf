@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   teste.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 15:41:12 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/24 11:59:34 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:44:56 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,29 @@ int	main(void)
 	mlx_destroy_display(mlx);
 	return (0);
 }
+
+
+/*
+
+matrix [
+	{
+		next: pointer(matrix),
+		list: list[
+		{
+		next: pointer(list),
+		str:string
+		}
+		]
+	},
+	{
+		next: pointer(matrix),
+		list: list[
+		{
+		next: pointer(list),
+		str:string
+		}
+		]
+	}
+]
+
+ */

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/25 12:31:32 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/26 14:00:27 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_reader_matrix			t_reader_matrix;
 
 struct s_reader_matrix
 {
-	int						length;
-	int						size;
+	int						height;
+	int						width;
 	t_reader_matrix_node	*top;
 	t_reader_matrix_node	*bottom;
 	int						(*add_node)(

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:17:58 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/25 16:17:00 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/26 14:13:38 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ t_reader_matrix	*new_reader_matrix(void)
 		return (matrix = NULL);
 	matrix->bottom = NULL;
 	matrix->top = NULL;
-	matrix->length = 0;
-	matrix->size = 0;
+	matrix->height = 0;
+	matrix->width = 0;
 	matrix->add_node = reader_matrix_add_node;
 	matrix->print = reader_matrix_print;
 	matrix->destroy = destroy_reader_matrix;
@@ -52,14 +52,14 @@ static int	reader_matrix_add_node(
 {
 	if (!self || !node)
 		return (0);
-	if (!self->length)
+	if (!self->height)
 	{
 		self->top = node;
 		self->bottom = node;
-		self->size = node->list->length;
-		return (!!(++self->length));
+		self->width = node->list->length;
+		return (!!(++self->height));
 	}
-	if (self->size != node->list->length)
+	if (self->width != node->list->length)
 	{
 		node->list->destroy(&node->list);
 		free(node);
@@ -67,7 +67,23 @@ static int	reader_matrix_add_node(
 	}
 	self->bottom->next = node;
 	self->bottom = node;
-	return (!!(++self->length));
+	return (!!(++self->height));
+}
+
+static void reader_matrix_print_stats(t_reader_matrix *self, int fd)
+{
+	char	*measure;
+
+	ft_putstr_fd("\nmatrix(width=", fd);
+	measure = ft_itoa(self->width);
+	ft_putstr_fd(measure, fd);
+	free(measure);
+	ft_putstr_fd(", ", fd);
+	ft_putstr_fd("heigth=", fd);
+	measure = ft_itoa(self->height);
+	ft_putstr_fd(measure, fd);
+	free(measure);
+	ft_putstr_fd(")\n", fd);
 }
 
 static void	reader_matrix_print(t_reader_matrix *self)
@@ -79,6 +95,7 @@ static void	reader_matrix_print(t_reader_matrix *self)
 		return ;
 	fd = 1;
 	node = self->top;
+	reader_matrix_print_stats(self, fd);
 	ft_putstr_fd("[\n", fd);
 	while (node)
 	{
@@ -89,6 +106,7 @@ static void	reader_matrix_print(t_reader_matrix *self)
 		node = node->next;
 	}
 	ft_putstr_fd("\n]", fd);
+	reader_matrix_print_stats(self, fd);
 }
 
 static void	destroy_reader_matrix(t_reader_matrix **reader_matrix)

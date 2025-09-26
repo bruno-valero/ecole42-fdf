@@ -5,24 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 14:10:28 by valero            #+#    #+#             */
-/*   Updated: 2025/09/25 14:10:29 by valero           ###   ########.fr       */
+/*   Created: 2025/09/26 14:37:14 by valero            #+#    #+#             */
+/*   Updated: 2025/09/26 14:37:52 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstr.h"
 
-void	*ft_destroy_char_matrix(char ***reader_matrix_node_ref)
+void	*ft_destroy_char_matrix(char ***char_matrix_ref)
 {
 	int	i;
 
 	i = -1;
-	while ((*reader_matrix_node_ref)[++i])
+	while ((*char_matrix_ref)[++i])
 	{
-		free((*reader_matrix_node_ref)[i]);
-		(*reader_matrix_node_ref)[i] = NULL;
+		free((*char_matrix_ref)[i]);
+		(*char_matrix_ref)[i] = NULL;
 	}
-	free(*reader_matrix_node_ref);
-	*reader_matrix_node_ref = NULL;
+	free(*char_matrix_ref);
+	*char_matrix_ref = NULL;
 	return (NULL);
 }
