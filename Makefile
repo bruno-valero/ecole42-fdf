@@ -20,16 +20,17 @@ MLX = $(MLX_DIR)/libmlx.a
 MLX_DEPENDENCIES = -lXext -lX11 -lm -lbsd
 
 # ============== COMPILATION COMMANDS =================
+INCLUDES_UTILS = -I src/utils
 INCLUDES_PARSER = -I src/parser
 INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algorithms/bresenham -I src/viewer/minilibx
-INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER) $(INCLUDES_PARSER)
+INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER) $(INCLUDES_PARSER) $(INCLUDES_UTILS)
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 # ============== SRC FILES =================
 SRC_PARSER_FILES = src/parser/reader_list.c src/parser/reader_matrix.c src/parser/reader.c
 ALGORITHMS = src/viewer/line/line_algorithms
-SRC_FILES = src/viewer/coordinates.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
+SRC_FILES = src/utils/coordinates.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
 	src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c $(SRC_PARSER_FILES)
 
 # ============== PROGRAM FILES =================
@@ -53,13 +54,13 @@ all: $(NAME)
 
 $(NAME): $(SRC_FILES) $(MAIN_PROGRAM) $(LIBFT) $(MLX)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
-	@$(CC) $(CFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 
 bonus: $(BONUS)
 
 $(BONUS): $(SRC_FILES) $(BONUS_PROGRAM) $(LIBFT) $(MLX)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
-	@$(CC) $(CFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 
 test: $(SRC_FILES) $(TEST_PROGRAM) $(LIBFT) $(MLX)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)

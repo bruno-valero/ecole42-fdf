@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_str_ishexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/27 15:32:27 by brunofer         ###   ########.fr       */
+/*   Created: 2025/09/27 15:24:21 by brunofer          #+#    #+#             */
+/*   Updated: 2025/09/27 15:25:01 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libstr.h"
 
-# include <fcntl.h>
-# include "reader.h"
-# include "coordinates.h"
-
-typedef struct s_input_point
+int	ft_str_ishexa(const char *hex, const char *prefix)
 {
-	t_coord_3d	coord;
-	int			has_color;
-	int			color;
-}	t_input_point;
+	int	i;
 
-
-typedef struct s_array
-{
-	int				length;
-	t_input_point	*data;
-}	t_array;
-
-
-typedef struct s_matrix
-{
-	int				height;
-	int				width;
-	t_input_point	**array;
-}	t_matrix;
-
-#endif
+	if (!hex || !hex[0])
+		return (0);
+	i = 0;
+	if (prefix)
+	{
+		i = -1;
+		while (prefix[++i])
+			if (hex[i] != prefix[i])
+				return (0);
+	}
+	if (!hex[i])
+		return (0);
+	while (hex[i])
+		if (!ft_strchr("0123456789abcdef", ft_tolower(hex[i++])))
+			return (0);
+	return (1);
+}

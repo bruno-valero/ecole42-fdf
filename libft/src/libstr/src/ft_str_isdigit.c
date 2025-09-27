@@ -1,42 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_str_isdigit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/27 15:32:27 by brunofer         ###   ########.fr       */
+/*   Created: 2025/09/27 14:18:14 by brunofer          #+#    #+#             */
+/*   Updated: 2025/09/27 14:49:57 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libstr.h"
 
-# include <fcntl.h>
-# include "reader.h"
-# include "coordinates.h"
-
-typedef struct s_input_point
+int	ft_str_isdigit(const char *nbr)
 {
-	t_coord_3d	coord;
-	int			has_color;
-	int			color;
-}	t_input_point;
+	int	i;
 
-
-typedef struct s_array
-{
-	int				length;
-	t_input_point	*data;
-}	t_array;
-
-
-typedef struct s_matrix
-{
-	int				height;
-	int				width;
-	t_input_point	**array;
-}	t_matrix;
-
-#endif
+	i = 0;
+	while (nbr[i])
+		if (!ft_isdigit(nbr[i++]))
+			return (0);
+	return (1);
+}

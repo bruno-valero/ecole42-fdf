@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_str_tolower.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/27 15:32:27 by brunofer         ###   ########.fr       */
+/*   Created: 2025/09/27 14:41:18 by brunofer          #+#    #+#             */
+/*   Updated: 2025/09/27 15:17:40 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libstr.h"
 
-# include <fcntl.h>
-# include "reader.h"
-# include "coordinates.h"
-
-typedef struct s_input_point
+char	*ft_str_tolower(const char *str)
 {
-	t_coord_3d	coord;
-	int			has_color;
-	int			color;
-}	t_input_point;
+	int		i;
+	int		len_str;
+	char	*new_str;
 
-
-typedef struct s_array
-{
-	int				length;
-	t_input_point	*data;
-}	t_array;
-
-
-typedef struct s_matrix
-{
-	int				height;
-	int				width;
-	t_input_point	**array;
-}	t_matrix;
-
-#endif
+	if (!str)
+		return (NULL);
+	len_str = ft_strlen(str);
+	new_str = (char *)malloc((len_str + 1) * sizeof(char));
+	new_str[len_str] = '\0';
+	i = 0;
+	while (str[i])
+		new_str[i] = ft_tolower(str[i]);
+	return (new_str);
+}

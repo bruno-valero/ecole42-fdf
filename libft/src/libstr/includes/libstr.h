@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libstr.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 17:37:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/26 21:44:52 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/27 15:13:22 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int			ft_issign(int c);
 char		*ft_itoa(int n);
 char		*ft_itoa(int n);
 char		**ft_split(char const *s, char c);
+int			ft_str_isdigit(const char *nbr);
+int			ft_str_ishexa(const char *hex, const char *prefix);
+char		*ft_str_tolower(const char *str);
 void		*ft_destroy_char_matrix(char ***char_matrix_ref);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strdup(const char *s);
