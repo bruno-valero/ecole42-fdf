@@ -9,6 +9,7 @@
 		"line_interface.h": "c",
 		"parser.h": "c",
 		"reader.h": "c",
-		"fcntl.h": "c"
+		"fcntl.h": "c",
+		"functional": "c"
 	}
 }

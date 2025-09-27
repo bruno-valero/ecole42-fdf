@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/25 12:29:00 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/26 20:08:03 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 
 typedef struct s_input_point
 {
-	int				value;
-	unsigned long	color;
+	int	x;
+	int	y;
+	int	z;
+	int	has_color;
+	int	color;
 }	t_input_point;
 
 
@@ -32,8 +35,9 @@ typedef struct s_array
 
 typedef struct s_matrix
 {
-	int		size;
-	t_array	**data;
+	int				height;
+	int				width;
+	t_input_point	**array;
 }	t_matrix;
 
 #endif
