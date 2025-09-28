@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 13:53:45 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/27 16:10:11 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/27 21:02:37 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,19 @@ static t_matrix	*reader_matrix_to_parser_matrix(t_reader_matrix *reader_matrix)
 	t_reader_list_node		*reader_column_node;
 	t_coord_2d				matrix_coord;
 
-	parser_matrix = malloc(reader_matrix->height * sizeof(t_array));
+	parser_matrix = (t_matrix *)malloc(sizeof(t_matrix));
 	reader_line_node = reader_matrix->top;
 	matrix_coord.y = -1;
 	while (matrix_coord.y++, reader_line_node)
 	{
 		reader_column_node = reader_line_node->list->top;
 		matrix_coord.x = -1;
+		parser_matrix->data[matrix_coord.y] = malloc(
+				(reader_matrix->height + 1) * sizeof(t_input_point *));
 		while (matrix_coord.x++, reader_column_node)
 		{
-			// TODO: make parse
+			parser_matrix->data[matrix_coord.y][matrix_coord.x]
+				= parse_point(reader_column_node->str, matrix_coord);
 			reader_column_node = reader_column_node->next;
 		}
 		reader_line_node = reader_line_node->next;

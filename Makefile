@@ -71,7 +71,7 @@ test_reader: $(SRC_FILES) test_reader.c $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 
 valgrind:
-	valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(PROGRAM) reader_tests/42.fdf
+	valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all --verbose ./$(PROGRAM) reader_tests/42.fdf
 
 
 $(LIBFT):
