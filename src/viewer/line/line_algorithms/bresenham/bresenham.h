@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:31:29 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/24 11:43:31 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/29 15:33:23 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef BRESENHAM_H
 # define BRESENHAM_H

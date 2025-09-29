@@ -28,8 +28,8 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 # ============== SRC FILES =================
-SRC_PARSER_FILES = src/parser/reader_list.c src/parser/reader_matrix.c src/parser/reader.c \
-src/parser/parser_matrix.c src/parser/parse_matrix.c src/parser/parse_file.c
+SRC_PARSER_FILES = src/parser/reader_nodes.c src/parser/reader_list.c src/parser/reader_matrix.c src/parser/reader.c \
+src/parser/reader_print.c src/parser/parser_matrix.c src/parser/parse_matrix.c src/parser/parse_point.c src/parser/parse_file.c
 
 ALGORITHMS = src/viewer/line/line_algorithms
 SRC_FILES = src/utils/coordinates.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \

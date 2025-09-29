@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/28 23:39:49 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/29 15:27:09 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ typedef struct s_parse_point_response
 	t_input_point	point;
 }	t_parse_point_response;
 
-t_parser_matrix	*parse_matrix(t_reader_matrix *rmatrix,
-					t_parser_matrix **pmatrix);
-t_parser_matrix	*parse_file(char *file_path, t_parser_matrix **parser_matrix);
-t_parser_matrix	*new_parser_matrix(t_parser_matrix **matrix_ref);
+t_parse_point_response	parse_point(const char *str,
+							t_coord_2d matrix_coord);
+t_parser_matrix			*parse_matrix(t_reader_matrix *rmatrix,
+							t_parser_matrix **pmatrix);
+t_parser_matrix			*parse_file(char *file_path,
+							t_parser_matrix **parser_matrix);
+t_parser_matrix			*new_parser_matrix(t_parser_matrix **matrix_ref);
 
 #endif

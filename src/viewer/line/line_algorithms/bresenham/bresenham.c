@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:50:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/24 11:43:17 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/29 15:33:11 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	bresenham_lower_slope(t_line line, t_minilib_window window)
 			add_direction(&pixel.coord.y, delta_y);
 		}
 	}
-
 }
 
 static void	bresenham_upper_slope(t_line line, t_minilib_window window)
@@ -86,5 +85,4 @@ static void	bresenham_upper_slope(t_line line, t_minilib_window window)
 			add_direction(&pixel.coord.x, delta_x);
 		}
 	}
-
 }

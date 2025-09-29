@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   line_interface.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:30:34 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/24 11:49:16 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/29 15:32:30 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef LINE_INTERFACE_H
 # define LINE_INTERFACE_H
@@ -25,6 +24,5 @@ struct s_line
 	t_coord_2d		final_point;
 	t_minilib_layer	layer;
 };
-
 
 #endif

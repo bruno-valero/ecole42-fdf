@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/28 18:57:15 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/29 15:31:52 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ t_reader_list			*init_reader_list(t_reader_list **list);
 t_reader_matrix_node	*new_reader_matrix_node(
 							t_reader_list *reader_list_node);
 t_reader_matrix			*new_reader_matrix(t_reader_matrix **matrix);
+void					reader_list_print(t_reader_list *self);
+void					reader_matrix_print(t_reader_matrix *self);
 
 // reader
 t_reader_matrix			*read_file(char *file_path, t_reader_matrix **lines);
