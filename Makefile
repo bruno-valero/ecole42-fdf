@@ -73,14 +73,20 @@ test: $(TEST_PROGRAM) $(COMPILATION_DEPENDENCIES)
 test_reader: tests/test_reader.c fclean $(COMPILATION_DEPENDENCIES)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) tests/test_reader.c $(COMPILATION_DEPENDENCIES) -o $@ $(MLX_DEPENDENCIES)
-	@echo "$(LIGHT_CYAN)>> $(BOLD)running$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
-	@valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$@ tests/maps/42.fdf
+
+
+reader: test_reader
+	@echo "$(LIGHT_CYAN)>> $(BOLD)running$(RESET) $(LIGHT_CYAN)./$<$(RESET)..." && sleep $(SLEEP)
+	@valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$< tests/maps/42.fdf
 
 test_parser: tests/test_parser.c fclean $(COMPILATION_DEPENDENCIES)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $< $(COMPILATION_DEPENDENCIES) -o $@ $(MLX_DEPENDENCIES)
-	@echo "$(LIGHT_CYAN)>> $(BOLD)running$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
-	@valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$@ tests/maps/42mod.fdf
+
+
+parser: test_parser
+	@echo "$(LIGHT_CYAN)>> $(BOLD)running$(RESET) $(LIGHT_CYAN)./$< $(RESET)..." && sleep $(SLEEP)
+	@valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$< tests/maps/42mod.fdf
 
 valgrind:
 	valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all --verbose ./$(PROGRAM) reader_tests/42.fdf

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 19:12:38 by valero            #+#    #+#             */
-/*   Updated: 2025/09/29 00:38:19 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/29 14:33:32 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,21 @@ t_parser_matrix	*new_parser_matrix(t_parser_matrix **matrix_ref)
 static void	*destroy_parser_matrix(t_parser_matrix *self)
 {
 	t_parser_matrix	**self_ref;
-	int				i;
+	int				line;
 
 	self_ref = self->self_ref;
 	if (!self || !self_ref || !*self_ref)
 		return (NULL);
 	if (self->data)
 	{
-		i = -1;
-		while (self->data[++i])
+		line = -1;
+		while (self->data[++line])
 		{
-			free(self->data[i]);
-			self->data[i] = NULL;
+			free(self->data[line]);
+			self->data[line] = NULL;
 		}
+		free(self->data);
+		self->data = NULL;
 	}
 	free(*self_ref);
 	*self_ref = NULL;

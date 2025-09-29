@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 12:08:07 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/29 14:26:15 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	coord_arr = (int *)malloc(ft_strlen((char *)s) * sizeof(int));
+	coord_arr = (int *)malloc((ft_strlen((char *)s) + 1) * sizeof(int));
 	if (!coord_arr)
 		return (NULL);
 	coord_arr_len = 0;
