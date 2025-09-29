@@ -28,10 +28,12 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 # ============== SRC FILES =================
-SRC_PARSER_FILES = src/parser/reader_list.c src/parser/reader_matrix.c src/parser/reader.c
+SRC_PARSER_FILES = src/parser/reader_list.c src/parser/reader_matrix.c src/parser/reader.c \
+src/parser/parser_matrix.c src/parser/parse_matrix.c src/parser/parse_file.c
+
 ALGORITHMS = src/viewer/line/line_algorithms
 SRC_FILES = src/utils/coordinates.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
-	src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c $(SRC_PARSER_FILES)
+src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c $(SRC_PARSER_FILES)
 
 # ============== PROGRAM FILES =================
 TEST_PROGRAM=teste.c
@@ -43,6 +45,8 @@ PROGRAM=teste
 # ============== CUSOM SLEEP =================
 SLEEP = 0.07
 
+# ============== COMPILATION =================
+COMPILATION_DEPENDENCIES = $(SRC_FILES) $(LIBFT) $(MLX)
 
 # ***************************************************************************************************
 # ********************************************           ********************************************
@@ -52,23 +56,31 @@ SLEEP = 0.07
 
 all: $(NAME)
 
-$(NAME): $(SRC_FILES) $(MAIN_PROGRAM) $(LIBFT) $(MLX)
+$(NAME): $(MAIN_PROGRAM) $(COMPILATION_DEPENDENCIES)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 
 bonus: $(BONUS)
 
-$(BONUS): $(SRC_FILES) $(BONUS_PROGRAM) $(LIBFT) $(MLX)
+$(BONUS): $(BONUS_PROGRAM) $(COMPILATION_DEPENDENCIES)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 
-test: $(SRC_FILES) $(TEST_PROGRAM) $(LIBFT) $(MLX)
+test: $(TEST_PROGRAM) $(COMPILATION_DEPENDENCIES)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
 	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 
-test_reader: $(SRC_FILES) test_reader.c $(LIBFT) $(MLX)
+test_reader: tests/test_reader.c fclean $(COMPILATION_DEPENDENCIES)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
-	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
+	@$(CC) $(CFLAGS) tests/test_reader.c $(COMPILATION_DEPENDENCIES) -o $@ $(MLX_DEPENDENCIES)
+	@echo "$(LIGHT_CYAN)>> $(BOLD)running$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
+	@valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$@ tests/maps/42.fdf
+
+test_parser: tests/test_parser.c fclean $(COMPILATION_DEPENDENCIES)
+	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
+	@$(CC) $(CFLAGS) $< $(COMPILATION_DEPENDENCIES) -o $@ $(MLX_DEPENDENCIES)
+	@echo "$(LIGHT_CYAN)>> $(BOLD)running$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
+	@valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$@ tests/maps/42mod.fdf
 
 valgrind:
 	valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all --verbose ./$(PROGRAM) reader_tests/42.fdf

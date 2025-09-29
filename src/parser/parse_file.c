@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_ishexa.c                                    :+:      :+:    :+:   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 15:24:21 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/28 22:44:57 by valero           ###   ########.fr       */
+/*   Created: 2025/09/24 13:53:45 by brunofer          #+#    #+#             */
+/*   Updated: 2025/09/28 23:54:02 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstr.h"
+#include "parser.h"
 
-int	ft_str_ishexa(const char *hex, const char *prefix)
+t_parser_matrix	*parse_file(char *file_path, t_parser_matrix **parser_matrix)
 {
-	int	i;
+	t_reader_matrix	*reader_matrix;
 
-	if (!hex || !hex[0])
-		return (0);
-	i = 0;
-	if (prefix)
-	{
-		i = -1;
-		while (prefix[++i])
-			if (hex[i] != prefix[i])
-				return (0);
-	}
-	if (!hex[i])
-		return (0);
-	while (hex[i])
-		if (!ft_strchr(HEXA_BASE, ft_tolower(hex[i++])))
-			return (0);
-	return (1);
+	reader_matrix = NULL;
+	if (!read_file(file_path, &reader_matrix))
+		return (NULL);
+	*parser_matrix = parse_matrix(reader_matrix, parser_matrix);
+	if (!*parser_matrix)
+		return (NULL);
+	return (*parser_matrix);
 }
