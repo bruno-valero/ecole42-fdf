@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:17:58 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/30 00:04:24 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/30 17:01:23 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	add_line(t_reader_matrix **lines, char *line_from_file);
 static char	*remove_last_endl(char *line);
-static void	*read_error(char *message);
-static void	*free_gnl_on_read_error(char *message);
+static void	*read_error(char *message, int fd);
+static void	*free_gnl_on_read_error(char *message, int fd);
 
 t_reader_matrix	*read_file(char *file_path, t_reader_matrix **lines)
 {
@@ -25,10 +25,10 @@ t_reader_matrix	*read_file(char *file_path, t_reader_matrix **lines)
 
 	fd = open(file_path, 0);
 	if (fd < 0)
-		return (read_error("Invalid file path!\n"));
+		return (read_error("Invalid file path!\n", fd));
 	line_from_file = remove_last_endl(get_next_line(fd));
 	if (!line_from_file)
-		return (free_gnl_on_read_error("empty file!\n"));
+		return (free_gnl_on_read_error("empty file!\n", fd));
 	*lines = new_reader_matrix(lines);
 	ft_putstr_fd("reading file ... ", 1);
 	ft_putstr_fd(file_path, 1);
@@ -37,10 +37,11 @@ t_reader_matrix	*read_file(char *file_path, t_reader_matrix **lines)
 	{
 		add_line_result = add_line(lines, line_from_file);
 		if (!add_line_result)
-			return (free_gnl_on_read_error("Invalid file structure!\n"));
+			return (free_gnl_on_read_error("Invalid file structure!\n", fd));
 		line_from_file = remove_last_endl(get_next_line(fd));
 	}
 	free(line_from_file);
+	close(fd);
 	return (*lines);
 }
 
@@ -68,16 +69,17 @@ static int	add_line(t_reader_matrix **lines, char *line_from_file)
 	return (add_succeeded);
 }
 
-static void	*read_error(char *message)
+static void	*read_error(char *message, int fd)
 {
 	ft_putstr_fd(message, 2);
+	close(fd);
 	return (NULL);
 }
 
-static void	*free_gnl_on_read_error(char *message)
+static void	*free_gnl_on_read_error(char *message, int fd)
 {
 	get_next_line(-1);
-	return (read_error(message));
+	return (read_error(message, fd));
 }
 
 static char	*remove_last_endl(char *line)

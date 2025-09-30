@@ -6,11 +6,11 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 23:22:52 by valero            #+#    #+#             */
-/*   Updated: 2025/09/29 15:20:20 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:55:32 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "parse_file.h"
 
 static void						init_matrix_data(
 									t_input_point **matrix_data,
@@ -30,7 +30,6 @@ t_parser_matrix	*parse_matrix(t_reader_matrix *rmatrix,
 	*pmatrix = new_parser_matrix(pmatrix);
 	(*pmatrix)->data = malloc((rmatrix->height + 1) * sizeof(t_input_point *));
 	init_matrix_data((*pmatrix)->data, rmatrix->height);
-	(*pmatrix)->data[rmatrix->height] = NULL;
 	matrix_line = rmatrix->top;
 	matrix_coord.y = -1;
 	while (matrix_coord.y++, matrix_line)
@@ -69,7 +68,7 @@ static void	init_matrix_data(t_input_point **matrix_data, int matrix_height)
 {
 	while (matrix_height)
 	{
-		matrix_data[matrix_height] = 0;
+		matrix_data[matrix_height] = NULL;
 		matrix_height--;
 	}
 }

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   test_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/30 13:55:32 by valero           ###   ########.fr       */
+/*   Created: 2025/09/25 12:28:10 by valero            #+#    #+#             */
+/*   Updated: 2025/09/29 00:26:24 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "fdf.h"
 
-# include "viewer.h"
-# include "parse_file.h"
-
-typedef struct s_layers
+int	main(int argc, char **argv)
 {
-	t_minilib_layer	fdf;
-	t_minilib_layer	background;
-	t_minilib_layer	info;
-}	t_layers;
+	char			*file_path;
+	t_parser_matrix	*matrix;
 
-
-typedef struct s_fdf
-{
-	t_layers	layers;
-}	t_fdf;
-
-#endif
+	if (argc < 2)
+		return (0);
+	file_path = argv[1];
+	matrix = parse_file(file_path, &matrix);
+	if (matrix)
+	{
+		matrix->print(matrix);
+		matrix->destroy(matrix);
+	}
+}

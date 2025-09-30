@@ -6,11 +6,11 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:15:52 by valero            #+#    #+#             */
-/*   Updated: 2025/09/29 15:16:40 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:55:32 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "parse_file.h"
 
 static t_parse_point_response	parse_point_response_init(void);
 static void						fill_point(t_input_point *point,
@@ -64,7 +64,7 @@ static void	fill_point(t_input_point *point, char ***splitted,
 	{
 		point->has_color = 1;
 		color_hexa = ft_str_tolower(&(*splitted)[1][2]);
-		point->color = ft_atoi_base(color_hexa, "0123456789abcdef");
+		point->color = ft_atoi_base(color_hexa, HEXA_BASE);
 		free(color_hexa);
 	}
 	*result = 1;

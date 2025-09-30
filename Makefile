@@ -23,7 +23,8 @@ MLX_DEPENDENCIES = -lXext -lX11 -lm -lbsd
 INCLUDES_UTILS = -I src/utils
 INCLUDES_PARSER = -I src/parser
 INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algorithms/bresenham -I src/viewer/minilibx
-INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER) $(INCLUDES_PARSER) $(INCLUDES_UTILS)
+INCLUDES_CORE = -I src/core
+INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER) $(INCLUDES_PARSER) $(INCLUDES_UTILS) $(INCLUDES_CORE)
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
@@ -31,9 +32,11 @@ CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 SRC_PARSER_FILES = src/parser/reader_nodes.c src/parser/reader_list.c src/parser/reader_matrix.c src/parser/reader.c \
 src/parser/reader_print.c src/parser/parser_matrix.c src/parser/parse_matrix.c src/parser/parse_point.c src/parser/parse_file.c
 
+SRC_CORE_FILES = src/core/core.c
+
 ALGORITHMS = src/viewer/line/line_algorithms
 SRC_FILES = src/utils/coordinates.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
-src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c $(SRC_PARSER_FILES)
+src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c $(SRC_PARSER_FILES) $(SRC_CORE_FILES)
 
 # ============== PROGRAM FILES =================
 TEST_PROGRAM=teste.c
@@ -87,6 +90,15 @@ test_parser: tests/test_parser.c fclean $(COMPILATION_DEPENDENCIES)
 parser: test_parser
 	@echo "$(LIGHT_CYAN)>> $(BOLD)running$(RESET) $(LIGHT_CYAN)./$< $(RESET)..." && sleep $(SLEEP)
 	@valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$< tests/maps/42mod.fdf
+
+test_core: tests/test_core.c fclean $(COMPILATION_DEPENDENCIES)
+	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
+	@$(CC) $(CFLAGS) $< $(COMPILATION_DEPENDENCIES) -o $@ $(MLX_DEPENDENCIES)
+
+
+core: test_core
+	@echo "$(LIGHT_CYAN)>> $(BOLD)running$(RESET) $(LIGHT_CYAN)./$< $(RESET)..." && sleep $(SLEEP)
+	@valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all ./$< tests/maps/42.fdf
 
 valgrind:
 	valgrind -q --track-origins=yes --leak-check=full --show-leak-kinds=all --verbose ./$(PROGRAM) reader_tests/42.fdf
