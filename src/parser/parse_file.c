@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 13:53:45 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/29 15:03:00 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/30 00:01:46 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ t_parser_matrix	*parse_file(char *file_path, t_parser_matrix **parser_matrix)
 	reader_matrix = NULL;
 	if (!read_file(file_path, &reader_matrix))
 		return (NULL);
+	ft_putstr_fd("parsing file ... ", 1);
+	ft_putstr_fd(file_path, 1);
+	ft_putstr_fd("\n", 1);
 	*parser_matrix = parse_matrix(reader_matrix, parser_matrix);
 	reader_matrix->destroy(reader_matrix);
 	if (!*parser_matrix)

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:17:58 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/28 18:57:10 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/30 00:04:24 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ t_reader_matrix	*read_file(char *file_path, t_reader_matrix **lines)
 	if (!line_from_file)
 		return (free_gnl_on_read_error("empty file!\n"));
 	*lines = new_reader_matrix(lines);
+	ft_putstr_fd("reading file ... ", 1);
+	ft_putstr_fd(file_path, 1);
+	ft_putstr_fd("\n", 1);
 	while (line_from_file)
 	{
 		add_line_result = add_line(lines, line_from_file);
