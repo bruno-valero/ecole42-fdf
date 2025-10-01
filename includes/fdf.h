@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/30 13:55:32 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/30 21:56:13 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "viewer.h"
 # include "parse_file.h"
+# include "core.h"
 
 typedef struct s_layers
 {

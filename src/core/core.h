@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/09/30 16:24:37 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/30 21:56:58 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ struct s_camera
 	int		auto_rotate_y;
 	int		auto_rotate_z;
 };
+
+void	core(char *file_path, void *mlx, t_minilib_layer layer, t_minilib_window window);
 
 #endif

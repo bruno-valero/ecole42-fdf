@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:50:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/30 12:11:21 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/30 22:26:13 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	bresenham(t_line line, t_minilib_window window)
 
 	delta_x = line.final_point.x - line.initial_point.x;
 	delta_y = line.final_point.y - line.initial_point.y;
-	slope = delta_y / delta_x;
+	if (!delta_x)
+		slope = 2;
+	else
+		slope = delta_y / delta_x;
 	if (abs_float(slope) > 1)
 		bresenham_upper_slope(line, window);
 	else
