@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 12:28:10 by valero            #+#    #+#             */
-/*   Updated: 2025/09/30 21:58:44 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/01 02:18:11 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,8 @@ int	main(int argc, char **argv)
 		return (0);
 	file_path = argv[1];
 	core(file_path, mlx, layer, window);
+	window.destroy(window);
+	layer.destroy(layer);
+	mlx_destroy_display(mlx);
+	free(mlx);
 }

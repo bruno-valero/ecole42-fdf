@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx_layer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:26:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/24 11:21:07 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/01 02:16:27 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_minilib_layer	new_layer(t_minilib_window window, int width, int height)
 static void	destroy_layer(t_minilib_layer self)
 {
 	mlx_destroy_image(self.mlx_ref, self.img);
-	free(self.img);
+	// free(self.img);
 }
 
 void	put_layer(t_minilib_window window, t_minilib_layer layer)
