@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/24 11:21:58 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:10:01 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,12 @@ struct s_minilib_window
 
 typedef struct s_pixel
 {
-	t_minilib_layer	*layer;
 	t_coord_2d		coord;
 	int				color;
 }	t_pixel;
 
-t_pixel				make_pixel(
-						t_minilib_layer *layer, t_coord_2d coord, int color);
-void				put_pixel(t_pixel pixel, t_minilib_window window);
+t_pixel				make_pixel(t_coord_2d coord, int color);
+void				put_pixel(t_pixel pixel, t_viewer_context viwer_context);
 t_minilib_window	new_window(
 						void *mlx_ref, int width, int height, char *name);
 t_minilib_layer		new_layer(t_minilib_window window, int width, int height);

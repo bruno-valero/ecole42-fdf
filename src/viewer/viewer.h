@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   viewer.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/17 15:22:34 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/01 22:23:59 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "coordinates.h"
 # include "minilibx.h"
-# include "line.h"
+# include "viewer_line.h"
+# include "viewer_context.h"
 
 #endif

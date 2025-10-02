@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_interface.h                                   :+:      :+:    :+:   */
+/*   build_lines.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/13 11:30:34 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/29 15:32:30 by valero           ###   ########.fr       */
+/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
+/*   Updated: 2025/10/01 22:52:53 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINE_INTERFACE_H
-# define LINE_INTERFACE_H
+#ifndef BUILD_LINES_H
+# define BUILD_LINES_H
 
 # include "coordinates.h"
-# include "minilibx.h"
+# include "lines.h"
+# include "viewer.h"
+# include "parse_file.h"
+# include "camera.h"
 
-typedef struct s_line	t_line;
+t_lines	build_lines(
+			char *file_path, t_viewer_context viwer_context, t_camera *camera,
+			void (*update_line)(t_frame_context frame)
+			);
 
-struct s_line
-{
-	t_coord_2d		initial_point;
-	t_coord_2d		final_point;
-	t_minilib_layer	layer;
-};
 
 #endif

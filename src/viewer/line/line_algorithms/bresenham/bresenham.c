@@ -6,86 +6,71 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:50:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/30 22:26:13 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/01 22:16:07 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bresenham.h"
 #include "minilibx.h"
+#include "viewer_context.h"
 
-static void	bresenham_lower_slope(t_line line, t_minilib_window window);
-static void	bresenham_upper_slope(t_line line, t_minilib_window window);
+static void	bresenham_lower_slope(t_line line, t_viewer_context viwer_context);
+static void	bresenham_upper_slope(t_line line, t_viewer_context viwer_context);
 
-void	bresenham(t_line line, t_minilib_window window)
+void	bresenham(t_line line, t_viewer_context viwer_context)
 {
-	int		delta_x;
-	int		delta_y;
-	float	slope;
-
-	delta_x = line.final_point.x - line.initial_point.x;
-	delta_y = line.final_point.y - line.initial_point.y;
-	if (!delta_x)
-		slope = 2;
+	if (abs_float(line.slope) > 1)
+		bresenham_upper_slope(line, viwer_context);
 	else
-		slope = delta_y / delta_x;
-	if (abs_float(slope) > 1)
-		bresenham_upper_slope(line, window);
-	else
-		bresenham_lower_slope(line, window);
+		bresenham_lower_slope(line, viwer_context);
 }
 
-static void	bresenham_lower_slope(t_line line, t_minilib_window window)
+static void	bresenham_lower_slope(t_line line, t_viewer_context viwer_context)
 {
 	t_pixel		pixel;
-	int			delta_x;
-	int			delta_y;
 	int			decision;
 	t_coord_2d	coordinate;
 
 	coordinate = coord_2d(line.initial_point.x, line.initial_point.y);
-	pixel = make_pixel(&line.layer, coordinate, 0x00FF0000);
-	delta_x = line.final_point.x - line.initial_point.x;
-	delta_y = line.final_point.y - line.initial_point.y;
-	decision = (2 * abs_nbr(delta_y)) - abs_nbr(delta_x);
+	pixel = make_pixel(coordinate, 0x00FF0000);
+	decision = (2 * abs_nbr(line.delta.y)) - abs_nbr(line.delta.x);
 	while (loop_condition(
 			pixel.coord.x, line.initial_point.x, line.final_point.x))
 	{
-		put_pixel(pixel, window);
-		add_direction(&pixel.coord.x, delta_x);
+		put_pixel(pixel, viwer_context);
+		go_to_next_pixel(&pixel.coord.x, line.delta.x);
 		if (decision < 0)
-			decision = decision + 2 * abs_nbr(delta_y);
+			decision = decision + 2 * abs_nbr(line.delta.y);
 		else
 		{
-			decision = decision + 2 * abs_nbr(delta_y) - 2 * abs_nbr(delta_x);
-			add_direction(&pixel.coord.y, delta_y);
+			decision = decision + 2 * abs_nbr(line.delta.y)
+				- 2 * abs_nbr(line.delta.x);
+			go_to_next_pixel(&pixel.coord.y, line.delta.y);
 		}
 	}
 }
 
-static void	bresenham_upper_slope(t_line line, t_minilib_window window)
+static void	bresenham_upper_slope(t_line line, t_viewer_context viwer_context)
 {
 	t_pixel		pixel;
-	int			delta_x;
-	int			delta_y;
 	int			decision;
 	t_coord_2d	coordinate;
 
 	coordinate = coord_2d(line.initial_point.x, line.initial_point.y);
-	pixel = make_pixel(&line.layer, coordinate, 0x00FF0000);
-	delta_x = line.final_point.x - line.initial_point.x;
-	delta_y = line.final_point.y - line.initial_point.y;
-	decision = (2 * abs_nbr(delta_x)) - abs_nbr(delta_y);
+	pixel = make_pixel(coordinate, 0x00FF0000);
+	decision = (2 * abs_nbr(line.delta.x)) - abs_nbr(line.delta.y);
 	while (loop_condition(
 			pixel.coord.y, line.initial_point.y, line.final_point.y))
 	{
-		put_pixel(pixel, window);
-		add_direction(&pixel.coord.y, delta_y);
+		put_pixel(pixel, viwer_context);
+		go_to_next_pixel(&pixel.coord.y, line.delta.y);
 		if (decision < 0)
-			decision = decision + 2 * abs_nbr(delta_x);
+			decision = decision + 2 * abs_nbr(line.delta.x);
 		else
 		{
-			decision = decision + 2 * abs_nbr(delta_x) - 2 * abs_nbr(delta_y);
-			add_direction(&pixel.coord.x, delta_x);
+			decision = decision + 2 * abs_nbr(line.delta.x)
+				- 2 * abs_nbr(line.delta.y);
+			go_to_next_pixel(&pixel.coord.x, line.delta.x);
 		}
 	}
 }

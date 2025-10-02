@@ -6,35 +6,35 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:26:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 02:15:54 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/01 15:09:29 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minilibx.h"
+#include "viewer_context.h"
 
 static void	destroy_window(t_minilib_window self);
 
-t_pixel	make_pixel(t_minilib_layer *layer, t_coord_2d coord, int color)
+t_pixel	make_pixel(t_coord_2d coord, int color)
 {
 	t_pixel	pixel;
 
-	pixel.layer = layer;
 	pixel.coord = coord;
 	pixel.color = color;
 	return (pixel);
 }
 
-void	put_pixel(t_pixel pixel, t_minilib_window window)
+void	put_pixel(t_pixel pixel, t_viewer_context viwer_context)
 {
 	char	*dst;
 
-	if (pixel.coord.y < 0 || pixel.coord.y > window.height)
+	if (pixel.coord.y < 0 || pixel.coord.y > viwer_context.window.height)
 		return ;
-	if (pixel.coord.x < 0 || pixel.coord.x > window.height)
+	if (pixel.coord.x < 0 || pixel.coord.x > viwer_context.window.height)
 		return ;
-	dst = pixel.layer->addr + (
-			pixel.coord.y * pixel.layer->line_length
-			+ pixel.coord.x * (pixel.layer->bits_per_pixel / 8)
+	dst = viwer_context.layer.addr + (
+			pixel.coord.y * viwer_context.layer.line_length
+			+ pixel.coord.x * (viwer_context.layer.bits_per_pixel / 8)
 			);
 	*(unsigned int *)dst = pixel.color;
 }

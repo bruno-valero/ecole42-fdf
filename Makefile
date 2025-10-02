@@ -29,14 +29,18 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 # ============== SRC FILES =================
+SRC_UTILS_FILES = src/utils/coordinates.c src/utils/line.c
+
 SRC_PARSER_FILES = src/parser/reader_nodes.c src/parser/reader_list.c src/parser/reader_matrix.c src/parser/reader.c \
 src/parser/reader_print.c src/parser/parser_matrix.c src/parser/parse_matrix.c src/parser/parse_point.c src/parser/parse_file.c
 
-SRC_CORE_FILES = src/core/core.c
-
 ALGORITHMS = src/viewer/line/line_algorithms
-SRC_FILES = src/utils/coordinates.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
-src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c $(SRC_PARSER_FILES) $(SRC_CORE_FILES)
+SRC_VIEWER_FILES = $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
+src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c
+
+SRC_CORE_FILES = src/core/core.c src/core/build_lines.c src/core/camera.c
+
+SRC_FILES = $(SRC_UTILS_FILES) $(SRC_PARSER_FILES) $(SRC_VIEWER_FILES) $(SRC_CORE_FILES)
 
 # ============== PROGRAM FILES =================
 TEST_PROGRAM=teste.c

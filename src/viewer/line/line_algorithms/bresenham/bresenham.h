@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:31:29 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/29 15:33:23 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/01 22:16:01 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 
 typedef struct s_line	t_line;
 
-void	bresenham(t_line line, t_minilib_window window);
+void	bresenham(t_line line, t_viewer_context viwer_context);
 
 #endif

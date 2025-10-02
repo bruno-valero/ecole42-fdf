@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham_utils.h                                  :+:      :+:    :+:   */
+/*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 14:54:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 15:03:04 by valero           ###   ########.fr       */
+/*   Created: 2025/09/24 11:24:50 by brunofer          #+#    #+#             */
+/*   Updated: 2025/10/01 22:20:47 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRESENHAM_UTILS_H
-# define BRESENHAM_UTILS_H
+#include "line.h"
 
-float			abs_float(float nbr);
-unsigned int	abs_nbr(int nbr);
-void			go_to_next_pixel(int *curr_position, int delta_direction);
-int				loop_condition(int x, int x_start, int x_end);
+t_line	new_line(t_coord_2d initial_point,
+			t_coord_2d final_point)
+{
+	t_line	line;
 
-#endif
+	line.initial_point = initial_point;
+	line.final_point = final_point;
+	line.delta.x = final_point.x - initial_point.x;
+	line.delta.y = final_point.y - initial_point.y;
+	if (!line.delta.x)
+		line.slope = 2;
+	else
+		line.slope = line.delta.y / line.delta.x;
+	return (line);
+}

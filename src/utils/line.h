@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham_utils.h                                  :+:      :+:    :+:   */
+/*   line.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 14:54:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 15:03:04 by valero           ###   ########.fr       */
+/*   Created: 2025/09/13 11:30:34 by brunofer          #+#    #+#             */
+/*   Updated: 2025/10/01 22:20:43 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRESENHAM_UTILS_H
-# define BRESENHAM_UTILS_H
+#ifndef LINE_H
+# define LINE_H
 
-float			abs_float(float nbr);
-unsigned int	abs_nbr(int nbr);
-void			go_to_next_pixel(int *curr_position, int delta_direction);
-int				loop_condition(int x, int x_start, int x_end);
+# include "coordinates.h"
+
+typedef struct s_line	t_line;
+
+struct s_line
+{
+	t_coord_2d		initial_point;
+	t_coord_2d		final_point;
+	t_coord_2d		delta;
+	float			slope;
+};
+
+t_line	new_line(t_coord_2d initial_point,
+			t_coord_2d final_point);
 
 #endif

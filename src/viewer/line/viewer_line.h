@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham_utils.h                                  :+:      :+:    :+:   */
+/*   viewer_line.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 14:54:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 15:03:04 by valero           ###   ########.fr       */
+/*   Created: 2025/09/13 11:30:34 by brunofer          #+#    #+#             */
+/*   Updated: 2025/10/01 22:22:37 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRESENHAM_UTILS_H
-# define BRESENHAM_UTILS_H
+#ifndef VIEWER_LINE_H
+# define VIEWER_LINE_H
 
-float			abs_float(float nbr);
-unsigned int	abs_nbr(int nbr);
-void			go_to_next_pixel(int *curr_position, int delta_direction);
-int				loop_condition(int x, int x_start, int x_end);
+# include "coordinates.h"
+# include "line.h"
+# include "minilibx.h"
+
+void	draw_line(t_line line, t_minilib_window window,
+			void (*algorithm)(t_line line, t_minilib_window window));
 
 #endif

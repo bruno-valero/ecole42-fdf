@@ -19,6 +19,9 @@
 		"vector": "c",
 		"initializer_list": "c",
 		"utility": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"build_lines.h": "c",
+		"viewer_line.h": "c",
+		"viewer_context.h": "c"
 	}
 }

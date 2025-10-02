@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 15:41:12 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/26 13:44:56 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/01 15:07:30 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	main(void)
 	mlx = mlx_init();
 	window = new_window(mlx, 1080, 720, "Fil de Fer -> brunofer");
 	layer = new_layer(window, 1080, 720);
-	line1 = new_line(coord_2d(50, 200), coord_2d(10, 10), layer);
-	line2 = new_line(coord_2d(500, 500), coord_2d(900, 700), layer);
+	line1 = new_line(coord_2d(50, 200), coord_2d(10, 10));
+	line2 = new_line(coord_2d(500, 500), coord_2d(900, 700));
 	draw_line(line1, window, bresenham);
 	draw_line(line2, window, bresenham);
 	put_layer(window, layer);

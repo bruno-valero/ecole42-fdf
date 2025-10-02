@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:02:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/01 03:08:03 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/01 17:11:59 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	draw_line_right(
 		scale_point(&coord2, scale);
 		set_position(&coord1, mtx, scale, window);
 		set_position(&coord2, mtx, scale, window);
-		draw_line(new_line(coord1, coord2, layer), window, bresenham);
+		draw_line(new_line(coord1, coord2), window, bresenham);
 	}
 }
 
@@ -97,7 +97,7 @@ static void	draw_line_down(
 		scale_point(&coord2, scale);
 		set_position(&coord1, mtx, scale, window);
 		set_position(&coord2, mtx, scale, window);
-		draw_line(new_line(coord1, coord2, layer), window, bresenham);
+		draw_line(new_line(coord1, coord2), window, bresenham);
 	}
 }
 

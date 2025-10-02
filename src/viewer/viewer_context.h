@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line.h                                             :+:      :+:    :+:   */
+/*   viewer_context.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/13 11:30:34 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/29 15:33:36 by valero           ###   ########.fr       */
+/*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
+/*   Updated: 2025/10/01 22:51:03 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINE_H
-# define LINE_H
+#ifndef VIEWER_CONTEXT_H
+# define VIEWER_CONTEXT_H
 
-# include "coordinates.h"
-# include "bresenham.h"
-# include "line_interface.h"
+# include "minilibx.h"
 
-t_line	new_line(t_coord_2d initial_point,
-			t_coord_2d final_point, t_minilib_layer layer);
-void	draw_line(t_line line, t_minilib_window window,
-			void (*algorithm)(t_line line, t_minilib_window window));
+typedef struct s_viewer_context	t_viewer_context;
+
+struct s_viewer_context
+{
+	t_minilib_layer		layer;
+	t_minilib_window	window;
+};
 
 #endif

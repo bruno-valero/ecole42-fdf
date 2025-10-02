@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham_utils.h                                  :+:      :+:    :+:   */
+/*   lines.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 14:54:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 15:03:04 by valero           ###   ########.fr       */
+/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
+/*   Updated: 2025/10/01 22:52:16 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRESENHAM_UTILS_H
-# define BRESENHAM_UTILS_H
+#ifndef LINES_H
+# define LINES_H
 
-float			abs_float(float nbr);
-unsigned int	abs_nbr(int nbr);
-void			go_to_next_pixel(int *curr_position, int delta_direction);
-int				loop_condition(int x, int x_start, int x_end);
+# include "line.h"
+# include "minilibx.h"
+
+
+typedef struct s_lines					t_lines;
+
+struct s_lines
+{
+	int					size;
+	t_line				*data;
+	t_minilib_layer		layer;
+	t_minilib_window	window;
+};
+
 
 #endif
