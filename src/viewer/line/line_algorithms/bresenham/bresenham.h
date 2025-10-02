@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:31:29 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 22:16:01 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/01 23:41:53 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include "coordinates.h"
 # include "bresenham_utils.h"
-# include "line_interface.h"
 # include "minilibx.h"
+# include "viewer_context.h"
+# include "viewer_line.h"
 
 typedef struct s_line	t_line;
 

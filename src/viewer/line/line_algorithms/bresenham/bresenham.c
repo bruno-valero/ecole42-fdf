@@ -6,13 +6,11 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:50:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 22:16:07 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/01 23:41:58 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bresenham.h"
-#include "minilibx.h"
-#include "viewer_context.h"
 
 static void	bresenham_lower_slope(t_line line, t_viewer_context viwer_context);
 static void	bresenham_upper_slope(t_line line, t_viewer_context viwer_context);

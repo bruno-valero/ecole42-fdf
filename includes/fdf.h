@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:52:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/30 21:56:13 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/01 23:42:16 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_layers
 	t_minilib_layer	background;
 	t_minilib_layer	info;
 }	t_layers;
-
 
 typedef struct s_fdf
 {
