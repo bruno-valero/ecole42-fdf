@@ -23,6 +23,10 @@
 		"build_lines.h": "c",
 		"viewer_line.h": "c",
 		"viewer_context.h": "c",
-		"bresenham_algo.h": "c"
+		"bresenham_algo.h": "c",
+		"camera.h": "c",
+		"frame_context.h": "c",
+		"memory_resource": "c",
+		"math.h": "c"
 	}
 }

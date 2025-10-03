@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:26:02 by valero            #+#    #+#             */
-/*   Updated: 2025/10/01 22:08:36 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/03 15:19:22 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,28 @@
 static void				build_line_right(
 							t_frame_context frame,
 							void (*update_line)
-							(t_frame_context frame, t_line curr_line),
+							(t_frame_context frame, t_line *curr_line),
 							int *line_idx);
 static void				build_line_down(
 							t_frame_context frame,
 							void (*update_line)
-							(t_frame_context frame, t_line curr_line),
+							(t_frame_context frame, t_line *curr_line),
 							int *line_idx);
 static t_coord_2d		coord_3d_to_2d(t_coord_3d coord);
-static void				scale_point(t_coord_2d *coord, int scale);
-static void				set_position(t_coord_2d *coord,
-							t_parser_matrix *mtx,
-							int scale, t_minilib_window window);
 static int				get_lines_amount(t_parser_matrix *mtx);
 static t_lines			*lines_init(t_lines *lines,
 							t_parser_matrix *mtx,
 							t_viewer_context viwer_context);
-static t_frame_context	frame_context(
-							t_parser_matrix *mtx, t_coord_2d curr_coord,
-							t_lines *lines, t_camera *camera);
 
 t_lines	build_lines(
-			char *file_path, t_viewer_context viwer_context, t_camera *camera,
-			void (*update_line)(t_frame_context frame)
+			t_parser_matrix	*mtx, t_viewer_context viwer_context, t_camera *camera,
+			void (*update_line)(t_frame_context frame, t_line *curr_line)
 			)
 {
-	t_parser_matrix	*mtx;
 	t_coord_2d		mtx_coord;
 	t_lines			lines;
 	t_frame_context	frame;
 	int				line_idx;
-
-	if (!parse_file(file_path, &mtx))
-		return ;
 	lines_init(&lines, mtx, viwer_context);
 	line_idx = 0;
 	mtx_coord.y = -1;
@@ -67,7 +56,7 @@ t_lines	build_lines(
 
 static void	build_line_right(
 				t_frame_context frame,
-				void (*update_line)(t_frame_context frame, t_line curr_line),
+				void (*update_line)(t_frame_context frame, t_line *curr_line),
 				int *line_idx)
 {
 	t_line			curr_line;
@@ -80,9 +69,9 @@ static void	build_line_right(
 	{
 		curr_line = new_line(
 				coord_3d_to_2d(frame.mtx->data[curr_y][curr_x].coord),
-				coord_3d_to_2d(frame.mtx->data[curr_y + 1][curr_x].coord)
+				coord_3d_to_2d(frame.mtx->data[curr_y][curr_x + 1].coord)
 				);
-		update_line(frame, curr_line);
+		update_line(frame, &curr_line);
 		// scale_point(&start, frame.camera->scale);
 		// scale_point(&end, frame.camera->scale);
 		// set_position(&start, frame.mtx, frame.camera->scale, frame.lines->window);
@@ -94,7 +83,7 @@ static void	build_line_right(
 
 static void	build_line_down(
 				t_frame_context frame,
-				void (*update_line)(t_frame_context frame, t_line curr_line),
+				void (*update_line)(t_frame_context frame, t_line *curr_line),
 				int *line_idx)
 {
 	t_line			curr_line;
@@ -109,7 +98,7 @@ static void	build_line_down(
 				coord_3d_to_2d(frame.mtx->data[curr_y][curr_x].coord),
 				coord_3d_to_2d(frame.mtx->data[curr_y + 1][curr_x].coord)
 				);
-		update_line(frame, curr_line);
+		update_line(frame, &curr_line);
 		// scale_point(&start, frame.camera->scale);
 		// scale_point(&end, frame.camera->scale);
 		// set_position(&start, frame.mtx, frame.camera->scale, frame.lines->window);
@@ -127,27 +116,27 @@ static t_coord_2d	coord_3d_to_2d(t_coord_3d coord)
 	return (new_coord);
 }
 
-static void	scale_point(t_coord_2d *coord, int scale)
-{
-	coord->x *= scale;
-	coord->y *= scale;
-}
+// static void	scale_point(t_coord_2d *coord, int scale)
+// {
+// 	coord->x *= scale;
+// 	coord->y *= scale;
+// }
 
-static void	set_position(t_coord_2d *coord, t_parser_matrix *mtx, int scale, t_minilib_window window)
-{
-	t_coord_2d	center_matrix;
-	t_coord_2d	center_window;
-	t_coord_2d	offset;
+// static void	set_position(t_coord_2d *coord, t_parser_matrix *mtx, int scale, t_minilib_window window)
+// {
+// 	t_coord_2d	center_matrix;
+// 	t_coord_2d	center_window;
+// 	t_coord_2d	offset;
 
-	center_matrix.x = (mtx->width - 1) * scale / 2;
-	center_matrix.y = (mtx->height - 1) * scale / 2;
-	center_window.x = window.width / 2;
-	center_window.y = window.height / 2;
-	offset.x = center_window.x - center_matrix.x;
-	offset.y = center_window.y - center_matrix.y;
-	coord->x += offset.x;
-	coord->y += offset.y;
-}
+// 	center_matrix.x = (mtx->width - 1) * scale / 2;
+// 	center_matrix.y = (mtx->height - 1) * scale / 2;
+// 	center_window.x = window.width / 2;
+// 	center_window.y = window.height / 2;
+// 	offset.x = center_window.x - center_matrix.x;
+// 	offset.y = center_window.y - center_matrix.y;
+// 	coord->x += offset.x;
+// 	coord->y += offset.y;
+// }
 
 static int	get_lines_amount(t_parser_matrix *mtx)
 {
@@ -165,24 +154,11 @@ static t_lines	*lines_init(t_lines *lines, t_parser_matrix *mtx,
 	int					i;
 
 	lines->size = get_lines_amount(mtx);
-	lines->data = (t_line *)malloc(lines->size);
+	lines->data = (t_line *)malloc(lines->size * sizeof(t_line));
 	i = -1;
 	while (++i < lines->size)
 		lines->data[i] = new_line(coord_2d(0, 0), coord_2d(0, 0));
 	lines->layer = viwer_context.layer;
 	lines->window = viwer_context.window;
 	return (lines);
-}
-
-static t_frame_context	frame_context(
-		t_parser_matrix *mtx, t_coord_2d curr_coord,
-		t_lines *lines, t_camera *camera)
-{
-	t_frame_context	frame;
-
-	frame.camera = camera;
-	frame.curr_coord = curr_coord;
-	frame.lines = lines;
-	frame.mtx = mtx;
-	return (frame);
 }

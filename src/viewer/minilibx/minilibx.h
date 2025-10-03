@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 15:10:01 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/03 13:43:00 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "mlx.h"
 # include "coordinates.h"
+// # include "viewer_context.h"
 # include <stdlib.h>
 
 typedef struct s_minilib_layer	t_minilib_layer;
@@ -49,6 +50,10 @@ typedef struct s_pixel
 	int				color;
 }	t_pixel;
 
+typedef struct s_viewer_context	t_viewer_context;
+
+t_viewer_context	create_viewer_context(void *mlx_ref,
+						t_minilib_window *window, t_minilib_layer *layer);
 t_pixel				make_pixel(t_coord_2d coord, int color);
 void				put_pixel(t_pixel pixel, t_viewer_context viwer_context);
 t_minilib_window	new_window(

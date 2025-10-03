@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 12:28:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/01 02:18:11 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/02 12:55:37 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,9 @@
 int	main(int argc, char **argv)
 {
 	char				*file_path;
-	void				*mlx;
-	t_minilib_layer		layer;
-	t_minilib_window	window;
 
-	mlx = mlx_init();
-	window = new_window(mlx, 1080, 720, "Fil de Fer -> brunofer");
-	layer = new_layer(window, 1080, 720);
 	if (argc < 2)
 		return (0);
 	file_path = argv[1];
-	core(file_path, mlx, layer, window);
-	window.destroy(window);
-	layer.destroy(layer);
-	mlx_destroy_display(mlx);
-	free(mlx);
+	core(file_path);
 }

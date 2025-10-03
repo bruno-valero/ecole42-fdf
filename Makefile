@@ -36,9 +36,10 @@ src/parser/reader_print.c src/parser/parser_matrix.c src/parser/parse_matrix.c s
 
 ALGORITHMS = src/viewer/line/line_algorithms
 SRC_VIEWER_FILES = $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
-src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/line.c
+src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/viewer_line.c \
+src/viewer/viewer_context.c
 
-SRC_CORE_FILES = src/core/core.c src/core/build_lines.c src/core/camera.c
+SRC_CORE_FILES = src/core/core.c src/core/build_lines.c src/core/camera.c src/core/frame_context.c
 
 SRC_FILES = $(SRC_UTILS_FILES) $(SRC_PARSER_FILES) $(SRC_VIEWER_FILES) $(SRC_CORE_FILES)
 

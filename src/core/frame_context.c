@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   viewer_line.c                                      :+:      :+:    :+:   */
+/*   frame_context.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 11:24:50 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/03 13:48:16 by valero           ###   ########.fr       */
+/*   Created: 2025/10/02 13:00:52 by valero            #+#    #+#             */
+/*   Updated: 2025/10/02 13:40:04 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "viewer_line.h"
+#include "frame_context.h"
 
-void	draw_line(t_line line, t_viewer_context context,
-		void (*algorithm)(t_line line, t_viewer_context context))
+t_frame_context	frame_context(
+		t_parser_matrix *mtx, t_coord_2d curr_coord,
+		t_lines *lines, t_camera *camera)
 {
-	algorithm(line, context);
+	t_frame_context	frame;
+
+	frame.camera = camera;
+	frame.curr_coord = curr_coord;
+	frame.lines = lines;
+	frame.mtx = mtx;
+	return (frame);
 }
