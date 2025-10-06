@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:50:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 23:41:58 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/06 19:49:09 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	bresenham_lower_slope(t_line line, t_viewer_context viwer_context)
 	t_coord_2d	coordinate;
 
 	coordinate = coord_2d(line.initial_point.x, line.initial_point.y);
-	pixel = make_pixel(coordinate, 0x00FF0000);
+	pixel = make_pixel(coordinate, line.final_point.color.value);
 	decision = (2 * abs_nbr(line.delta.y)) - abs_nbr(line.delta.x);
 	while (loop_condition(
 			pixel.coord.x, line.initial_point.x, line.final_point.x))
@@ -55,7 +55,7 @@ static void	bresenham_upper_slope(t_line line, t_viewer_context viwer_context)
 	t_coord_2d	coordinate;
 
 	coordinate = coord_2d(line.initial_point.x, line.initial_point.y);
-	pixel = make_pixel(coordinate, 0x00FF0000);
+	pixel = make_pixel(coordinate, line.final_point.color.value);
 	decision = (2 * abs_nbr(line.delta.x)) - abs_nbr(line.delta.y);
 	while (loop_condition(
 			pixel.coord.y, line.initial_point.y, line.final_point.y))

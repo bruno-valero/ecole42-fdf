@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_rotation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 21:14:33 by valero            #+#    #+#             */
-/*   Updated: 2025/10/05 21:36:15 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/06 19:41:39 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,42 +25,42 @@ void	update_rotation(t_frame_context frame, t_line *line)
 
 static void	update_x_rotation(t_frame_context frame, t_line *line)
 {
-	float		angle;
-	t_coord_3d	coord;
+	float	angle;
+	t_point	point;
 
 	angle = frame.camera->angle.x * (PI / 180);
-	coord = line->initial_point;
-	line->initial_point.y = (coord.y * cos(angle)) - (coord.z * sin(angle));
-	line->initial_point.z = (coord.y * sin(angle)) + (coord.z * cos(angle));
-	coord = line->final_point;
-	line->final_point.y = (coord.y * cos(angle)) - (coord.z * sin(angle));
-	line->final_point.z = (coord.y * sin(angle)) + (coord.z * cos(angle));
+	point = line->initial_point;
+	line->initial_point.y = (point.y * cos(angle)) - (point.z * sin(angle));
+	line->initial_point.z = (point.y * sin(angle)) + (point.z * cos(angle));
+	point = line->final_point;
+	line->final_point.y = (point.y * cos(angle)) - (point.z * sin(angle));
+	line->final_point.z = (point.y * sin(angle)) + (point.z * cos(angle));
 }
 
 static void	update_y_rotation(t_frame_context frame, t_line *line)
 {
-	float		angle;
-	t_coord_3d	coord;
+	float	angle;
+	t_point	point;
 
 	angle = frame.camera->angle.y * (PI / 180);
-	coord = line->initial_point;
-	line->initial_point.x = (coord.x * cos(angle)) + (coord.z * sin(angle));
-	line->initial_point.z = (-coord.x * sin(angle)) + (coord.z * cos(angle));
-	coord = line->final_point;
-	line->final_point.x = (coord.x * cos(angle)) + (coord.z * sin(angle));
-	line->final_point.z = (-coord.x * sin(angle)) + (coord.z * cos(angle));
+	point = line->initial_point;
+	line->initial_point.x = (point.x * cos(angle)) + (point.z * sin(angle));
+	line->initial_point.z = (-point.x * sin(angle)) + (point.z * cos(angle));
+	point = line->final_point;
+	line->final_point.x = (point.x * cos(angle)) + (point.z * sin(angle));
+	line->final_point.z = (-point.x * sin(angle)) + (point.z * cos(angle));
 }
 
 static void	update_z_rotation(t_frame_context frame, t_line *line)
 {
-	float		angle;
-	t_coord_3d	coord;
+	float	angle;
+	t_point	point;
 
 	angle = frame.camera->angle.z * (PI / 180);
-	coord = line->initial_point;
-	line->initial_point.x = (coord.x * cos(angle)) - (coord.y * sin(angle));
-	line->initial_point.y = (coord.x * sin(angle)) + (coord.y * cos(angle));
-	coord = line->final_point;
-	line->final_point.x = (coord.x * cos(angle)) - (coord.y * sin(angle));
-	line->final_point.y = (coord.x * sin(angle)) + (coord.y * cos(angle));
+	point = line->initial_point;
+	line->initial_point.x = (point.x * cos(angle)) - (point.y * sin(angle));
+	line->initial_point.y = (point.x * sin(angle)) + (point.y * cos(angle));
+	point = line->final_point;
+	line->final_point.x = (point.x * cos(angle)) - (point.y * sin(angle));
+	line->final_point.y = (point.x * sin(angle)) + (point.y * cos(angle));
 }

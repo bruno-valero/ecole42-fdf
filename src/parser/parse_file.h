@@ -30,6 +30,8 @@ struct s_matrix
 {
 	int				height;
 	int				width;
+	int				bigger_z;
+	int				lower_z;
 	t_parser_matrix	**self_ref;
 	t_input_point	**data;
 	void			(*print)(t_parser_matrix *self);
@@ -49,5 +51,6 @@ t_parser_matrix			*parse_matrix(t_reader_matrix *rmatrix,
 t_parser_matrix			*parse_file(char *file_path,
 							t_parser_matrix **parser_matrix);
 t_parser_matrix			*new_parser_matrix(t_parser_matrix **matrix_ref);
+void					*destroy_parser_matrix(t_parser_matrix *self);
 
 #endif

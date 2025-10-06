@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 23:22:52 by valero            #+#    #+#             */
-/*   Updated: 2025/09/30 13:55:32 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/06 20:02:03 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,21 @@ static int	handle_parse_point(t_parser_matrix *parser_matrix,
 		t_reader_list_node *matrix_point, t_coord_2d matrix_coord)
 {
 	t_parse_point_response	parse_point_response;
+	int						x;
+	int						y;
 
+	x = x;
+	y = y;
 	parse_point_response = parse_point(matrix_point->str, matrix_coord);
 	if (!parse_point_response.parser_succeeded)
 		return (!!parser_matrix->destroy(parser_matrix));
-	parser_matrix->data[matrix_coord.y][matrix_coord.x]
-		= parse_point_response.point;
-	parser_matrix->height = matrix_coord.y + 1;
-	parser_matrix->width = matrix_coord.x + 1;
+	parser_matrix->data[y][x] = parse_point_response.point;
+	if (parser_matrix->bigger_z < parser_matrix->data[y][x].coord.z)
+		parser_matrix->bigger_z = parser_matrix->data[y][x].coord.z;
+	if (parser_matrix->lower_z < parser_matrix->data[y][x].coord.z)
+		parser_matrix->lower_z = parser_matrix->data[y][x].coord.z;
+	parser_matrix->height = y + 1;
+	parser_matrix->width = x + 1;
 	return (1);
 }
 

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parser_matrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 19:12:38 by valero            #+#    #+#             */
-/*   Updated: 2025/09/30 13:55:32 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/06 20:02:41 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_file.h"
 
 static void	parser_matrix_print(t_parser_matrix *self);
-static void	*destroy_parser_matrix(t_parser_matrix *self);
+// static void	*destroy_parser_matrix(t_parser_matrix *self);
 
 t_parser_matrix	*new_parser_matrix(t_parser_matrix **matrix_ref)
 {
@@ -22,19 +22,21 @@ t_parser_matrix	*new_parser_matrix(t_parser_matrix **matrix_ref)
 	(*matrix_ref)->data = NULL;
 	(*matrix_ref)->height = 0;
 	(*matrix_ref)->width = 0;
+	(*matrix_ref)->bigger_z = 0;
+	(*matrix_ref)->lower_z = 0;
 	(*matrix_ref)->print = parser_matrix_print;
 	(*matrix_ref)->destroy = destroy_parser_matrix;
 	return (*matrix_ref);
 }
 
-static void	*destroy_parser_matrix(t_parser_matrix *self)
+void	*destroy_parser_matrix(t_parser_matrix *self)
 {
 	t_parser_matrix	**self_ref;
 	int				line;
 
-	self_ref = self->self_ref;
-	if (!self || !self_ref || !*self_ref)
+	if (!self || !self->self_ref || !*self->self_ref)
 		return (NULL);
+	self_ref = self->self_ref;
 	if (self->data)
 	{
 		line = -1;

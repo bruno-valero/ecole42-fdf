@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:23:25 by valero            #+#    #+#             */
-/*   Updated: 2025/10/05 21:40:15 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/06 20:14:01 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,6 @@ void	reset_camera(t_camera *camera, t_viewer_context context,
 	camera->projection = 0;
 	camera->auto_rotate = coord_3d(0, 0, 0);
 }
-
-// static t_coord_2d	coord_3d_to_2d(t_coord_3d coord)
-// {
-// 	t_coord_2d	new_coord;
-
-// 	new_coord = coord_2d(coord.x, coord.y);
-// 	return (new_coord);
-// }
 
 static void	reset_offset(t_camera *camera, t_viewer_context context)
 {

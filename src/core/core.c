@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:02:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/05 20:05:27 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/06 20:06:55 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
-#include <math.h>
 
 static int			handle_key(int key, void *mlx);
 static int			handle_mouse(int key, int x, int y,
@@ -33,8 +32,8 @@ void	core(char *file_path)
 	lines = build_lines(parser_matrix, viewer_context, &camera, update_line);
 	load_lines(lines, viewer_context);
 	put_layer(viewer_context.window, viewer_context.layer);
-	mlx_key_hook(viewer_context.mlx_ref, handle_key, viewer_context.mlx_ref);
-	mlx_mouse_hook(viewer_context.mlx_ref, handle_mouse, parser_matrix);
+	mlx_key_hook(viewer_context.window.ref, handle_key, viewer_context.mlx_ref);
+	mlx_mouse_hook(viewer_context.window.ref, handle_mouse, parser_matrix);
 	mlx_loop(viewer_context.mlx_ref);
 	parser_matrix->destroy(parser_matrix);
 	viewer_context.window.destroy(viewer_context.window);
@@ -53,86 +52,6 @@ static void	load_lines(t_lines lines, t_viewer_context context)
 
 }
 
-// static void	draw_line_right(
-// 				t_parser_matrix *mtx, t_coord_2d mtx_coord,
-// 				t_minilib_layer layer, t_minilib_window window)
-// {
-// 	t_coord_2d		coord1;
-// 	t_coord_2d		coord2;
-// 	int				scale;
-// 	int				x;
-// 	int				y;
-
-// 	x = mtx_coord.x;
-// 	y = mtx_coord.y;
-// 	scale = 35;
-// 	if (mtx_coord.x + 1 < mtx->width)
-// 	{
-// 		coord1 = coord_3d_to_2d(mtx->data[y][x].coord);
-// 		coord2 = coord_3d_to_2d(mtx->data[y][x + 1].coord);
-// 		scale_point(&coord1, scale);
-// 		scale_point(&coord2, scale);
-// 		set_position(&coord1, mtx, scale, window);
-// 		set_position(&coord2, mtx, scale, window);
-// 		draw_line(new_line(coord1, coord2), viewer_context, bresenham);
-// 	}
-// }
-
-// static void	draw_line_down(
-// 				t_parser_matrix *mtx, t_coord_2d current_coord,
-// 				t_minilib_layer layer, t_minilib_window window)
-// {
-// 	t_coord_2d		coord1;
-// 	t_coord_2d		coord2;
-// 	int				scale;
-// 	int				current_x;
-// 	int				current_y;
-
-// 	current_x = current_coord.x;
-// 	current_y = current_coord.y;
-// 	scale = 35;
-// 	if (mtx->data[current_coord.y + 1])
-// 	{
-// 		coord1 = coord_3d_to_2d(mtx->data[current_y][current_x].coord);
-// 		coord2 = coord_3d_to_2d(mtx->data[current_y + 1][current_x].coord);
-// 		scale_point(&coord1, scale);
-// 		scale_point(&coord2, scale);
-// 		set_position(&coord1, mtx, scale, window);
-// 		set_position(&coord2, mtx, scale, window);
-// 		draw_line(new_line(coord1, coord2), window, bresenham);
-// 	}
-// }
-
-// static t_coord_2d	coord_3d_to_2d(t_coord_3d coord)
-// {
-// 	t_coord_2d	new_coord;
-
-// 	new_coord = coord_2d(coord.x, coord.y);
-// 	return (new_coord);
-// }
-
-// static void	scale_point(t_coord_2d *coord, int scale)
-// {
-// 	coord->x *= scale;
-// 	coord->y *= scale;
-// }
-
-// static void	set_position(t_coord_2d *coord, t_parser_matrix *mtx, int scale, t_minilib_window window)
-// {
-// 	t_coord_2d	center_matrix;
-// 	t_coord_2d	center_window;
-// 	t_coord_2d	offset;
-
-// 	center_matrix.x = (mtx->width - 1) * scale / 2;
-// 	center_matrix.y = (mtx->height - 1) * scale / 2;
-// 	center_window.x = window.width / 2;
-// 	center_window.y = window.height / 2;
-// 	offset.x = center_window.x - center_matrix.x;
-// 	offset.y = center_window.y - center_matrix.y;
-// 	coord->x += offset.x;
-// 	coord->y += offset.y;
-// }
-
 static int	handle_key(int key, void *mlx)
 {
 	char	*char_key;
@@ -145,6 +64,7 @@ static int	handle_key(int key, void *mlx)
 		mlx_loop_end(mlx);
 	return (1);
 }
+
 
 static int	handle_mouse(int key, int x, int y, t_parser_matrix *parser_matrix)
 {

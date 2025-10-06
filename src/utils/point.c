@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line.c                                             :+:      :+:    :+:   */
+/*   point.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 11:24:50 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/06 15:21:54 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:40:09 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "line.h"
+#include "point.h"
 
-t_line	new_line(t_point initial_point,
-			t_point final_point)
+t_point	new_point(t_coord_3d coord, int color)
 {
-	t_line	line;
+	t_point	point;
 
-	line.initial_point = initial_point;
-	line.final_point = final_point;
-	line.delta.x = final_point.x - initial_point.x;
-	line.delta.y = final_point.y - initial_point.y;
-	if (!line.delta.x)
-		line.slope = 2;
-	else
-		line.slope = line.delta.y / line.delta.x;
-	return (line);
+	point.x = coord.x;
+	point.y = coord.y;
+	point.z = coord.z;
+	point.color.value = color;
+	return (point);
 }
