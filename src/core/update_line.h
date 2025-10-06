@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line.c                                             :+:      :+:    :+:   */
+/*   update_line.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 11:24:50 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/05 20:32:42 by valero           ###   ########.fr       */
+/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
+/*   Updated: 2025/10/05 21:28:34 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "line.h"
+#ifndef UPDATE_LINE_H
+# define UPDATE_LINE_H
 
-t_line	new_line(t_coord_3d initial_point,
-			t_coord_3d final_point)
-{
-	t_line	line;
+# include "frame_context.h"
+# include "line.h"
+# include <math.h>
 
-	line.initial_point = initial_point;
-	line.final_point = final_point;
-	line.delta.x = final_point.x - initial_point.x;
-	line.delta.y = final_point.y - initial_point.y;
-	if (!line.delta.x)
-		line.slope = 2;
-	else
-		line.slope = line.delta.y / line.delta.x;
-	return (line);
-}
+# define PI 3.14159
+
+void	update_line(t_frame_context frame, t_line *curr_line);
+void	update_rotation(t_frame_context frame, t_line *line);
+
+#endif

@@ -27,6 +27,8 @@
 		"camera.h": "c",
 		"frame_context.h": "c",
 		"memory_resource": "c",
-		"math.h": "c"
+		"math.h": "c",
+		"core.h": "c",
+		"update_line.h": "c"
 	}
 }

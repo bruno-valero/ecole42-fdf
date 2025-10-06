@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:02:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/03 15:07:53 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/05 20:05:27 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 #include <math.h>
 
 static int			handle_key(int key, void *mlx);
-static int			handle_mouse(int key, int x, int y, t_parser_matrix *parser_matrix);
-static void			update_line(t_frame_context frame, t_line *curr_line);
+static int			handle_mouse(int key, int x, int y,
+						t_parser_matrix *parser_matrix);
+static void			load_lines(t_lines lines, t_viewer_context context);
 
 void	core(char *file_path)
 {
 	t_parser_matrix		*parser_matrix;
-	// t_coord_2d			matrix_coord;
 	t_lines				lines;
 	t_viewer_context	viewer_context;
 	t_camera			camera;
-	// t_frame_context		frame_ctx;
 
 	if (!parse_file(file_path, &parser_matrix))
 		return ;
 	viewer_context = create_viewer_context(NULL, NULL, NULL);
 	camera = create_camera();
-	// frame_ctx = frame_context(parser_matrix, );
+	reset_camera(&camera, viewer_context, parser_matrix);
 	lines = build_lines(parser_matrix, viewer_context, &camera, update_line);
-	(void)lines;
+	load_lines(lines, viewer_context);
 	put_layer(viewer_context.window, viewer_context.layer);
 	mlx_key_hook(viewer_context.mlx_ref, handle_key, viewer_context.mlx_ref);
 	mlx_mouse_hook(viewer_context.mlx_ref, handle_mouse, parser_matrix);
@@ -42,6 +41,16 @@ void	core(char *file_path)
 	viewer_context.layer.destroy(viewer_context.layer);
 	mlx_destroy_display(viewer_context.mlx_ref);
 	free(viewer_context.mlx_ref);
+}
+
+static void	load_lines(t_lines lines, t_viewer_context context)
+{
+	int	i;
+
+	i = -1;
+	while (++i < lines.size)
+		draw_line(lines.data[i], context, bresenham);
+
 }
 
 // static void	draw_line_right(
@@ -158,16 +167,4 @@ static int	handle_mouse(int key, int x, int y, t_parser_matrix *parser_matrix)
 	ft_putstr_fd("\n", 1);
 	free(char_key);
 	return (1);
-}
-
-static void	update_line(t_frame_context frame, t_line *curr_line)
-{
-	t_line	newer_line;
-
-	newer_line = *curr_line;
-	newer_line.initial_point.x *= frame.camera->scale_width * frame.camera->scale;
-	newer_line.initial_point.y *= frame.camera->scale_height * frame.camera->scale;
-	newer_line.final_point.x *= frame.camera->scale_width * frame.camera->scale;
-	newer_line.final_point.y *= frame.camera->scale_height * frame.camera->scale;
-	*curr_line = new_line(newer_line.initial_point, newer_line.final_point);
 }

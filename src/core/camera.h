@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:05:51 by valero            #+#    #+#             */
-/*   Updated: 2025/10/02 13:05:38 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/05 19:22:34 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ struct s_camera
 };
 
 t_camera	create_camera(void);
-void		reset_camera(t_frame_context frame);
+void		reset_camera(t_camera *camera, t_viewer_context context,
+				t_parser_matrix *mtx);
 
 #endif

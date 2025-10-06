@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:26:02 by valero            #+#    #+#             */
-/*   Updated: 2025/10/03 15:19:22 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/05 21:26:12 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void				build_line_down(
 							void (*update_line)
 							(t_frame_context frame, t_line *curr_line),
 							int *line_idx);
-static t_coord_2d		coord_3d_to_2d(t_coord_3d coord);
 static int				get_lines_amount(t_parser_matrix *mtx);
 static t_lines			*lines_init(t_lines *lines,
 							t_parser_matrix *mtx,
@@ -68,8 +67,8 @@ static void	build_line_right(
 	if (frame.curr_coord.x + 1 < frame.mtx->width)
 	{
 		curr_line = new_line(
-				coord_3d_to_2d(frame.mtx->data[curr_y][curr_x].coord),
-				coord_3d_to_2d(frame.mtx->data[curr_y][curr_x + 1].coord)
+				frame.mtx->data[curr_y][curr_x].coord,
+				frame.mtx->data[curr_y][curr_x + 1].coord
 				);
 		update_line(frame, &curr_line);
 		// scale_point(&start, frame.camera->scale);
@@ -95,8 +94,8 @@ static void	build_line_down(
 	if (frame.mtx->data[frame.curr_coord.y + 1])
 	{
 		curr_line = new_line(
-				coord_3d_to_2d(frame.mtx->data[curr_y][curr_x].coord),
-				coord_3d_to_2d(frame.mtx->data[curr_y + 1][curr_x].coord)
+				frame.mtx->data[curr_y][curr_x].coord,
+				frame.mtx->data[curr_y + 1][curr_x].coord
 				);
 		update_line(frame, &curr_line);
 		// scale_point(&start, frame.camera->scale);
@@ -108,13 +107,13 @@ static void	build_line_down(
 	}
 }
 
-static t_coord_2d	coord_3d_to_2d(t_coord_3d coord)
-{
-	t_coord_2d	new_coord;
+// static t_coord_2d	coord_3d_to_2d(t_coord_3d coord)
+// {
+// 	t_coord_2d	new_coord;
 
-	new_coord = coord_2d(coord.x, coord.y);
-	return (new_coord);
-}
+// 	new_coord = coord_2d(coord.x, coord.y);
+// 	return (new_coord);
+// }
 
 // static void	scale_point(t_coord_2d *coord, int scale)
 // {
@@ -157,7 +156,7 @@ static t_lines	*lines_init(t_lines *lines, t_parser_matrix *mtx,
 	lines->data = (t_line *)malloc(lines->size * sizeof(t_line));
 	i = -1;
 	while (++i < lines->size)
-		lines->data[i] = new_line(coord_2d(0, 0), coord_2d(0, 0));
+		lines->data[i] = new_line(coord_3d(0, 0, 0), coord_3d(0, 0, 0));
 	lines->layer = viwer_context.layer;
 	lines->window = viwer_context.window;
 	return (lines);

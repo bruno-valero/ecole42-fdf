@@ -39,7 +39,7 @@ SRC_VIEWER_FILES = $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/brese
 src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/viewer_line.c \
 src/viewer/viewer_context.c
 
-SRC_CORE_FILES = src/core/core.c src/core/build_lines.c src/core/camera.c src/core/frame_context.c
+SRC_CORE_FILES = src/core/core.c src/core/build_lines.c src/core/camera.c src/core/frame_context.c src/core/update_line.c src/core/update_rotation.c
 
 SRC_FILES = $(SRC_UTILS_FILES) $(SRC_PARSER_FILES) $(SRC_VIEWER_FILES) $(SRC_CORE_FILES)
 

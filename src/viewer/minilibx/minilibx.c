@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:26:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 15:09:29 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/05 19:57:37 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	put_pixel(t_pixel pixel, t_viewer_context viwer_context)
 
 	if (pixel.coord.y < 0 || pixel.coord.y > viwer_context.window.height)
 		return ;
-	if (pixel.coord.x < 0 || pixel.coord.x > viwer_context.window.height)
+	if (pixel.coord.x < 0 || pixel.coord.x > viwer_context.window.width)
 		return ;
 	dst = viwer_context.layer.addr + (
 			pixel.coord.y * viwer_context.layer.line_length

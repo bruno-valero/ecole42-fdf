@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/03 13:43:55 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/05 20:00:55 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRAME_CONTEXT_H
 
 # include "coordinates.h"
+# include "camera.h"
 # include "parse_file.h"
 
 typedef struct s_camera					t_camera;
