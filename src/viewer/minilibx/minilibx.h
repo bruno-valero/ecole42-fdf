@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/03 13:43:00 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/07 19:40:07 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "mlx.h"
 # include "coordinates.h"
+# include "point.h"
 // # include "viewer_context.h"
 # include <stdlib.h>
 
@@ -47,7 +48,7 @@ struct s_minilib_window
 typedef struct s_pixel
 {
 	t_coord_2d		coord;
-	int				color;
+	t_color			color;
 }	t_pixel;
 
 typedef struct s_viewer_context	t_viewer_context;

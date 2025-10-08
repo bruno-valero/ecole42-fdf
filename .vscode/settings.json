@@ -29,6 +29,9 @@
 		"memory_resource": "c",
 		"math.h": "c",
 		"core.h": "c",
-		"update_line.h": "c"
+		"update_line.h": "c",
+		"point.h": "c",
+		"line.h": "c",
+		"color.h": "c"
 	}
 }

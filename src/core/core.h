@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/06 20:06:03 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:40:02 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "frame_context.h"
 # include "camera.h"
 # include "update_line.h"
+# include "state.h"
 
 
 typedef struct s_core	t_core;

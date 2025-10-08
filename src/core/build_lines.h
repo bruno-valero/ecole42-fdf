@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/06 16:36:55 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:20:02 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@
 # include "parse_file.h"
 # include "camera.h"
 # include "color.h"
+# include "state.h"
 
-t_lines	build_lines(
-			t_parser_matrix	*mtx, t_viewer_context viwer_context, t_camera *camera,
-			void (*update_line)(t_frame_context frame, t_line *curr_line)
-			);
+t_lines	build_lines(void (*update_line)(t_line *curr_line));
 
 
 #endif

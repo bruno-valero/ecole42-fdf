@@ -35,7 +35,7 @@ SRC_PARSER_FILES = src/parser/reader_nodes.c src/parser/reader_list.c src/parser
 src/parser/reader_print.c src/parser/parser_matrix.c src/parser/parse_matrix.c src/parser/parse_point.c src/parser/parse_file.c
 
 ALGORITHMS = src/viewer/line/line_algorithms
-SRC_VIEWER_FILES = $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
+SRC_VIEWER_FILES = $(ALGORITHMS)/bresenham/bresenham_color.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
 src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/viewer_line.c \
 src/viewer/viewer_context.c
 

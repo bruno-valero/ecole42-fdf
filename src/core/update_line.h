@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_line.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/05 21:28:34 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/07 12:13:24 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 # include "frame_context.h"
 # include "line.h"
+# include "state.h"
 # include <math.h>
 
 # define PI 3.14159
 
-void	update_line(t_frame_context frame, t_line *curr_line);
-void	update_rotation(t_frame_context frame, t_line *line);
+void	update_line(t_line *curr_line);
+void	update_rotation(t_line *line);
 
 #endif

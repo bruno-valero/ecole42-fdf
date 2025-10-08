@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:26:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/05 19:57:37 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/07 17:40:14 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ t_pixel	make_pixel(t_coord_2d coord, int color)
 	t_pixel	pixel;
 
 	pixel.coord = coord;
-	pixel.color = color;
+	pixel.color.parts.r = 0;
+	pixel.color.parts.g = 0;
+	pixel.color.parts.b = 0;
+	pixel.color.parts.a = 0;
+	pixel.color.value = color;
 	return (pixel);
 }
 
@@ -36,7 +40,7 @@ void	put_pixel(t_pixel pixel, t_viewer_context viwer_context)
 			pixel.coord.y * viwer_context.layer.line_length
 			+ pixel.coord.x * (viwer_context.layer.bits_per_pixel / 8)
 			);
-	*(unsigned int *)dst = pixel.color;
+	*(unsigned int *)dst = pixel.color.value;
 }
 
 t_minilib_window	new_window(void *mlx_ref, int width, int height, char *name)

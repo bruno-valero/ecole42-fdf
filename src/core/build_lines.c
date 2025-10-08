@@ -6,84 +6,82 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:26:02 by valero            #+#    #+#             */
-/*   Updated: 2025/10/06 19:45:20 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:25:13 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "build_lines.h"
 
 static void				build_line_right(
-							t_frame_context frame,
-							void (*update_line)
-							(t_frame_context frame, t_line *curr_line),
-							int *line_idx);
+							t_lines *lines,
+							t_coord_2d curr_coord,
+							int *line_idx,
+							void (*update_line)(t_line *curr_line));
 static void				build_line_down(
-							t_frame_context frame,
-							void (*update_line)
-							(t_frame_context frame, t_line *curr_line),
-							int *line_idx);
+							t_lines *lines,
+							t_coord_2d curr_coord,
+							int *line_idx,
+							void (*update_line)(t_line *curr_line));
 static int				get_lines_amount(t_parser_matrix *mtx);
-static t_lines			*lines_init(t_lines *lines,
-							t_parser_matrix *mtx,
-							t_viewer_context viwer_context);
+static t_lines			*lines_init(t_lines *lines);
 
-t_lines	build_lines(t_parser_matrix	*mtx,
-			t_viewer_context viwer_context, t_camera *camera,
-			void (*update_line)(t_frame_context frame, t_line *curr_line)
-			)
+t_lines	build_lines(void (*update_line)(t_line *curr_line))
 {
 	t_coord_2d		mtx_coord;
 	t_lines			lines;
-	t_frame_context	frame;
 	int				line_idx;
+	t_state			*state;
 
-	lines_init(&lines, mtx, viwer_context);
+	state = get_state();
+	lines_init(&lines);
 	line_idx = 0;
 	mtx_coord.y = -1;
-	while (mtx->data[++mtx_coord.y])
+	while (state->parsed_data->data[++mtx_coord.y])
 	{
 		mtx_coord.x = -1;
-		while (++mtx_coord.x < mtx->width)
+		while (++mtx_coord.x < state->parsed_data->width)
 		{
-			frame = frame_context(mtx, mtx_coord, &lines, camera);
-			build_line_right(frame, update_line, &line_idx);
-			build_line_down(frame, update_line, &line_idx);
+			build_line_right(&lines, mtx_coord, &line_idx, update_line);
+			build_line_down(&lines, mtx_coord, &line_idx, update_line);
 		}
 	}
 	return (lines);
 }
 
 static void	build_line_right(
-				t_frame_context frame,
-				void (*update_line)(t_frame_context frame, t_line *curr_line),
-				int *line_idx)
+				t_lines *lines,
+				t_coord_2d curr_coord,
+				int *line_idx,
+				void (*update_line)(t_line *curr_line))
 {
 	t_line			curr_line;
 	int				curr_x;
 	int				curr_y;
-	t_input_point	initial_point;
-	t_input_point	final_point;
+	t_input_point	start_point;
+	t_input_point	end_point;
 
-	curr_x = frame.curr_coord.x;
-	curr_y = frame.curr_coord.y;
-	if (frame.curr_coord.x + 1 < frame.mtx->width)
+
+	curr_x = curr_coord.x;
+	curr_y = curr_coord.y;
+	if (curr_coord.x + 1 < get_state()->parsed_data->width)
 	{
-		initial_point = frame.mtx->data[curr_y][curr_x];
-		final_point = frame.mtx->data[curr_y][curr_x + 1];
+		start_point = get_state()->parsed_data->data[curr_y][curr_x];
+		end_point = get_state()->parsed_data->data[curr_y][curr_x + 1];
 		curr_line = new_line(
-				colorize_point(initial_point),
-				colorize_point(final_point)
+				colorize_point(start_point),
+				colorize_point(end_point)
 				);
-		update_line(frame, &curr_line);
-		frame.lines->data[(*line_idx)++] = new_line(
+		update_line(&curr_line);
+		lines->data[(*line_idx)++] = new_line(
 				curr_line.initial_point, curr_line.final_point);
 	}
 }
 
 static void	build_line_down(
-				t_frame_context frame,
-				void (*update_line)(t_frame_context frame, t_line *curr_line),
-				int *line_idx)
+				t_lines *lines,
+				t_coord_2d curr_coord,
+				int *line_idx,
+				void (*update_line)(t_line *curr_line))
 {
 	t_line			curr_line;
 	int				curr_x;
@@ -91,18 +89,18 @@ static void	build_line_down(
 	t_input_point	initial_point;
 	t_input_point	final_point;
 
-	curr_x = frame.curr_coord.x;
-	curr_y = frame.curr_coord.y;
-	if (frame.mtx->data[frame.curr_coord.y + 1])
+	curr_x = curr_coord.x;
+	curr_y = curr_coord.y;
+	if (get_state()->parsed_data->data[curr_coord.y + 1])
 	{
-		initial_point = frame.mtx->data[curr_y][curr_x];
-		final_point = frame.mtx->data[curr_y + 1][curr_x];
+		initial_point = get_state()->parsed_data->data[curr_y][curr_x];
+		final_point = get_state()->parsed_data->data[curr_y + 1][curr_x];
 		curr_line = new_line(
 				colorize_point(initial_point),
 				colorize_point(final_point)
 				);
-		update_line(frame, &curr_line);
-		frame.lines->data[(*line_idx)++] = new_line(
+		update_line(&curr_line);
+		lines->data[(*line_idx)++] = new_line(
 				curr_line.initial_point, curr_line.final_point);
 	}
 }
@@ -117,11 +115,14 @@ static int	get_lines_amount(t_parser_matrix *mtx)
 	return (total_lines);
 }
 
-static t_lines	*lines_init(t_lines *lines, t_parser_matrix *mtx,
-					t_viewer_context viwer_context)
+static t_lines	*lines_init(t_lines *lines)
 {
 	int					i;
+	t_viewer_context	viwer_context;
+	t_parser_matrix		*mtx;
 
+	viwer_context = get_state()->viewer_context;
+	mtx = get_state()->parsed_data;
 	lines->size = get_lines_amount(mtx);
 	lines->data = (t_line *)malloc(lines->size * sizeof(t_line));
 	i = -1;

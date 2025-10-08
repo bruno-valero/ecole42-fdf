@@ -6,18 +6,42 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:08:31 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/06 20:15:15 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:36:01 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "state.h"
 
-t_state	**get_state(void)
+t_state	*get_state(void)
 {
 	static t_state	*state;
 
 	if (state)
-		return (&state);
+		return (state);
 	state = malloc(sizeof(t_state));
+	if (!state)
+		return (NULL);
+	state->self_ref = &state;
 	state->camera = create_camera();
+	state->parsed_data = NULL;
+	state->viewer_context = create_viewer_context(NULL, NULL, NULL);
+	return (state);
+}
+
+void	*destroy_state(t_state	*state)
+{
+	t_state	**state_ref;
+
+	if (!state)
+		return (NULL);
+	if (state->parsed_data)
+		state->parsed_data->destroy(state->parsed_data);
+	state->viewer_context.window.destroy(state->viewer_context.window);
+	state->viewer_context.layer.destroy(state->viewer_context.layer);
+	mlx_destroy_display(state->viewer_context.mlx_ref);
+	free(state->viewer_context.mlx_ref);
+	state_ref = state->self_ref;
+	free(state);
+	*state_ref = NULL;
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:30:34 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/06 18:35:58 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:29:57 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ struct s_point
 };
 
 t_point	new_point(t_coord_3d coord, int color);
+t_color	new_color(int color);
+int		interpolate_color(
+			t_color initial_color, t_color final_color, double relation);
 
 #endif

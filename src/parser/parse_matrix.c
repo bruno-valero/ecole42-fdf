@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 23:22:52 by valero            #+#    #+#             */
-/*   Updated: 2025/10/06 20:02:03 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:59:46 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ static int	handle_parse_point(t_parser_matrix *parser_matrix,
 	int						x;
 	int						y;
 
-	x = x;
-	y = y;
+	x = matrix_coord.x;
+	y = matrix_coord.y;
 	parse_point_response = parse_point(matrix_point->str, matrix_coord);
 	if (!parse_point_response.parser_succeeded)
 		return (!!parser_matrix->destroy(parser_matrix));
 	parser_matrix->data[y][x] = parse_point_response.point;
 	if (parser_matrix->bigger_z < parser_matrix->data[y][x].coord.z)
 		parser_matrix->bigger_z = parser_matrix->data[y][x].coord.z;
-	if (parser_matrix->lower_z < parser_matrix->data[y][x].coord.z)
+	if (parser_matrix->lower_z > parser_matrix->data[y][x].coord.z)
 		parser_matrix->lower_z = parser_matrix->data[y][x].coord.z;
 	parser_matrix->height = y + 1;
 	parser_matrix->width = x + 1;

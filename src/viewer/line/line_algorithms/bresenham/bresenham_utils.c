@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:54:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/01 15:03:04 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/07 18:41:36 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "bresenham_utils.h"
 
 float	abs_float(float nbr)
 {
@@ -24,7 +26,7 @@ unsigned int	abs_nbr(int nbr)
 	return (nbr);
 }
 
-void	go_to_next_pixel(int *curr_position, int delta_direction)
+void	update_pixel(int *curr_position, int delta_direction)
 {
 	if (delta_direction > 0)
 		(*curr_position)++;
