@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:55:51 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/07 20:53:02 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:59:38 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ static int	get_color(t_input_point point)
 	else if (relation < 0.0)
 		relation = 0.0;
 	return (interpolate_color(
-			new_color(BG_COLOR), new_color(LINE_COLOR), relation));
+			new_color(FAINT_COLOR), new_color(LINE_COLOR), relation));
 }

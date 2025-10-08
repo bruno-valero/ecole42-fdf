@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:54:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/07 19:41:45 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:26:36 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "point.h"
 # include "line.h"
 # include "minilibx.h"
+# include <math.h>
 
 float			abs_float(float nbr);
 unsigned int	abs_nbr(int nbr);

@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lines.h                                            :+:      :+:    :+:   */
+/*   build_lines_utils.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/08 15:55:58 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:56:49 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINES_H
-# define LINES_H
+#ifndef BUILD_LINES_UTILS_H
+# define BUILD_LINES_UTILS_H
 
-# include "line.h"
-# include "minilibx.h"
+# include "lines.h"
+# include "viewer.h"
+# include "color.h"
+# include "state.h"
 
-
-typedef struct s_lines					t_lines;
-
-struct s_lines
-{
-	int					size;
-	t_line				*data;
-	t_minilib_layer		layer;
-	t_minilib_window	window;
-};
-
+// void	find_z_range(t_lines *lines, t_line curr_line);
+// void	colorize_lines(t_lines *lines);
 
 #endif

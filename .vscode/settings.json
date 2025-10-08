@@ -32,6 +32,8 @@
 		"update_line.h": "c",
 		"point.h": "c",
 		"line.h": "c",
-		"color.h": "c"
+		"color.h": "c",
+		"build_lines_utils.h": "c",
+		"state.h": "c"
 	}
 }

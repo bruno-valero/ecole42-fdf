@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:50:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/07 21:03:14 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:09:33 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ static void	bresenham_lower_slope(t_line line, t_viewer_context viwer_context)
 	int			decision;
 	int			pace;
 
+	pace = 0;
 	coordinate = coord_2d(line.initial_point.x, line.initial_point.y);
-	pixel = make_pixel(coordinate, line.final_point.color.value);
+	pixel = make_pixel(coordinate, line.initial_point.color.value);
 	decision = (2 * abs_nbr(line.delta.y)) - abs_nbr(line.delta.x);
 	while (loop_condition(
 			pixel.coord.x, line.initial_point.x, line.final_point.x))
@@ -59,8 +60,9 @@ static void	bresenham_upper_slope(t_line line, t_viewer_context viwer_context)
 	int			decision;
 	int			pace;
 
+	pace = 0;
 	coordinate = coord_2d(line.initial_point.x, line.initial_point.y);
-	pixel = make_pixel(coordinate, line.final_point.color.value);
+	pixel = make_pixel(coordinate, line.initial_point.color.value);
 	decision = (2 * abs_nbr(line.delta.x)) - abs_nbr(line.delta.y);
 	while (loop_condition(
 			pixel.coord.y, line.initial_point.y, line.final_point.y))
@@ -106,6 +108,6 @@ static void	upd_pixel(t_pixel *pixel, t_line line, int *pace, char add_coord)
 {
 	if (!(add_coord == 'x' || add_coord == 'y'))
 		return ;
-	update_pixel_color(pixel, line, pace);
 	got_to_next_pixel(pixel, line, add_coord);
+	update_pixel_color(pixel, line, pace);
 }

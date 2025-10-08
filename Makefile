@@ -26,7 +26,7 @@ INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algor
 INCLUDES_CORE = -I src/core -I src/core/color -I src/core/state
 INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER) $(INCLUDES_PARSER) $(INCLUDES_UTILS) $(INCLUDES_CORE)
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -g3 -O0 $(INCLUDES)
 
 # ============== SRC FILES =================
 SRC_UTILS_FILES = src/utils/coordinates.c src/utils/line.c src/utils/point.c
@@ -40,7 +40,7 @@ src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/l
 src/viewer/viewer_context.c
 
 SRC_CORE_FILES = src/core/core.c src/core/build_lines.c src/core/frame_context.c src/core/update_line.c src/core/update_rotation.c \
-src/core/color/color.c src/core/state/camera.c src/core/state/state.c
+src/core/color/color.c src/core/state/camera.c src/core/state/state.c src/core/build_lines_utils.c
 
 SRC_FILES = $(SRC_UTILS_FILES) $(SRC_PARSER_FILES) $(SRC_VIEWER_FILES) $(SRC_CORE_FILES)
 
