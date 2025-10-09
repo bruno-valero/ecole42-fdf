@@ -34,6 +34,10 @@
 		"line.h": "c",
 		"color.h": "c",
 		"build_lines_utils.h": "c",
-		"state.h": "c"
+		"state.h": "c",
+		"render_frame.h": "c",
+		"render_background.h": "c",
+		"device_keys.h": "c",
+		"mouse_press.h": "c"
 	}
 }

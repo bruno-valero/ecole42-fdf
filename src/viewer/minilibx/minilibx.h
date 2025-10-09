@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/07 19:40:07 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:33:18 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "mlx.h"
 # include "coordinates.h"
 # include "point.h"
-// # include "viewer_context.h"
+# include "device_keys.h"
+# include "x11_events.h"
 # include <stdlib.h>
 
 typedef struct s_minilib_layer	t_minilib_layer;
@@ -52,11 +53,12 @@ typedef struct s_pixel
 }	t_pixel;
 
 typedef struct s_viewer_context	t_viewer_context;
+typedef enum e_layers			t_layers;
 
-t_viewer_context	create_viewer_context(void *mlx_ref,
-						t_minilib_window *window, t_minilib_layer *layer);
+t_viewer_context	create_viewer_context(void);
 t_pixel				make_pixel(t_coord_2d coord, int color);
-void				put_pixel(t_pixel pixel, t_viewer_context viwer_context);
+void				put_pixel(t_pixel pixel,
+						t_viewer_context viwer_context, t_layers wich_layer);
 t_minilib_window	new_window(
 						void *mlx_ref, int width, int height, char *name);
 t_minilib_layer		new_layer(t_minilib_window window, int width, int height);

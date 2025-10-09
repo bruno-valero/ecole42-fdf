@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:26:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/07 17:40:14 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/09 15:20:09 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,23 @@ t_pixel	make_pixel(t_coord_2d coord, int color)
 	return (pixel);
 }
 
-void	put_pixel(t_pixel pixel, t_viewer_context viwer_context)
+void	put_pixel(
+		t_pixel pixel, t_viewer_context viwer_context, t_layers wich_layer)
 {
-	char	*dst;
+	char			*dst;
+	t_minilib_layer	layer;
 
+	if (wich_layer == WIREFRAME_LAYER)
+		layer = viwer_context.wireframe;
+	else if (wich_layer == BACKGROUND_LAYER)
+		layer = viwer_context.background;
 	if (pixel.coord.y < 0 || pixel.coord.y > viwer_context.window.height)
 		return ;
 	if (pixel.coord.x < 0 || pixel.coord.x > viwer_context.window.width)
 		return ;
-	dst = viwer_context.layer.addr + (
-			pixel.coord.y * viwer_context.layer.line_length
-			+ pixel.coord.x * (viwer_context.layer.bits_per_pixel / 8)
+	dst = layer.addr + (
+			pixel.coord.y * layer.line_length
+			+ pixel.coord.x * (layer.bits_per_pixel / 8)
 			);
 	*(unsigned int *)dst = pixel.color.value;
 }

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/02 13:27:45 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 15:19:02 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,17 @@ typedef struct s_viewer_context	t_viewer_context;
 struct s_viewer_context
 {
 	void				*mlx_ref;
-	t_minilib_layer		layer;
+	t_minilib_layer		wireframe;
+	t_minilib_layer		background;
 	t_minilib_window	window;
 };
 
-t_viewer_context	create_viewer_context(void *mlx_ref,
-						t_minilib_window *window, t_minilib_layer *layer);
+typedef enum e_layers
+{
+	WIREFRAME_LAYER,
+	BACKGROUND_LAYER
+}	t_layers;
+
+t_viewer_context	create_viewer_context(void);
 
 #endif

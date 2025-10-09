@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:36:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/08 17:13:28 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:04:21 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "line.h"
 # include "state.h"
 
-# define BG_COLOR 0x000000
+# define BG_COLOR 0x050505
 # define FAINT_COLOR 0x1a1919
 # define LINE_COLOR 0xffffff
 

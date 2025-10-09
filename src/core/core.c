@@ -6,49 +6,43 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:02:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 02:20:40 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 18:04:27 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
 
 static int			handle_key(int key, void *mlx);
-static void			load_lines(t_lines lines);
 
 void	core(char *file_path)
 {
 	t_parser_matrix		*parser_matrix;
 	t_lines				lines;
 	t_state				*state;
+	t_minilib_window	window;
 
 	if (!parse_file(file_path, &parser_matrix))
 		return ;
 	state = get_state();
 	if (!state)
 		return ;
+	window = state->viewer_context.window;
 	state->parsed_data = parser_matrix;
 	reset_camera(&state->camera, state->viewer_context, state->parsed_data);
-	lines = build_lines(update_line);
-	load_lines(lines);
-	put_layer(state->viewer_context.window, state->viewer_context.layer);
-	mlx_key_hook(state->viewer_context.window.ref, handle_key, state->viewer_context.mlx_ref);
-	mlx_hook(state->viewer_context.window.ref, 4, 1L << 2, mouse_press, parser_matrix);
-	// mlx_loop_hook()
+	lines_init(&lines, state);
+	if (!lines.data)
+	{
+		destroy_state(state);
+		return ;
+	}
+	render_frame(state, &lines);
+	mlx_key_hook(window.ref, handle_key, state->viewer_context.mlx_ref);
+	mlx_hook(window.ref, BUTTON_PRESS_EVENT, BUTTON_PRESS_MASK, mouse_press, state);
+	mlx_hook(window.ref, BUTTON_RELEASE_EVENT, BUTTON_RELEASE_MASK, mouse_release, state);
+	mlx_hook(window.ref, MOTION_NOTIFY_EVENT, POINTER_MOTION_MASK, mouse_move, state);
 	mlx_loop(state->viewer_context.mlx_ref);
 	free(lines.data);
 	destroy_state(state);
-}
-
-static void	load_lines(t_lines lines)
-{
-	int		i;
-	t_state	*state;
-
-	state = get_state();
-	i = -1;
-	while (++i < lines.size)
-		draw_line(lines.data[i], state->viewer_context, bresenham);
-
 }
 
 static int	handle_key(int key, void *mlx)

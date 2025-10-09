@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 01:25:42 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 02:17:19 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 18:04:20 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define MOUSE_PRESS_H
 
 # include "parse_file.h"
-# include "event_keys.h"
+# include "minilibx.h"
+# include "state.h"
 
-int	mouse_press(int key, int x, int y, t_parser_matrix *parser_matrix);
+int	mouse_press(int key, int x, int y, t_state *state);
+int	mouse_release(int key, int x, int y, t_state *state);
+int	mouse_move(int x, int y, t_state *state);
 
 #endif

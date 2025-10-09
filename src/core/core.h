@@ -6,23 +6,17 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 02:19:15 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 13:32:27 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CORE_H
 # define CORE_H
 
-# include "coordinates.h"
 # include "viewer.h"
-# include "parse_file.h"
-# include "build_lines.h"
-# include "frame_context.h"
 # include "camera.h"
-# include "update_line.h"
-# include "state.h"
 # include "events.h"
-
+# include "render_frame.h"
 
 typedef struct s_core	t_core;
 
