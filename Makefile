@@ -23,7 +23,7 @@ MLX_DEPENDENCIES = -lXext -lX11 -lm -lbsd
 INCLUDES_UTILS = -I src/utils
 INCLUDES_PARSER = -I src/parser
 INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algorithms/bresenham -I src/viewer/minilibx
-INCLUDES_CORE = -I src/core -I src/core/color -I src/core/state
+INCLUDES_CORE = -I src/core -I src/core/color -I src/core/state -I src/core/events
 INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER) $(INCLUDES_PARSER) $(INCLUDES_UTILS) $(INCLUDES_CORE)
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 -O0 $(INCLUDES)
@@ -40,7 +40,7 @@ src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/l
 src/viewer/viewer_context.c
 
 SRC_CORE_FILES = src/core/core.c src/core/build_lines.c src/core/frame_context.c src/core/update_line.c src/core/update_rotation.c \
-src/core/color/color.c src/core/state/camera.c src/core/state/state.c src/core/build_lines_utils.c
+src/core/color/color.c src/core/state/camera.c src/core/state/state.c src/core/build_lines_utils.c src/core/events/mouse_press.c
 
 SRC_FILES = $(SRC_UTILS_FILES) $(SRC_PARSER_FILES) $(SRC_VIEWER_FILES) $(SRC_CORE_FILES)
 

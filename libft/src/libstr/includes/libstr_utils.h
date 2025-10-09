@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 17:50:28 by valero            #+#    #+#             */
-/*   Updated: 2025/08/20 18:03:53 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 02:39:38 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,16 @@
 #  define INT_MAX 2147483647
 # endif
 
+# ifndef INT_MAX_LEN
+#  define INT_MAX_LEN 10
+# endif
+
 # ifndef INT_MIN
 #  define INT_MIN -2147483648
+# endif
+
+# ifndef INT_MIN_LEN
+#  define INT_MIN_LEN 11
 # endif
 
 # ifndef LONG_MAX

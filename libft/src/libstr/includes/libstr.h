@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 17:37:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/28 22:44:23 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 02:57:19 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_str
 
 int			ft_atoi_base(const char *nptr, const char *base);
 int			ft_atoi(const char *nptr);
+long		ft_atol_base(const char *nptr, const char *base);
 long int	ft_atol(const char *nptr);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);

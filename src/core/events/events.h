@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   events.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 02:19:15 by valero           ###   ########.fr       */
+/*   Created: 2025/10/09 02:18:21 by valero            #+#    #+#             */
+/*   Updated: 2025/10/09 02:18:55 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#ifndef EVENTS_H
+# define EVENTS_H
 
-# include "coordinates.h"
-# include "viewer.h"
-# include "parse_file.h"
-# include "build_lines.h"
-# include "frame_context.h"
-# include "camera.h"
-# include "update_line.h"
-# include "state.h"
-# include "events.h"
-
-
-typedef struct s_core	t_core;
-
-struct s_core
-{
-	t_camera	camera;
-};
-
-void	core(char *file_path);
+# include "mouse_press.h"
 
 #endif
