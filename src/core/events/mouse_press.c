@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_press.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 01:26:19 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 23:59:10 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/10 20:08:00 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mouse_press.h"
+
+static void	zoon(double direction, t_state *state);
 
 int	mouse_press(int key, int x, int y, t_state *state)
 {
@@ -28,9 +30,11 @@ int	mouse_press(int key, int x, int y, t_state *state)
 	if (mouse_key == MOUSE_MIDDLE_BUTTON)
 		state->mouse_state.scroll_button = 1;
 	if (mouse_key == MOUSE_SCROLL_UP)
-		ft_putstr_fd("MOUSE_SCROLL_UP\n", fd);
+		zoon(1, state);
 	if (mouse_key == MOUSE_SCROLL_DOWN)
-		ft_putstr_fd("MOUSE_SCROLL_DOWN\n", fd);
+		zoon(-1, state);
+	if (mouse_key == MOUSE_SCROLL_UP || mouse_key == MOUSE_SCROLL_DOWN)
+		render_frame(state);
 	return (1);
 }
 
@@ -71,7 +75,7 @@ int	mouse_move(int x, int y, t_state *state)
 		drag_mb(x, y, state);
 	if (state->mouse_state.right_button)
 		drag_rb(x, y, state);
-	if (state->mouse_state.left_button)
+	if (state->mouse_state.left_button || state->mouse_state.scroll_button)
 		render_frame(state);
 	return (1);
 }
@@ -118,6 +122,8 @@ static void	drag_mb(int x, int y, t_state *state)
 		state->actions.drag_mb.last.x = x;
 		state->actions.drag_mb.last.y = y;
 	}
+	state->camera.offset.x -= state->actions.drag_mb.result.x;
+	state->camera.offset.y -= state->actions.drag_mb.result.y;
 	printf("dragged_mb(x: %f, y: %f)\n",
 		state->actions.drag_mb.result.x, state->actions.drag_mb.result.y);
 }
@@ -141,4 +147,9 @@ static void	drag_rb(int x, int y, t_state *state)
 	}
 	printf("dragged_rb(x: %f, y: %f)\n",
 		state->actions.drag_rb.result.x, state->actions.drag_rb.result.y);
+}
+
+static void	zoon(double direction, t_state *state)
+{
+	state->camera.scale += direction / 10;
 }

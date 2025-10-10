@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:23:25 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 22:40:53 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/10 15:25:22 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static void	reset_offset(t_camera *camera, t_viewer_context context, t_parser_ma
 	window_height = context.window.height;
 	(void)mtx_width;
 	(void)mtx_height;
-	camera->offset.x = window_width * 0.25;
-	camera->offset.y = window_height * 0.3;
+	camera->offset.x = window_width * 0.5;
+	camera->offset.y = window_height * 0.5;
 }
 
 static void	reset_angle(t_camera *camera)
