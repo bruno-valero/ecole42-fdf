@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 13:21:29 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 23:19:00 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "build_lines_utils.h"
 # include "update_line.h"
 
-void	build_lines(t_state *state, t_lines *lines);
+void	build_lines(t_state *state);
 t_lines	*lines_init(t_lines *lines, t_state *state);
 
 #endif

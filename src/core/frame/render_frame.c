@@ -6,23 +6,23 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:11:38 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 16:03:25 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 23:45:24 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_frame.h"
 
-static void	load_lines(t_lines lines);
+// static void	load_lines(t_lines lines);
 
-void	render_frame(t_state *state, t_lines *lines)
+void	render_frame(t_state *state)
 {
-	build_lines(state, lines);
 	render_background(state);
-	load_lines(*lines);
+	build_lines(state);
+	// load_lines(state->lines);
 	put_layer(state->viewer_context.window, state->viewer_context.wireframe);
 }
 
-static void	load_lines(t_lines lines)
+void	load_lines(t_lines lines)
 {
 	int		i;
 	t_state	*state;

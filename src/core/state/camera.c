@@ -6,13 +6,13 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:23:25 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 16:28:41 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 22:40:53 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camera.h"
 
-static void	reset_offset(t_camera *camera, t_viewer_context context);
+static void	reset_offset(t_camera *camera, t_viewer_context context, t_parser_matrix *mtx);
 static void	reset_angle(t_camera *camera);
 static void	reset_scale(t_camera *camera, t_viewer_context context,
 				t_parser_matrix *mtx);
@@ -36,7 +36,7 @@ t_camera	create_camera(void)
 void	reset_camera(t_camera *camera, t_viewer_context context,
 			t_parser_matrix *mtx)
 {
-	reset_offset(camera, context);
+	reset_offset(camera, context, mtx);
 	reset_angle(camera);
 	camera->z_factor = 0;
 	reset_scale(camera, context, mtx);
@@ -45,20 +45,28 @@ void	reset_camera(t_camera *camera, t_viewer_context context,
 	camera->auto_rotate = coord_3d(0, 0, 0);
 }
 
-static void	reset_offset(t_camera *camera, t_viewer_context context)
+static void	reset_offset(t_camera *camera, t_viewer_context context, t_parser_matrix *mtx)
 {
 	int		window_width;
 	int		window_height;
+	double	mtx_width;
+	double	mtx_height;
 
 	window_width = context.window.width;
 	window_height = context.window.height;
-	camera->offset.x = window_width * 0.4;
-	camera->offset.y = window_height * 0.4;
+	mtx_width = (double)mtx->width;
+	mtx_height = (double)mtx->height;
+	window_width = context.window.width;
+	window_height = context.window.height;
+	(void)mtx_width;
+	(void)mtx_height;
+	camera->offset.x = window_width * 0.25;
+	camera->offset.y = window_height * 0.3;
 }
 
 static void	reset_angle(t_camera *camera)
 {
-	camera->angle = coord_3d_double(35, 45, 0);
+	camera->angle = coord_3d_double(35, -45, 0);
 }
 
 static void	reset_scale(t_camera *camera, t_viewer_context context,

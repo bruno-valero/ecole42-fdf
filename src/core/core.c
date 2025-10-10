@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:02:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 18:04:27 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 23:21:20 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int			handle_key(int key, void *mlx);
 void	core(char *file_path)
 {
 	t_parser_matrix		*parser_matrix;
-	t_lines				lines;
 	t_state				*state;
 	t_minilib_window	window;
 
@@ -29,19 +28,19 @@ void	core(char *file_path)
 	window = state->viewer_context.window;
 	state->parsed_data = parser_matrix;
 	reset_camera(&state->camera, state->viewer_context, state->parsed_data);
-	lines_init(&lines, state);
-	if (!lines.data)
+	lines_init(&state->lines, state);
+	if (!state->lines.data)
 	{
 		destroy_state(state);
 		return ;
 	}
-	render_frame(state, &lines);
+	render_frame(state);
 	mlx_key_hook(window.ref, handle_key, state->viewer_context.mlx_ref);
 	mlx_hook(window.ref, BUTTON_PRESS_EVENT, BUTTON_PRESS_MASK, mouse_press, state);
 	mlx_hook(window.ref, BUTTON_RELEASE_EVENT, BUTTON_RELEASE_MASK, mouse_release, state);
 	mlx_hook(window.ref, MOTION_NOTIFY_EVENT, POINTER_MOTION_MASK, mouse_move, state);
 	mlx_loop(state->viewer_context.mlx_ref);
-	free(lines.data);
+	free(state->lines.data);
 	destroy_state(state);
 }
 

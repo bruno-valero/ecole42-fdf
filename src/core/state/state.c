@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:08:31 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/09 17:59:05 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 22:23:15 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,9 @@ t_state	*get_state(void)
 	state = malloc(sizeof(t_state));
 	if (!state)
 		return (NULL);
+	ft_bzero(state, sizeof(t_state));
 	state->self_ref = &state;
-	state->camera = create_camera();
-	state->parsed_data = NULL;
 	state->viewer_context = create_viewer_context();
-	ft_bzero(&state->keyboard_state, sizeof(t_keyboard_state));
-	ft_bzero(&state->mouse_state, sizeof(t_mouse_state));
 	return (state);
 }
 

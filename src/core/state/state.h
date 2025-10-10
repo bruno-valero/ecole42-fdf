@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 16:41:31 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/09 23:25:53 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,33 @@ struct s_keyboard_state
 	int	nine;
 };
 
+typedef struct s_drag			t_drag;
+struct s_drag
+{
+	int					drag_start;
+	t_coord_2d_double	last;
+	t_coord_2d_double	result;
+};
+
+typedef struct s_actions		t_actions;
+struct s_actions
+{
+	t_drag	drag_lb;
+	t_drag	drag_rb;
+	t_drag	drag_mb;
+};
+
 typedef struct s_state			t_state;
 struct s_state
 {
 	t_state				**self_ref;
 	t_camera			camera;
 	t_parser_matrix		*parsed_data;
+	t_lines				lines;
 	t_viewer_context	viewer_context;
 	t_mouse_state		mouse_state;
 	t_keyboard_state	keyboard_state;
+	t_actions			actions;
 };
 
 t_state	*get_state(void);
