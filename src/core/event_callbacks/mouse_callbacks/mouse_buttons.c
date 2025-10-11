@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_press.c                                      :+:      :+:    :+:   */
+/*   mouse_buttons.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 01:26:19 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 05:11:30 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 11:58:18 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mouse_callbacks.h"
 
-static void	zoon(double direction, t_state *state);
+static void	zoon(double direction, int x, int y, t_state *state);
 
 int	mouse_press(int key, int x, int y, t_state *state)
 {
@@ -28,9 +28,9 @@ int	mouse_press(int key, int x, int y, t_state *state)
 	if (mouse_key == MOUSE_MIDDLE_BUTTON)
 		state->mouse_state.scroll_button = 1;
 	if (mouse_key == MOUSE_SCROLL_UP)
-		zoon(1, state);
+		zoon(1, x, y, state);
 	if (mouse_key == MOUSE_SCROLL_DOWN)
-		zoon(-1, state);
+		zoon(-1, x, y, state);
 	if (mouse_key == MOUSE_SCROLL_UP || mouse_key == MOUSE_SCROLL_DOWN)
 		render_frame(state);
 	return (1);
@@ -61,7 +61,22 @@ int	mouse_release(int key, int x, int y, t_state *state)
 	return (1);
 }
 
-static void	zoon(double direction, t_state *state)
+static void	zoon(double direction, int x, int y, t_state *state)
 {
+	t_coord_2d	center;
+	t_coord_2d	delta_mouse;
+
+	center.x = state->viewer_context.window.width / 2;
+	center.y = state->viewer_context.window.height / 2;
+	delta_mouse.x = x - center.x;
+	delta_mouse.y = y - center.y;
 	state->camera.scale += direction / 10;
+	if (direction > 0)
+	{
+		state->camera.offset.x -= delta_mouse.x * 0.1;
+		state->camera.offset.y -= delta_mouse.y * 0.1;
+		return ;
+	}
+	state->camera.offset.x += delta_mouse.x * 0.1;
+	state->camera.offset.y += delta_mouse.y * 0.1;
 }

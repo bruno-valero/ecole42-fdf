@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 19:59:29 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 05:55:32 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 11:30:17 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ static void	update_scale(t_state	*state, t_line *curr_line)
 	scale_height = state->camera.scale_height;
 	curr_line->initial_point.x *= scale_width * state->camera.scale;
 	curr_line->initial_point.y *= scale_height * state->camera.scale;
+	curr_line->initial_point.z *= state->camera.z_factor * state->camera.scale;
 	curr_line->final_point.x *= scale_width * state->camera.scale;
 	curr_line->final_point.y *= scale_height * state->camera.scale;
+	curr_line->final_point.z *= state->camera.z_factor * state->camera.scale;
 }
 
 static void	update_offset(t_state	*state, t_line *curr_line)
@@ -64,6 +66,8 @@ static void	update_z_factor(t_state	*state, t_line *curr_line)
 	double	delta_z;
 
 	delta_z = state->parsed_data->bigger_z - state->parsed_data->lower_z;
-	curr_line->initial_point.z *= (40 / delta_z) * state->camera.z_factor;
-	curr_line->final_point.z *= (40 / delta_z) * state->camera.z_factor;
+	if (delta_z > 100)
+		delta_z = delta_z * 0.1;
+	curr_line->initial_point.z *= (40 / delta_z);
+	curr_line->final_point.z *= (40 / delta_z);
 }
