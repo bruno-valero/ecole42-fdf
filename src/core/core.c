@@ -6,12 +6,11 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:02:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 13:38:03 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 14:49:47 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
-
 
 void	core(char *file_path)
 {
@@ -38,4 +37,3 @@ void	core(char *file_path)
 	free(state->lines.data);
 	destroy_state(state);
 }
-

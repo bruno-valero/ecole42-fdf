@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham_utils.c                                  :+:      :+:    :+:   */
+/*   key_release_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 14:54:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/11 14:49:24 by brunofer         ###   ########.fr       */
+/*   Created: 2025/10/11 15:03:03 by brunofer          #+#    #+#             */
+/*   Updated: 2025/10/11 15:07:13 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bresenham_utils.h"
+#include "../keyboard_callbacks.h"
 
-float	abs_float(float nbr)
+void	handle_key(t_state *state, void (*callback)(t_state *state), int *key)
 {
-	if (nbr < 0)
-		return ((float)(nbr * -1));
-	return ((float)(nbr));
-}
-
-unsigned int	abs_nbr(int nbr)
-{
-	if (nbr < 0)
-		return (nbr * -1);
-	return (nbr);
-}
-
-int	loop_condition(int x, int x_start, int x_end)
-{
-	if (x_end > x_start)
-		return (x <= x_end);
-	return (x >= x_end);
+	callback(state);
+	*key = 0;
 }

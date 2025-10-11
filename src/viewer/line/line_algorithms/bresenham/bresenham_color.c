@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:54:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/08 16:49:11 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 14:48:30 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ void	update_pixel_color(t_pixel *pixel, t_line line, int *pace)
 	color_relation = (double)(*pace) / bigger_delta;
 	pixel->color.value = interpolate_color(
 			line.initial_point.color, line.final_point.color, color_relation);
-	// pixel->color.value = line.initial_point.color.value;
 	(*pace)++;
 }

@@ -44,7 +44,7 @@ src/core/frame/render_lines/update_rotation.c src/core/frame/render_background.c
 src/core/state/state.c  src/core/event_callbacks/mouse_callbacks/mouse_move.c src/core/event_callbacks/mouse_callbacks/mouse_buttons.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_press.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_press.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_release.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_release.c src/core/event_callbacks/keyboard_callbacks/key_press.c src/core/event_callbacks/keyboard_callbacks/key_release.c \
-src/core/event_hooks/keyboard_hooks.c src/core/event_hooks/mouse_hooks.c
+src/core/event_hooks/keyboard_hooks.c src/core/event_hooks/mouse_hooks.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/key_release_utils.c
 
 SRC_FILES = $(SRC_UTILS_FILES) $(SRC_PARSER_FILES) $(SRC_VIEWER_FILES) $(SRC_CORE_FILES)
 

@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:11:38 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 14:24:40 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 14:50:00 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	render_frame(t_state *state)
 	long long				time_diff;
 	long long				last_time_micro;
 	long long				curr_time_micro;
-
 
 	gettimeofday(&curr_time, NULL);
 	last_time_micro = last_time.tv_sec * 1000000 + last_time.tv_usec;
