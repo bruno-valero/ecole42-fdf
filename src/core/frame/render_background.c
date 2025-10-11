@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:24:50 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 15:58:41 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 04:37:59 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	render_background(t_state	*state)
 		while (++width < window.width)
 		{
 			pixel = make_pixel(coord_2d(width, height), BG_COLOR);
-			put_pixel(pixel, state->viewer_context, WIREFRAME_LAYER);
+			put_pixel(pixel, state->viewer_context);
 		}
 	}
-
 }

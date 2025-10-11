@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   keyboard_hooks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 07:25:47 by valero           ###   ########.fr       */
+/*   Created: 2025/10/11 06:43:18 by valero            #+#    #+#             */
+/*   Updated: 2025/10/11 07:27:14 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#include "event_hooks.h"
 
-# include "viewer.h"
-# include "camera.h"
-# include "event_hooks.h"
-# include "render_frame.h"
-
-typedef struct s_core	t_core;
-
-struct s_core
+void	keyboard_hooks(t_state *state)
 {
-	t_camera	camera;
-};
+	t_minilib_window	window;
 
-void	core(char *file_path);
-
-#endif
+	window = state->viewer_context.window;
+	on_key_press(window.ref, key_press, state);
+	on_key_release(window.ref, key_release, state);
+}

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:26:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/09 15:20:09 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 04:36:16 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,12 @@ t_pixel	make_pixel(t_coord_2d coord, int color)
 }
 
 void	put_pixel(
-		t_pixel pixel, t_viewer_context viwer_context, t_layers wich_layer)
+		t_pixel pixel, t_viewer_context viwer_context)
 {
 	char			*dst;
 	t_minilib_layer	layer;
 
-	if (wich_layer == WIREFRAME_LAYER)
-		layer = viwer_context.wireframe;
-	else if (wich_layer == BACKGROUND_LAYER)
-		layer = viwer_context.background;
+	layer = viwer_context.wireframe;
 	if (pixel.coord.y < 0 || pixel.coord.y > viwer_context.window.height)
 		return ;
 	if (pixel.coord.x < 0 || pixel.coord.x > viwer_context.window.width)

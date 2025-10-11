@@ -38,6 +38,13 @@
 		"render_frame.h": "c",
 		"render_background.h": "c",
 		"device_keys.h": "c",
-		"mouse_press.h": "c"
+		"mouse_press.h": "c",
+		"event_callbacks.h": "c",
+		"mouse_callbacks.h": "c",
+		"minilibx_structs.h": "c",
+		"devices_events.h": "c",
+		"keyboard_callbacks.h": "c",
+		"hooks.h": "c",
+		"event_hooks.h": "c"
 	}
 }

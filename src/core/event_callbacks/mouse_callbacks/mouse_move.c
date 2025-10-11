@@ -1,67 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_press.c                                      :+:      :+:    :+:   */
+/*   mouse_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 01:26:19 by valero            #+#    #+#             */
-/*   Updated: 2025/10/10 20:08:00 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 05:10:55 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mouse_press.h"
-
-static void	zoon(double direction, t_state *state);
-
-int	mouse_press(int key, int x, int y, t_state *state)
-{
-	t_mouse_keys	mouse_key;
-	int				fd;
-
-	fd = 1;
-	(void)x;
-	(void)y;
-	mouse_key = (t_mouse_keys)key;
-	if (mouse_key == MOUSE_LEFT_BUTTON)
-		state->mouse_state.left_button = 1;
-	if (mouse_key == MOUSE_RIGHT_BUTTON)
-		state->mouse_state.right_button = 1;
-	if (mouse_key == MOUSE_MIDDLE_BUTTON)
-		state->mouse_state.scroll_button = 1;
-	if (mouse_key == MOUSE_SCROLL_UP)
-		zoon(1, state);
-	if (mouse_key == MOUSE_SCROLL_DOWN)
-		zoon(-1, state);
-	if (mouse_key == MOUSE_SCROLL_UP || mouse_key == MOUSE_SCROLL_DOWN)
-		render_frame(state);
-	return (1);
-}
-
-int	mouse_release(int key, int x, int y, t_state *state)
-{
-	t_mouse_keys	mouse_key;
-
-	(void)x;
-	(void)y;
-	mouse_key = (t_mouse_keys)key;
-	if (mouse_key == MOUSE_LEFT_BUTTON)
-	{
-		state->mouse_state.left_button = 0;
-		state->actions.drag_lb.drag_start = 0;
-	}
-	if (mouse_key == MOUSE_RIGHT_BUTTON)
-	{
-		state->mouse_state.right_button = 0;
-		state->actions.drag_rb.drag_start = 0;
-	}
-	if (mouse_key == MOUSE_MIDDLE_BUTTON)
-	{
-		state->mouse_state.scroll_button = 0;
-		state->actions.drag_mb.drag_start = 0;
-	}
-	return (1);
-}
+#include "mouse_callbacks.h"
 
 static void	drag_lb(int x, int y, t_state *state);
 static void	drag_mb(int x, int y, t_state *state);
@@ -147,9 +96,4 @@ static void	drag_rb(int x, int y, t_state *state)
 	}
 	printf("dragged_rb(x: %f, y: %f)\n",
 		state->actions.drag_rb.result.x, state->actions.drag_rb.result.y);
-}
-
-static void	zoon(double direction, t_state *state)
-{
-	state->camera.scale += direction / 10;
 }

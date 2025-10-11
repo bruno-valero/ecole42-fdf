@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:26:02 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 23:49:03 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 04:48:33 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,10 @@ static void	build_line_right(
 				colorize_point(start_point),
 				colorize_point(end_point)
 				);
-		update_line(&curr_line);
+		update_line(state, &curr_line);
 		draw_line(new_line(
 				curr_line.initial_point, curr_line.final_point),
 			state->viewer_context, bresenham);
-		// state->lines.data[(*line_idx)++] = new_line(
-		// 		curr_line.initial_point, curr_line.final_point);
 	}
 }
 
@@ -89,12 +87,10 @@ static void	build_line_down(
 				colorize_point(initial_point),
 				colorize_point(final_point)
 				);
-		update_line(&curr_line);
+		update_line(state, &curr_line);
 		draw_line(new_line(
 				curr_line.initial_point, curr_line.final_point),
 			state->viewer_context, bresenham);
-		// state->lines.data[(*line_idx)++] = new_line(
-		// 		curr_line.initial_point, curr_line.final_point);
 	}
 }
 

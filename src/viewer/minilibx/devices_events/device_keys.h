@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 01:28:37 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 18:16:51 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 07:17:02 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef enum e_keyboard_keys
 	KEYBOARD_ARROW_RIGHT = 65363,
 	KEYBOARD_ARROW_DOWN = 65364,
 	KEYBOARD_SPACE = 32,
+	KEYBOARD_PLUS = 61,
+	KEYBOARD_MINUS = 45,
 	KEYBOARD_A = 97,
 	KEYBOARD_B = 98,
 	KEYBOARD_C = 99,
@@ -44,7 +46,7 @@ typedef enum e_keyboard_keys
 	KEYBOARD_H = 104,
 	KEYBOARD_I = 105,
 	KEYBOARD_J = 106,
-	KEYBOARD_k = 107,
+	KEYBOARD_K = 107,
 	KEYBOARD_L = 108,
 	KEYBOARD_M = 109,
 	KEYBOARD_N = 110,

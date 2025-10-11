@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 07:25:47 by valero           ###   ########.fr       */
+/*   Created: 2025/10/11 06:29:51 by valero            #+#    #+#             */
+/*   Updated: 2025/10/11 07:09:30 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#include "keyboard_callbacks.h"
 
-# include "viewer.h"
-# include "camera.h"
-# include "event_hooks.h"
-# include "render_frame.h"
-
-typedef struct s_core	t_core;
-
-struct s_core
+#include <stdio.h>
+int	key_press(int key, t_state *state)
 {
-	t_camera	camera;
-};
-
-void	core(char *file_path);
-
-#endif
+	printf("pressed: %d\n", key);
+	alpanum_key_press(key, state);
+	special_key_press(key, state);
+	return (1);
+}

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   mouse_callbacks.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 07:25:47 by valero           ###   ########.fr       */
+/*   Created: 2025/10/09 01:25:42 by valero            #+#    #+#             */
+/*   Updated: 2025/10/11 05:03:36 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#ifndef MOUSE_CALLBACKS_H
+# define MOUSE_CALLBACKS_H
 
-# include "viewer.h"
-# include "camera.h"
-# include "event_hooks.h"
+# include "parse_file.h"
+# include "minilibx.h"
+# include "state.h"
 # include "render_frame.h"
 
-typedef struct s_core	t_core;
-
-struct s_core
-{
-	t_camera	camera;
-};
-
-void	core(char *file_path);
+int	mouse_press(int key, int x, int y, t_state *state);
+int	mouse_release(int key, int x, int y, t_state *state);
+int	mouse_move(int x, int y, t_state *state);
 
 #endif

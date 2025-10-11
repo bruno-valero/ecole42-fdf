@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   event_hooks.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 07:25:47 by valero           ###   ########.fr       */
+/*   Created: 2025/10/11 06:42:21 by valero            #+#    #+#             */
+/*   Updated: 2025/10/11 07:27:33 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#ifndef EVENT_HOOKS_H
+# define EVENT_HOOKS_H
 
-# include "viewer.h"
-# include "camera.h"
-# include "event_hooks.h"
-# include "render_frame.h"
+# include "minilibx.h"
+# include "state.h"
+# include "event_callbacks.h"
 
-typedef struct s_core	t_core;
-
-struct s_core
-{
-	t_camera	camera;
-};
-
-void	core(char *file_path);
+void	mouse_hooks(t_state *state);
+void	keyboard_hooks(t_state *state);
 
 #endif

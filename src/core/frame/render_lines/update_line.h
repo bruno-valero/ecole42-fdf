@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 13:10:50 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 04:53:59 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define PI 3.14159
 
-void	update_line(t_line *curr_line);
-void	update_rotation(t_line *line);
+void	update_line(t_state	*state, t_line *curr_line);
+void	update_rotation(t_state *state, t_line *line);
 
 #endif

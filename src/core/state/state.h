@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 23:25:53 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 06:53:23 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ struct s_mouse_state
 typedef struct s_keyboard_state	t_keyboard_state;
 struct s_keyboard_state
 {
+	int	esc;
+	int	plus;
+	int	minus;
 	int	left_ctrl;
 	int	right_ctrl;
 	int	left_sift;

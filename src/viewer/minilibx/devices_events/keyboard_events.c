@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   keyboard_events.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 07:25:47 by valero           ###   ########.fr       */
+/*   Created: 2025/10/11 05:34:10 by valero            #+#    #+#             */
+/*   Updated: 2025/10/11 05:58:15 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#include "devices_events.h"
 
-# include "viewer.h"
-# include "camera.h"
-# include "event_hooks.h"
-# include "render_frame.h"
-
-typedef struct s_core	t_core;
-
-struct s_core
+void	on_key_press(void *win_ptr, int (*callback)(), void *param)
 {
-	t_camera	camera;
-};
+	mlx_hook(win_ptr, KEY_PRESS_EVENT, KEY_PRESS_MASK, callback, param);
+}
 
-void	core(char *file_path);
-
-#endif
+void	on_key_release(void *win_ptr, int (*callback)(), void *param)
+{
+	mlx_hook(win_ptr,
+		KEY_RELEASE_EVENT, KEY_RELEASE_MASK, callback, param);
+}

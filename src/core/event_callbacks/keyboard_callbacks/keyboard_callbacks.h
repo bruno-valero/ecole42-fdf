@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   keyboard_callbacks.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 07:25:47 by valero           ###   ########.fr       */
+/*   Created: 2025/10/11 06:00:38 by valero            #+#    #+#             */
+/*   Updated: 2025/10/11 07:09:19 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#ifndef KEYBOARD_CALLBACKS_H
+# define KEYBOARD_CALLBACKS_H
 
-# include "viewer.h"
-# include "camera.h"
-# include "event_hooks.h"
+# include "parse_file.h"
+# include "minilibx.h"
+# include "state.h"
 # include "render_frame.h"
 
-typedef struct s_core	t_core;
-
-struct s_core
-{
-	t_camera	camera;
-};
-
-void	core(char *file_path);
+void	alpanum_key_press(int key, t_state *state);
+void	alpanum_key_release(int key, t_state *state);
+void	special_key_press(int key, t_state *state);
+void	special_key_release(int key, t_state *state);
+int		key_press(int key, t_state *state);
+int		key_release(int key, t_state *state);
 
 #endif

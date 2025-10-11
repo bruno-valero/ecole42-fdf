@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_press.h                                      :+:      :+:    :+:   */
+/*   mouse_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 01:25:42 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 23:12:25 by valero           ###   ########.fr       */
+/*   Created: 2025/10/11 06:43:18 by valero            #+#    #+#             */
+/*   Updated: 2025/10/11 07:27:10 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MOUSE_PRESS_H
-# define MOUSE_PRESS_H
+#include "event_hooks.h"
 
-# include "parse_file.h"
-# include "minilibx.h"
-# include "state.h"
-# include "render_frame.h"
+void	mouse_hooks(t_state *state)
+{
+	t_minilib_window	window;
 
-int	mouse_press(int key, int x, int y, t_state *state);
-int	mouse_release(int key, int x, int y, t_state *state);
-int	mouse_move(int x, int y, t_state *state);
-
-#endif
+	window = state->viewer_context.window;
+	on_mouse_button_press(window.ref, mouse_press, state);
+	on_mouse_button_release(window.ref, mouse_release, state);
+	on_mouse_move(window.ref, mouse_move, state);
+}

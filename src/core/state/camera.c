@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:23:25 by valero            #+#    #+#             */
-/*   Updated: 2025/10/10 15:25:22 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 04:42:04 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	reset_camera(t_camera *camera, t_viewer_context context,
 {
 	reset_offset(camera, context, mtx);
 	reset_angle(camera);
-	camera->z_factor = 0;
+	camera->z_factor = 1.0;
 	reset_scale(camera, context, mtx);
 	camera->line_tracer = 0;
 	camera->projection = 0;
