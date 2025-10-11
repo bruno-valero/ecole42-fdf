@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 01:26:19 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 11:58:18 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 17:18:28 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static void	zoon(double direction, int x, int y, t_state *state)
 	t_coord_2d	center;
 	t_coord_2d	delta_mouse;
 
+	if (state->camera.scale <= 0.1 && direction < 0)
+		return ;
 	center.x = state->viewer_context.window.width / 2;
 	center.y = state->viewer_context.window.height / 2;
 	delta_mouse.x = x - center.x;

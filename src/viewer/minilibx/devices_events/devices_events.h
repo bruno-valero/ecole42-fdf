@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   devices_events.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 05:34:32 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 05:58:34 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 16:27:11 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	on_mouse_button_release(void *win_ptr, int (*callback)(), void *param);
 void	on_mouse_move(void *win_ptr, int (*callback)(), void *param);
 void	on_key_press(void *win_ptr, int (*callback)(), void *param);
 void	on_key_release(void *win_ptr, int (*callback)(), void *param);
+void	on_close_window(void *win_ptr, int (*callback)(), void *param);
 
 #endif

@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_release.c                                      :+:      :+:    :+:   */
+/*   window_events.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 06:29:51 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 16:50:06 by brunofer         ###   ########.fr       */
+/*   Created: 2025/10/11 05:34:10 by valero            #+#    #+#             */
+/*   Updated: 2025/10/11 16:24:22 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "keyboard_callbacks.h"
+#include "devices_events.h"
 
-int	key_release(int key, t_state *state)
+void	on_close_window(void *win_ptr, int (*callback)(), void *param)
 {
-	alpanum_key_release(key, state);
-	special_key_release(key, state);
-	if (key == KEYBOARD_R || key == KEYBOARD_1 || key == KEYBOARD_2
-		|| key == KEYBOARD_3 || key == KEYBOARD_4)
-		render_frame(state);
-	return (1);
+	mlx_hook(win_ptr, DESTROY_NOTIFY_EVENT, NO_EVENT_MASK, callback, param);
 }

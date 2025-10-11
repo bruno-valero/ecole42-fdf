@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:00:38 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 15:03:44 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 17:43:25 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	special_key_press(int key, t_state *state);
 void	special_key_release(int key, t_state *state);
 int		key_press(int key, t_state *state);
 int		key_release(int key, t_state *state);
-void	handle_key(t_state *state, void (*callback)(t_state *state), int *key);
+void	release_key(t_state *state,
+			void (*callback)(t_state *state), int *key);
+void	press_key(t_state *state,
+			void (*callback)(t_state *state), int *key);
 
 #endif

@@ -37,21 +37,22 @@ src/parser/reader_print.c src/parser/parser_matrix.c src/parser/parse_matrix.c s
 ALGORITHMS = src/viewer/line/line_algorithms
 SRC_VIEWER_FILES = $(ALGORITHMS)/bresenham/bresenham_color.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
 src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/viewer_line.c src/viewer/viewer_context.c \
-src/viewer/minilibx/devices_events/mouse_events.c src/viewer/minilibx/devices_events/keyboard_events.c
+src/viewer/minilibx/devices_events/mouse_events.c src/viewer/minilibx/devices_events/keyboard_events.c src/viewer/minilibx/devices_events/window_events.c
 
 SRC_CORE_FILES = src/core/core.c src/core/frame/render_lines/build_lines.c src/core/frame/render_lines/update_line.c \
 src/core/frame/render_lines/update_rotation.c src/core/frame/render_background.c src/core/frame/render_frame.c src/core/color/color.c src/core/state/camera.c src/core/state/reset_camera.c src/core/state/projections.c \
 src/core/state/state.c  src/core/event_callbacks/mouse_callbacks/mouse_move.c src/core/event_callbacks/mouse_callbacks/mouse_buttons.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_press.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_press.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_release.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_release.c src/core/event_callbacks/keyboard_callbacks/key_press.c src/core/event_callbacks/keyboard_callbacks/key_release.c \
-src/core/event_hooks/keyboard_hooks.c src/core/event_hooks/mouse_hooks.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/key_release_utils.c
+src/core/event_hooks/keyboard_hooks.c src/core/event_hooks/mouse_hooks.c src/core/event_hooks/window_hooks.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/key_release_utils.c \
+src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/key_press_utils.c src/core/state/change_z_factor.c
 
 SRC_FILES = $(SRC_UTILS_FILES) $(SRC_PARSER_FILES) $(SRC_VIEWER_FILES) $(SRC_CORE_FILES)
 
 # ============== PROGRAM FILES =================
 TEST_PROGRAM=teste.c
 MAIN_PROGRAM=src/main.c
-BONUS_PROGRAM=src/checker_bonus.c
+BONUS_PROGRAM=src/main.c
 
 PROGRAM=teste
 

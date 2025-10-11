@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_release.c                                      :+:      :+:    :+:   */
+/*   key_press_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 06:29:51 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 16:50:06 by brunofer         ###   ########.fr       */
+/*   Created: 2025/10/11 15:03:03 by brunofer          #+#    #+#             */
+/*   Updated: 2025/10/11 17:41:55 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "keyboard_callbacks.h"
+#include "../keyboard_callbacks.h"
 
-int	key_release(int key, t_state *state)
+void	press_key(t_state *state,
+			void (*callback)(t_state *state), int *key)
 {
-	alpanum_key_release(key, state);
-	special_key_release(key, state);
-	if (key == KEYBOARD_R || key == KEYBOARD_1 || key == KEYBOARD_2
-		|| key == KEYBOARD_3 || key == KEYBOARD_4)
-		render_frame(state);
-	return (1);
+	callback(state);
+	*key = 1;
 }

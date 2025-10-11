@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:01:44 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 15:04:52 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 17:43:08 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,13 @@ static void	num_keys(int key, t_state *state)
 	if (key == KEYBOARD_0)
 		state->keyboard_state.zero = 0;
 	if (key == KEYBOARD_1)
-		handle_key(state, projection_isometric, &state->keyboard_state.one);
+		release_key(state, projection_isometric, &state->keyboard_state.one);
 	if (key == KEYBOARD_2)
-		handle_key(state, projection_top_down, &state->keyboard_state.two);
+		release_key(state, projection_top_down, &state->keyboard_state.two);
 	if (key == KEYBOARD_3)
-		state->keyboard_state.three = 0;
+		release_key(state, projection_side_view, &state->keyboard_state.three);
 	if (key == KEYBOARD_4)
-		state->keyboard_state.four = 0;
+		release_key(state, projection_front_view, &state->keyboard_state.four);
 	if (key == KEYBOARD_5)
 		state->keyboard_state.five = 0;
 	if (key == KEYBOARD_6)

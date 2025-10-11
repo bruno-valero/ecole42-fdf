@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:02:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 14:49:47 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 16:35:46 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	core(char *file_path)
 	render_frame(state);
 	mouse_hooks(state);
 	keyboard_hooks(state);
+	window_hooks(state);
 	mlx_loop(state->viewer_context.mlx_ref);
 	free(state->lines.data);
 	destroy_state(state);

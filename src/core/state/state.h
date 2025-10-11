@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 13:39:16 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 17:38:10 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,11 @@ struct s_state
 t_state	*get_state(void);
 void	projection_isometric(t_state *state);
 void	projection_top_down(t_state *state);
+void	projection_side_view(t_state *state);
+void	projection_front_view(t_state *state);
 void	reset_camera(t_state *state);
+void	add_z_factor(t_state *state);
+void	sub_z_factor(t_state *state);
 void	*destroy_state(t_state	*state);
 
 #endif
