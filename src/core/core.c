@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:02:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 07:08:04 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 13:38:03 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	core(char *file_path)
 	if (!state)
 		return ;
 	state->parsed_data = parser_matrix;
-	reset_camera(&state->camera, state->viewer_context, state->parsed_data);
+	reset_camera(state);
 	lines_init(&state->lines, state);
 	if (!state->lines.data)
 	{

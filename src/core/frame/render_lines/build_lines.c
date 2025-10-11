@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:26:02 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 04:48:33 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 14:26:09 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static void	build_line_right(
 		start_point = state->parsed_data->data[curr_y][curr_x];
 		end_point = state->parsed_data->data[curr_y][curr_x + 1];
 		curr_line = new_line(
-				colorize_point(start_point),
-				colorize_point(end_point)
+				colorize_point(state, start_point),
+				colorize_point(state, end_point)
 				);
 		update_line(state, &curr_line);
 		draw_line(new_line(
@@ -84,8 +84,8 @@ static void	build_line_down(
 		initial_point = state->parsed_data->data[curr_y][curr_x];
 		final_point = state->parsed_data->data[curr_y + 1][curr_x];
 		curr_line = new_line(
-				colorize_point(initial_point),
-				colorize_point(final_point)
+				colorize_point(state, initial_point),
+				colorize_point(state, final_point)
 				);
 		update_line(state, &curr_line);
 		draw_line(new_line(

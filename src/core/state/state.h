@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 06:53:23 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 13:39:16 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,9 @@ struct s_state
 };
 
 t_state	*get_state(void);
+void	projection_isometric(t_state *state);
+void	projection_top_down(t_state *state);
+void	reset_camera(t_state *state);
 void	*destroy_state(t_state	*state);
 
 #endif

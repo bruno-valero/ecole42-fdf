@@ -39,8 +39,8 @@ SRC_VIEWER_FILES = $(ALGORITHMS)/bresenham/bresenham_color.c $(ALGORITHMS)/brese
 src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/viewer_line.c src/viewer/viewer_context.c \
 src/viewer/minilibx/devices_events/mouse_events.c src/viewer/minilibx/devices_events/keyboard_events.c
 
-SRC_CORE_FILES = src/core/core.c src/core/frame/render_lines/build_lines.c src/core/frame/render_lines/build_lines_utils.c src/core/frame/render_lines/update_line.c \
-src/core/frame/render_lines/update_rotation.c src/core/frame/render_background.c src/core/frame/render_frame.c src/core/color/color.c src/core/state/camera.c \
+SRC_CORE_FILES = src/core/core.c src/core/frame/render_lines/build_lines.c src/core/frame/render_lines/update_line.c \
+src/core/frame/render_lines/update_rotation.c src/core/frame/render_background.c src/core/frame/render_frame.c src/core/color/color.c src/core/state/camera.c src/core/state/reset_camera.c src/core/state/projections.c \
 src/core/state/state.c  src/core/event_callbacks/mouse_callbacks/mouse_move.c src/core/event_callbacks/mouse_callbacks/mouse_buttons.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_press.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_press.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_release.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_release.c src/core/event_callbacks/keyboard_callbacks/key_press.c src/core/event_callbacks/keyboard_callbacks/key_release.c \

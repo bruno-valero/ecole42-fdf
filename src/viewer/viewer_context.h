@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   viewer_context.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:50:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/09 15:19:02 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 14:17:11 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ struct s_viewer_context
 {
 	void				*mlx_ref;
 	t_minilib_layer		wireframe;
-	t_minilib_layer		background;
 	t_minilib_window	window;
 };
 

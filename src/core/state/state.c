@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:08:31 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/09 22:23:15 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 14:19:06 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 t_state	*get_state(void)
 {
-	static t_state	*state;
+	t_state	*state;
 
-	if (state)
-		return (state);
 	state = malloc(sizeof(t_state));
 	if (!state)
 		return (NULL);

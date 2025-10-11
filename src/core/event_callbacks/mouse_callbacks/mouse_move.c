@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 01:26:19 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 05:10:55 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 13:58:49 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	mouse_move(int x, int y, t_state *state)
 	return (1);
 }
 
-#include <stdio.h>
-
 static void	drag_lb(int x, int y, t_state *state)
 {
 	if (!state->actions.drag_lb.drag_start)
@@ -50,8 +48,6 @@ static void	drag_lb(int x, int y, t_state *state)
 	}
 	state->camera.angle.x += state->actions.drag_lb.result.y;
 	state->camera.angle.y -= state->actions.drag_lb.result.x;
-	printf("dragged_lb(x: %f, y: %f)\n",
-		state->actions.drag_lb.result.x, state->actions.drag_lb.result.y);
 }
 
 static void	drag_mb(int x, int y, t_state *state)
@@ -73,8 +69,6 @@ static void	drag_mb(int x, int y, t_state *state)
 	}
 	state->camera.offset.x -= state->actions.drag_mb.result.x;
 	state->camera.offset.y -= state->actions.drag_mb.result.y;
-	printf("dragged_mb(x: %f, y: %f)\n",
-		state->actions.drag_mb.result.x, state->actions.drag_mb.result.y);
 }
 
 static void	drag_rb(int x, int y, t_state *state)
@@ -94,6 +88,4 @@ static void	drag_rb(int x, int y, t_state *state)
 		state->actions.drag_rb.last.x = x;
 		state->actions.drag_rb.last.y = y;
 	}
-	printf("dragged_rb(x: %f, y: %f)\n",
-		state->actions.drag_rb.result.x, state->actions.drag_rb.result.y);
 }

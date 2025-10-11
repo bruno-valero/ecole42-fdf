@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build_lines_utils.h                                :+:      :+:    :+:   */
+/*   projections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/08 15:56:49 by brunofer         ###   ########.fr       */
+/*   Created: 2025/10/11 13:23:22 by brunofer          #+#    #+#             */
+/*   Updated: 2025/10/11 13:59:29 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILD_LINES_UTILS_H
-# define BUILD_LINES_UTILS_H
+#include "state.h"
 
-# include "lines.h"
-# include "viewer.h"
-# include "color.h"
-# include "state.h"
+void	projection_isometric(t_state *state)
+{
+	state->camera.angle = coord_3d_double(60, 0, 30);
+}
 
-// void	find_z_range(t_lines *lines, t_line curr_line);
-// void	colorize_lines(t_lines *lines);
-
-#endif
+void	projection_top_down(t_state *state)
+{
+	state->camera.angle = coord_3d_double(0, 0, 0);
+}

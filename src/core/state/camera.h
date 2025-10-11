@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:05:51 by valero            #+#    #+#             */
-/*   Updated: 2025/10/09 13:10:27 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 13:37:30 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ struct s_camera
 };
 
 t_camera	create_camera(void);
-void		reset_camera(t_camera *camera, t_viewer_context context,
-				t_parser_matrix *mtx);
 
 #endif

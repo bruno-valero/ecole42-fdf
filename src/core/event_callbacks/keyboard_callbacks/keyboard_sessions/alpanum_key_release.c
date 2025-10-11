@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alpanum_key_release.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:01:44 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 07:10:11 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/11 13:49:12 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ static void	second_third_alpha_keys(int key, t_state *state)
 	if (key == KEYBOARD_Q)
 		state->keyboard_state.q = 0;
 	if (key == KEYBOARD_R)
+	{
 		state->keyboard_state.r = 0;
+		reset_camera(state);
+	}
 }
 
 static void	third_third_alpha_keys(int key, t_state *state)
@@ -94,9 +97,15 @@ static void	num_keys(int key, t_state *state)
 	if (key == KEYBOARD_0)
 		state->keyboard_state.zero = 0;
 	if (key == KEYBOARD_1)
+	{
+		projection_isometric(state);
 		state->keyboard_state.one = 0;
+	}
 	if (key == KEYBOARD_2)
+	{
+		projection_top_down(state);
 		state->keyboard_state.two = 0;
+	}
 	if (key == KEYBOARD_3)
 		state->keyboard_state.three = 0;
 	if (key == KEYBOARD_4)

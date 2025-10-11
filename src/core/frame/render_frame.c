@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:11:38 by valero            #+#    #+#             */
-/*   Updated: 2025/10/10 19:50:37 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/11 14:24:40 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,6 @@ void	render_frame(t_state *state)
 			state->viewer_context.wireframe);
 		last_time = curr_time;
 	}
-}
-
-void	load_lines(t_lines lines)
-{
-	int		i;
-	t_state	*state;
-
-	state = get_state();
-	i = -1;
-	while (++i < lines.size)
-		draw_line(lines.data[i], state->viewer_context, bresenham);
-
 }
 
 static int	get_debounce(t_state *state)

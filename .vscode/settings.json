@@ -46,6 +46,7 @@
 		"keyboard_callbacks.h": "c",
 		"hooks.h": "c",
 		"event_hooks.h": "c",
-		"cmath": "c"
+		"cmath": "c",
+		"stdlib.h": "c"
 	}
 }
