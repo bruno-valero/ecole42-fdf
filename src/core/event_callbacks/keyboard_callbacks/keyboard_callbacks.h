@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_callbacks.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:00:38 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 17:43:25 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/12 12:50:13 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	release_key(t_state *state,
 			void (*callback)(t_state *state), int *key);
 void	press_key(t_state *state,
 			void (*callback)(t_state *state), int *key);
+void	print_points(t_state *state);
 
 #endif

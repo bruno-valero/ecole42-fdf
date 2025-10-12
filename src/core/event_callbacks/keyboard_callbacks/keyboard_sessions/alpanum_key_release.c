@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alpanum_key_release.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:01:44 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 17:43:08 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/12 12:51:28 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	second_third_alpha_keys(int key, t_state *state)
 	if (key == KEYBOARD_O)
 		state->keyboard_state.o = 0;
 	if (key == KEYBOARD_P)
-		state->keyboard_state.p = 0;
+		release_key(state, print_points, &state->keyboard_state.p);
 	if (key == KEYBOARD_Q)
 		state->keyboard_state.q = 0;
 	if (key == KEYBOARD_R)

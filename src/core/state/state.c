@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:08:31 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/11 14:19:06 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/12 00:14:21 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,21 @@ t_state	*get_state(void)
 	state->self_ref = &state;
 	state->viewer_context = create_viewer_context();
 	return (state);
+}
+
+void	update_angle(t_state *state)
+{
+	float	angle;
+
+	angle = state->camera.angle.x * (PI / 180);
+	state->camera.angle.cos_x = cos(angle);
+	state->camera.angle.sin_x = sin(angle);
+	angle = state->camera.angle.y * (PI / 180);
+	state->camera.angle.cos_y = cos(angle);
+	state->camera.angle.sin_y = sin(angle);
+	angle = state->camera.angle.z * (PI / 180);
+	state->camera.angle.cos_z = cos(angle);
+	state->camera.angle.sin_z = sin(angle);
 }
 
 void	*destroy_state(t_state	*state)

@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build_lines.c                                      :+:      :+:    :+:   */
+/*   print_points.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/01 12:26:02 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 12:45:33 by valero           ###   ########.fr       */
+/*   Created: 2025/10/12 12:43:11 by valero            #+#    #+#             */
+/*   Updated: 2025/10/12 13:04:49 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "keyboard_callbacks.h"
+
 #include "build_lines.h"
+# include <stdio.h>
 
-static void	build_line_right(t_state *state, t_coord_2d curr_coord,
+static void	test_build_line_right(t_state *state, t_coord_2d curr_coord,
 				int *line_idx);
-static void	build_line_down(t_state *state, t_coord_2d curr_coord,
+static void	test_build_line_down(t_state *state, t_coord_2d curr_coord,
 				int *line_idx);
-static int	get_lines_amount(t_parser_matrix *mtx);
 
-void	build_lines(t_state *state)
+void	test_build_lines(t_state *state)
 {
 	t_coord_2d		mtx_coord;
 	int				line_idx;
 
+	printf("\n\nprintiing logs...\n");
 	line_idx = 0;
 	mtx_coord.y = -1;
 	while (state->parsed_data->data[++mtx_coord.y])
@@ -30,13 +33,13 @@ void	build_lines(t_state *state)
 		mtx_coord.x = -1;
 		while (++mtx_coord.x < state->parsed_data->width)
 		{
-			build_line_right(state, mtx_coord, &line_idx);
-			build_line_down(state, mtx_coord, &line_idx);
+			test_build_line_right(state, mtx_coord, &line_idx);
+			test_build_line_down(state, mtx_coord, &line_idx);
 		}
 	}
 }
 
-static void	build_line_right(
+static void	test_build_line_right(
 				t_state *state,
 				t_coord_2d curr_coord,
 				int *line_idx)
@@ -59,11 +62,11 @@ static void	build_line_right(
 				colorize_point(state, end_point)
 				);
 		update_line(state, &curr_line);
-		draw_line(curr_line, state->viewer_context, bresenham);
+		printf("%d point - right: init_point(%d, %d), fin_point(%d, %d)\n", curr_y + curr_x + 1, curr_line.initial_point.x, curr_line.initial_point.y, curr_line.final_point.x, curr_line.final_point.y);
 	}
 }
 
-static void	build_line_down(
+static void	test_build_line_down(
 				t_state *state,
 				t_coord_2d curr_coord,
 				int *line_idx)
@@ -86,32 +89,11 @@ static void	build_line_down(
 				colorize_point(state, final_point)
 				);
 		update_line(state, &curr_line);
-		draw_line(curr_line, state->viewer_context, bresenham);
+		printf("%d point - down: init_point(%d, %d), fin_point(%d, %d)\n",curr_y + curr_x + 1, curr_line.initial_point.x, curr_line.initial_point.y, curr_line.final_point.x, curr_line.final_point.y);
 	}
 }
 
-static int	get_lines_amount(t_parser_matrix *mtx)
+void	print_points(t_state *state)
 {
-	int	total_points;
-	int	total_lines;
-
-	total_points = mtx->width * mtx->height;
-	total_lines = total_points * 2 - mtx->width - mtx->height;
-	return (total_lines);
-}
-
-t_lines	*lines_init(t_lines *lines, t_state *state)
-{
-	t_viewer_context	viwer_context;
-	t_parser_matrix		*mtx;
-
-	viwer_context = state->viewer_context;
-	mtx = state->parsed_data;
-	lines->size = get_lines_amount(mtx);
-	lines->data = (t_line *)ft_calloc(lines->size, sizeof(t_line));
-	if (!lines->data)
-		return (NULL);
-	lines->layer = viwer_context.wireframe;
-	lines->window = viwer_context.window;
-	return (lines);
+	test_build_lines(state);
 }

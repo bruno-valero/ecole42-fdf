@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 21:14:33 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 05:25:25 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 00:22:51 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,42 +25,42 @@ void	update_rotation(t_state *state, t_line *line)
 
 static void	update_x_rotation(t_state *state, t_line *line)
 {
-	float	angle;
+	t_angle	angle;
 	t_point	point;
 
-	angle = state->camera.angle.x * (PI / 180);
+	angle = state->camera.angle;
 	point = line->initial_point;
-	line->initial_point.y = (point.y * cos(angle)) - (point.z * sin(angle));
-	line->initial_point.z = (point.y * sin(angle)) + (point.z * cos(angle));
+	line->initial_point.y = (point.y * angle.cos_x) - (point.z * angle.sin_x);
+	line->initial_point.z = (point.y * angle.sin_x) + (point.z * angle.cos_x);
 	point = line->final_point;
-	line->final_point.y = (point.y * cos(angle)) - (point.z * sin(angle));
-	line->final_point.z = (point.y * sin(angle)) + (point.z * cos(angle));
+	line->final_point.y = (point.y * angle.cos_x) - (point.z * angle.sin_x);
+	line->final_point.z = (point.y * angle.sin_x) + (point.z * angle.cos_x);
 }
 
 static void	update_y_rotation(t_state *state, t_line *line)
 {
-	float	angle;
+	t_angle	angle;
 	t_point	point;
 
-	angle = state->camera.angle.y * (PI / 180);
+	angle = state->camera.angle;
 	point = line->initial_point;
-	line->initial_point.x = (point.x * cos(angle)) + (point.z * sin(angle));
-	line->initial_point.z = (-point.x * sin(angle)) + (point.z * cos(angle));
+	line->initial_point.x = (point.x * angle.cos_y) + (point.z * angle.sin_y);
+	line->initial_point.z = (-point.x * angle.sin_y) + (point.z * angle.cos_y);
 	point = line->final_point;
-	line->final_point.x = (point.x * cos(angle)) + (point.z * sin(angle));
-	line->final_point.z = (-point.x * sin(angle)) + (point.z * cos(angle));
+	line->final_point.x = (point.x * angle.cos_y) + (point.z * angle.sin_y);
+	line->final_point.z = (-point.x * angle.sin_y) + (point.z * angle.cos_y);
 }
 
 static void	update_z_rotation(t_state *state, t_line *line)
 {
-	float	angle;
+	t_angle	angle;
 	t_point	point;
 
-	angle = state->camera.angle.z * (PI / 180);
+	angle = state->camera.angle;
 	point = line->initial_point;
-	line->initial_point.x = (point.x * cos(angle)) - (point.y * sin(angle));
-	line->initial_point.y = (point.x * sin(angle)) + (point.y * cos(angle));
+	line->initial_point.x = (point.x * angle.cos_z) - (point.y * angle.sin_z);
+	line->initial_point.y = (point.x * angle.sin_z) + (point.y * angle.cos_z);
 	point = line->final_point;
-	line->final_point.x = (point.x * cos(angle)) - (point.y * sin(angle));
-	line->final_point.y = (point.x * sin(angle)) + (point.y * cos(angle));
+	line->final_point.x = (point.x * angle.cos_z) - (point.y * angle.sin_z);
+	line->final_point.y = (point.x * angle.sin_z) + (point.y * angle.cos_z);
 }

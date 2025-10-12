@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 17:38:10 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/12 12:09:16 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "camera.h"
 # include "parse_file.h"
 # include "viewer_context.h"
+# include <math.h>
+
+# define PI 3.14159
 
 typedef struct s_mouse_state	t_mouse_state;
 struct s_mouse_state
@@ -80,7 +83,7 @@ typedef struct s_drag			t_drag;
 struct s_drag
 {
 	int					drag_start;
-	t_coord_2d_double	last;
+	t_coord_2d			last;
 	t_coord_2d_double	result;
 };
 
@@ -113,6 +116,7 @@ void	projection_front_view(t_state *state);
 void	reset_camera(t_state *state);
 void	add_z_factor(t_state *state);
 void	sub_z_factor(t_state *state);
+void	update_angle(t_state *state);
 void	*destroy_state(t_state	*state);
 
 #endif

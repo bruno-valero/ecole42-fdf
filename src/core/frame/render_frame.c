@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:11:38 by valero            #+#    #+#             */
-/*   Updated: 2025/10/11 14:50:00 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/12 12:05:22 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_frame.h"
-#include <stdio.h>
 
 static int	get_debounce(t_state *state);
 
@@ -20,13 +19,10 @@ void	render_frame(t_state *state)
 	static struct timeval	last_time = {0, 0};
 	struct timeval			curr_time;
 	long long				time_diff;
-	long long				last_time_micro;
-	long long				curr_time_micro;
 
 	gettimeofday(&curr_time, NULL);
-	last_time_micro = last_time.tv_sec * 1000000 + last_time.tv_usec;
-	curr_time_micro = curr_time.tv_sec * 1000000 + curr_time.tv_usec;
-	time_diff = curr_time_micro - last_time_micro;
+	time_diff = (curr_time.tv_sec - last_time.tv_sec) * 1000000
+		+ (curr_time.tv_usec - last_time.tv_usec);
 	if (time_diff > get_debounce(state))
 	{
 		render_background(state);
@@ -45,8 +41,8 @@ static int	get_debounce(t_state *state)
 	double	zoom_adjustment_factor;
 
 	total_points = state->parsed_data->width * state->parsed_data->height;
-	point_density_factor = (5370 * pow(total_points, -0.74));
+	point_density_factor = (3230 * pow(total_points, -0.71));
 	zoom_adjustment_factor = pow(state->camera.scale / 0.7, 0.35);
-	debounce = total_points * point_density_factor * zoom_adjustment_factor;
+	debounce = (double)total_points * point_density_factor * zoom_adjustment_factor;
 	return (debounce);
 }
