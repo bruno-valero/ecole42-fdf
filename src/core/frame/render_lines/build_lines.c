@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:26:02 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 19:15:18 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/13 02:08:15 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	build_lines(t_state *state)
 	t_input_point	**matrix;
 
 	matrix = state->parsed_data->data;
-	mtx_coord.y = -1;
-	while (matrix[++mtx_coord.y])
+	mtx_coord.y = 0;
+	while (matrix[mtx_coord.y])
 	{
-		mtx_coord.x = -1;
-		while (++mtx_coord.x < state->parsed_data->width)
+		mtx_coord.x = 0;
+		while (mtx_coord.x < state->parsed_data->width)
 		{
 			if (mtx_coord.x + 1 < state->parsed_data->width)
 				build_line(
@@ -40,7 +40,9 @@ void	build_lines(t_state *state)
 					state,
 					matrix[mtx_coord.y][mtx_coord.x],
 					matrix[mtx_coord.y + 1][mtx_coord.x]);
+			mtx_coord.x += state->modes.resolution;
 		}
+		mtx_coord.y += state->modes.resolution;
 	}
 }
 

@@ -42,7 +42,7 @@ src/viewer/minilibx/devices_events/mouse_events.c src/viewer/minilibx/devices_ev
 src/viewer/minilibx/devices_events/loop_event.c
 
 SRC_CORE_STATE_FILES = src/core/state/state.c src/core/state/camera.c src/core/state/actions/reset_camera.c src/core/state/actions/projections.c src/core/state/actions/change_z_factor.c src/core/state/actions/auto_rotate.c \
-src/core/state/modes/shadow_mode.c
+src/core/state/modes/shadow_mode.c src/core/state/modes/resolution_mode.c
 
 SRC_CORE_EVENT_CALLBACKS_FILES = src/core/event_callbacks/mouse_callbacks/mouse_move.c src/core/event_callbacks/mouse_callbacks/mouse_buttons.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_press.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_press.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_release.c \

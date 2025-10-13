@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:01:44 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 21:55:44 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/13 02:05:47 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	first_third_alpha_keys(int key, t_state *state)
 	if (key == KEYBOARD_G)
 		state->keyboard_state.g = 0;
 	if (key == KEYBOARD_H)
-		state->keyboard_state.h = 0;
+		release_key(state, high_resolution, &state->keyboard_state.h);
 	if (key == KEYBOARD_I)
 		state->keyboard_state.i = 0;
 }
@@ -54,7 +54,7 @@ static void	second_third_alpha_keys(int key, t_state *state)
 	if (key == KEYBOARD_K)
 		state->keyboard_state.k = 0;
 	if (key == KEYBOARD_L)
-		state->keyboard_state.l = 0;
+		release_key(state, low_resolution, &state->keyboard_state.l);
 	if (key == KEYBOARD_M)
 		state->keyboard_state.m = 0;
 	if (key == KEYBOARD_N)

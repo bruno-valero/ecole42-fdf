@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 21:40:00 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/13 02:04:18 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_modes			t_modes;
 struct s_modes
 {
 	int	shadow;
+	int	resolution;
 };
 
 typedef struct s_state			t_state;
@@ -129,6 +130,8 @@ void	auto_rotate_y(t_state *state);
 void	auto_rotate_z(t_state *state);
 void	auto_rotate_stop(t_state *state);
 void	shadow_mode(t_state *state);
+void	low_resolution(t_state *state);
+void	high_resolution(t_state *state);
 void	*destroy_state(t_state	*state);
 
 #endif

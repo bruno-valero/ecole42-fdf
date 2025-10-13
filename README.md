@@ -2,6 +2,21 @@
 
 **An Ecole 42 project**
 
+## Actions
+- Increase z_factor (press +);
+- Decrease z_factor (press -);
+
+## Projections
+- Isometric (press 1);
+- Top-Down (press 2);
+- Left Side (press 3);
+- Front (press 4);
+
+## Modes
+- Shadow (press S);
+- Low Resolution (press L);
+- High Resolution (press H);
+
 ## File Structure
 
 ```bash

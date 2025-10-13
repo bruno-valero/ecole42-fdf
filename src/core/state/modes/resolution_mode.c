@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_release.c                                      :+:      :+:    :+:   */
+/*   resolution_mode.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 06:29:51 by valero            #+#    #+#             */
-/*   Updated: 2025/10/13 02:06:09 by valero           ###   ########.fr       */
+/*   Created: 2025/10/13 01:55:39 by valero            #+#    #+#             */
+/*   Updated: 2025/10/13 02:03:40 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "keyboard_callbacks.h"
+#include "state.h"
 
-int	key_release(int key, t_state *state)
+void	low_resolution(t_state *state)
 {
-	alpanum_key_release(key, state);
-	special_key_release(key, state);
-	if (key == KEYBOARD_R || key == KEYBOARD_1 || key == KEYBOARD_2
-		|| key == KEYBOARD_3 || key == KEYBOARD_4 || key == KEYBOARD_S
-		|| key == KEYBOARD_H || key == KEYBOARD_L)
-		render_frame(state);
-	return (1);
+	state->modes.resolution = 2;
+}
+
+void	high_resolution(t_state *state)
+{
+	state->modes.resolution = 1;
 }

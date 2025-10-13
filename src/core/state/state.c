@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:08:31 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/12 21:54:36 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/13 02:09:08 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_state	*get_state(void)
 		return (NULL);
 	ft_bzero(state, sizeof(t_state));
 	state->self_ref = &state;
+	state->modes.resolution = 1;
 	state->viewer_context = create_viewer_context();
 	return (state);
 }
