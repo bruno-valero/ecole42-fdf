@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 11:24:50 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/06 15:21:54 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/12 15:05:33 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ t_line	new_line(t_point initial_point,
 	if (!line.delta.x)
 		line.slope = 2;
 	else
-		line.slope = line.delta.y / line.delta.x;
+		line.slope = (float)line.delta.y / (float)line.delta.x;
 	return (line);
 }

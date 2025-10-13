@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:02:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 01:15:13 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 19:40:42 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	core(char *file_path)
 	mouse_hooks(state);
 	keyboard_hooks(state);
 	window_hooks(state);
+	mlx_loop_hook(state->viewer_context.mlx_ref, handle_loop, state);
 	mlx_loop(state->viewer_context.mlx_ref);
 	free(state->lines.data);
 	destroy_state(state);

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:36:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/12 12:39:34 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 21:27:29 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@
 # include "line.h"
 # include "state.h"
 
-// # define BG_COLOR 0x050505
-# define BG_COLOR 0xffffff
+# define BG_COLOR 0x050505
 # define FAINT_COLOR 0x1a1919
 # define LINE_COLOR 0xffffff
 
-t_point	colorize_point(t_state *state, t_input_point point);
+t_point	colorize_point(t_state *state, t_point *point);
 t_point	new_colorized_point(void);
 
 #endif

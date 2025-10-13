@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:11:38 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 12:05:22 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 19:03:00 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,15 @@ static int	get_debounce(t_state *state)
 	double	zoom_adjustment_factor;
 
 	total_points = state->parsed_data->width * state->parsed_data->height;
-	point_density_factor = (3230 * pow(total_points, -0.71));
-	zoom_adjustment_factor = pow(state->camera.scale / 0.7, 0.35);
-	debounce = (double)total_points * point_density_factor * zoom_adjustment_factor;
+	if (total_points < 10000)
+		point_density_factor = (7280.0 * pow(total_points, -0.94));
+	else if (total_points <= 250000)
+		point_density_factor = (334.1692 * pow(total_points, -0.5671));
+	else
+		point_density_factor = (1.9554e-05 * pow(total_points, 0.7727));
+	zoom_adjustment_factor = pow(state->camera.scale / 0.7, 0.41);
+	debounce = (double)total_points
+		* point_density_factor
+		* zoom_adjustment_factor;
 	return (debounce);
 }

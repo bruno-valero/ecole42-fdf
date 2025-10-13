@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:05:51 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 00:49:04 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 20:21:45 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ struct s_camera
 {
 	t_coord_2d_double	offset;
 	t_angle				angle;
+	t_coord_3d			auto_rotate;
 	double				z_factor;
 	double				scale;
 	double				scale_width;
 	double				scale_height;
 	int					line_tracer;
 	int					projection;
-	t_coord_3d			auto_rotate;
 };
 
 t_camera	create_camera(void);

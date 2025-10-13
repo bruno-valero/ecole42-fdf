@@ -26,7 +26,8 @@ INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algor
 INCLUDES_CORE = -I src/core -I src/core/color -I src/core/state -I src/core/event_callbacks -I src/core/frame -I src/core/frame/render_lines -I src/core/event_hooks
 INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER) $(INCLUDES_PARSER) $(INCLUDES_UTILS) $(INCLUDES_CORE)
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g3 -O3 $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -g3 -O3 -march=native -flto -funroll-loops $(INCLUDES)
+# CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 # ============== SRC FILES =================
 SRC_UTILS_FILES = src/utils/coordinates.c src/utils/line.c src/utils/point.c
@@ -37,15 +38,23 @@ src/parser/reader_print.c src/parser/parser_matrix.c src/parser/parse_matrix.c s
 ALGORITHMS = src/viewer/line/line_algorithms
 SRC_VIEWER_FILES = $(ALGORITHMS)/bresenham/bresenham_color.c $(ALGORITHMS)/bresenham/bresenham_utils.c $(ALGORITHMS)/bresenham/bresenham.c \
 src/viewer/minilibx/minilibx.c src/viewer/minilibx/minilibx_layer.c src/viewer/line/viewer_line.c src/viewer/viewer_context.c \
-src/viewer/minilibx/devices_events/mouse_events.c src/viewer/minilibx/devices_events/keyboard_events.c src/viewer/minilibx/devices_events/window_events.c
+src/viewer/minilibx/devices_events/mouse_events.c src/viewer/minilibx/devices_events/keyboard_events.c src/viewer/minilibx/devices_events/window_events.c \
+src/viewer/minilibx/devices_events/loop_event.c
 
-SRC_CORE_FILES = src/core/core.c src/core/frame/render_lines/build_lines.c src/core/frame/render_lines/update_line.c \
-src/core/frame/render_lines/update_rotation.c src/core/frame/render_background.c src/core/frame/render_frame.c src/core/color/color.c src/core/state/camera.c src/core/state/reset_camera.c src/core/state/projections.c \
-src/core/state/state.c  src/core/event_callbacks/mouse_callbacks/mouse_move.c src/core/event_callbacks/mouse_callbacks/mouse_buttons.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_press.c \
+SRC_CORE_STATE_FILES = src/core/state/state.c src/core/state/camera.c src/core/state/actions/reset_camera.c src/core/state/actions/projections.c src/core/state/actions/change_z_factor.c src/core/state/actions/auto_rotate.c \
+src/core/state/modes/shadow_mode.c
+
+SRC_CORE_EVENT_CALLBACKS_FILES = src/core/event_callbacks/mouse_callbacks/mouse_move.c src/core/event_callbacks/mouse_callbacks/mouse_buttons.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_press.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_press.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_release.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_release.c src/core/event_callbacks/keyboard_callbacks/key_press.c src/core/event_callbacks/keyboard_callbacks/key_release.c \
-src/core/event_hooks/keyboard_hooks.c src/core/event_hooks/mouse_hooks.c src/core/event_hooks/window_hooks.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/key_release_utils.c \
-src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/key_press_utils.c src/core/state/change_z_factor.c src/core/event_callbacks/keyboard_callbacks/print_points.c
+src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/key_release_utils.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/key_press_utils.c src/core/event_callbacks/loop_callback/loop_callback.c
+
+SRC_CORE_EVENT_HOOKS_FILES = src/core/event_hooks/keyboard_hooks.c src/core/event_hooks/mouse_hooks.c src/core/event_hooks/window_hooks.c src/core/event_hooks/loop_hook.c
+
+SRC_CORE_FRAME_FILES = src/core/frame/render_lines/build_lines.c src/core/frame/render_lines/update_line.c src/core/frame/render_lines/update_rotation.c src/core/frame/render_background.c src/core/frame/render_frame.c
+
+SRC_CORE_FILES = src/core/core.c src/core/color/color.c \
+$(SRC_CORE_STATE_FILES) $(SRC_CORE_EVENT_CALLBACKS_FILES) $(SRC_CORE_EVENT_HOOKS_FILES) $(SRC_CORE_FRAME_FILES)
 
 SRC_FILES = $(SRC_UTILS_FILES) $(SRC_PARSER_FILES) $(SRC_VIEWER_FILES) $(SRC_CORE_FILES)
 

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 12:09:16 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 21:40:00 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,12 @@ struct s_actions
 	t_drag	drag_mb;
 };
 
+typedef struct s_modes			t_modes;
+struct s_modes
+{
+	int	shadow;
+};
+
 typedef struct s_state			t_state;
 struct s_state
 {
@@ -106,6 +112,7 @@ struct s_state
 	t_mouse_state		mouse_state;
 	t_keyboard_state	keyboard_state;
 	t_actions			actions;
+	t_modes				modes;
 };
 
 t_state	*get_state(void);
@@ -117,6 +124,11 @@ void	reset_camera(t_state *state);
 void	add_z_factor(t_state *state);
 void	sub_z_factor(t_state *state);
 void	update_angle(t_state *state);
+void	auto_rotate_x(t_state *state);
+void	auto_rotate_y(t_state *state);
+void	auto_rotate_z(t_state *state);
+void	auto_rotate_stop(t_state *state);
+void	shadow_mode(t_state *state);
 void	*destroy_state(t_state	*state);
 
 #endif

@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_release.c                                      :+:      :+:    :+:   */
+/*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 06:29:51 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 22:08:58 by valero           ###   ########.fr       */
+/*   Created: 2025/10/12 19:36:54 by valero            #+#    #+#             */
+/*   Updated: 2025/10/12 19:41:59 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "keyboard_callbacks.h"
+#include "event_hooks.h"
 
-int	key_release(int key, t_state *state)
+void	loop_hook(t_state *state)
 {
-	alpanum_key_release(key, state);
-	special_key_release(key, state);
-	if (key == KEYBOARD_R || key == KEYBOARD_1 || key == KEYBOARD_2
-		|| key == KEYBOARD_3 || key == KEYBOARD_4 || key == KEYBOARD_S)
-		render_frame(state);
-	return (1);
+	t_minilib_window	window;
+
+	window = state->viewer_context.window;
+	on_loop(window.mlx_ref, handle_loop, state);
 }

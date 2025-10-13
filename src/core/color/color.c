@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:55:51 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/11 14:21:13 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/12 21:28:49 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-static int	get_color(t_state *state, t_input_point point);
+static int	get_color(t_state *state, t_point point);
 
 t_point	new_colorized_point(void)
 {
@@ -25,21 +25,13 @@ t_point	new_colorized_point(void)
 	return (new_point);
 }
 
-t_point	colorize_point(t_state *state, t_input_point point)
+t_point	colorize_point(t_state *state, t_point *point)
 {
-	t_point	new_point;
-
-	if (point.has_color)
-		new_point.color.value = point.color;
-	else
-		new_point.color.value = get_color(state, point);
-	new_point.x = point.coord.x;
-	new_point.y = point.coord.y;
-	new_point.z = point.coord.z;
-	return (new_point);
+	point->color.value = get_color(state, *point);
+	return (*point);
 }
 
-static int	get_color(t_state *state, t_input_point point)
+static int	get_color(t_state *state, t_point point)
 {
 	int		z_range;
 	int		diff_from_lower_z;
@@ -47,7 +39,7 @@ static int	get_color(t_state *state, t_input_point point)
 
 	z_range = state->parsed_data->bigger_z
 		- state->parsed_data->lower_z;
-	diff_from_lower_z = point.coord.z
+	diff_from_lower_z = point.z
 		- state->parsed_data->lower_z;
 	relation = (double)diff_from_lower_z / (double)z_range;
 	if (relation > 1.0)

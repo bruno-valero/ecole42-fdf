@@ -47,6 +47,10 @@
 		"hooks.h": "c",
 		"event_hooks.h": "c",
 		"cmath": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"loop_callback.h": "c",
+		"system_error": "c",
+		"tuple": "c",
+		"type_traits": "c"
 	}
 }

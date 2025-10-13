@@ -6,88 +6,55 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:26:02 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 12:45:33 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 19:15:18 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "build_lines.h"
 
-static void	build_line_right(t_state *state, t_coord_2d curr_coord,
-				int *line_idx);
-static void	build_line_down(t_state *state, t_coord_2d curr_coord,
-				int *line_idx);
+static void	build_line(
+				t_state *state,
+				t_input_point start_point,
+				t_input_point end_point);
 static int	get_lines_amount(t_parser_matrix *mtx);
 
 void	build_lines(t_state *state)
 {
 	t_coord_2d		mtx_coord;
-	int				line_idx;
+	t_input_point	**matrix;
 
-	line_idx = 0;
+	matrix = state->parsed_data->data;
 	mtx_coord.y = -1;
-	while (state->parsed_data->data[++mtx_coord.y])
+	while (matrix[++mtx_coord.y])
 	{
 		mtx_coord.x = -1;
 		while (++mtx_coord.x < state->parsed_data->width)
 		{
-			build_line_right(state, mtx_coord, &line_idx);
-			build_line_down(state, mtx_coord, &line_idx);
+			if (mtx_coord.x + 1 < state->parsed_data->width)
+				build_line(
+					state,
+					matrix[mtx_coord.y][mtx_coord.x],
+					matrix[mtx_coord.y][mtx_coord.x + 1]);
+			if (state->parsed_data->data[mtx_coord.y + 1])
+				build_line(
+					state,
+					matrix[mtx_coord.y][mtx_coord.x],
+					matrix[mtx_coord.y + 1][mtx_coord.x]);
 		}
 	}
 }
 
-static void	build_line_right(
-				t_state *state,
-				t_coord_2d curr_coord,
-				int *line_idx)
+static void	build_line(
+		t_state *state,
+		t_input_point start_point,
+		t_input_point end_point)
 {
-	t_line			curr_line;
-	int				curr_x;
-	int				curr_y;
-	t_input_point	start_point;
-	t_input_point	end_point;
+	t_line			line;
 
-	(void)line_idx;
-	curr_x = curr_coord.x;
-	curr_y = curr_coord.y;
-	if (curr_coord.x + 1 < state->parsed_data->width)
-	{
-		start_point = state->parsed_data->data[curr_y][curr_x];
-		end_point = state->parsed_data->data[curr_y][curr_x + 1];
-		curr_line = new_line(
-				colorize_point(state, start_point),
-				colorize_point(state, end_point)
-				);
-		update_line(state, &curr_line);
-		draw_line(curr_line, state->viewer_context, bresenham);
-	}
-}
-
-static void	build_line_down(
-				t_state *state,
-				t_coord_2d curr_coord,
-				int *line_idx)
-{
-	t_line			curr_line;
-	int				curr_x;
-	int				curr_y;
-	t_input_point	initial_point;
-	t_input_point	final_point;
-
-	(void)line_idx;
-	curr_x = curr_coord.x;
-	curr_y = curr_coord.y;
-	if (state->parsed_data->data[curr_coord.y + 1])
-	{
-		initial_point = state->parsed_data->data[curr_y][curr_x];
-		final_point = state->parsed_data->data[curr_y + 1][curr_x];
-		curr_line = new_line(
-				colorize_point(state, initial_point),
-				colorize_point(state, final_point)
-				);
-		update_line(state, &curr_line);
-		draw_line(curr_line, state->viewer_context, bresenham);
-	}
+	line = new_line(
+			update_point(state, start_point),
+			update_point(state, end_point));
+	draw_line(line, state->viewer_context, bresenham);
 }
 
 static int	get_lines_amount(t_parser_matrix *mtx)

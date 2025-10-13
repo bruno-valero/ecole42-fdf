@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_release.c                                      :+:      :+:    :+:   */
+/*   shadow_mode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 06:29:51 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 22:08:58 by valero           ###   ########.fr       */
+/*   Created: 2025/10/12 21:37:01 by valero            #+#    #+#             */
+/*   Updated: 2025/10/12 21:54:10 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "keyboard_callbacks.h"
+#include "state.h"
 
-int	key_release(int key, t_state *state)
+void	shadow_mode(t_state *state)
 {
-	alpanum_key_release(key, state);
-	special_key_release(key, state);
-	if (key == KEYBOARD_R || key == KEYBOARD_1 || key == KEYBOARD_2
-		|| key == KEYBOARD_3 || key == KEYBOARD_4 || key == KEYBOARD_S)
-		render_frame(state);
-	return (1);
+	state->modes.shadow = !state->modes.shadow;
 }
