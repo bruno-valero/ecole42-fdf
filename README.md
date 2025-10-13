@@ -74,6 +74,7 @@ src
 │       ├── camera.c
 │       ├── camera.h
 │       ├── modes
+│       │   ├── resolution_mode.c
 │       │   └── shadow_mode.c
 │       ├── state.c
 │       └── state.h
