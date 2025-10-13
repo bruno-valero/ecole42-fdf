@@ -21,8 +21,13 @@ src
 │   │   │   └── keyboard_sessions
 │   │   │       ├── alpanum_key_press.c
 │   │   │       ├── alpanum_key_release.c
+│   │   │       ├── key_press_utils.c
+│   │   │       ├── key_release_utils.c
 │   │   │       ├── special_key_press.c
 │   │   │       └── special_key_release.c
+│   │   ├── loop_callback
+│   │   │   ├── loop_callback.c
+│   │   │   └── loop_callback.h
 │   │   └── mouse_callbacks
 │   │       ├── mouse_buttons.c
 │   │       ├── mouse_callbacks.h
@@ -30,7 +35,9 @@ src
 │   ├── event_hooks
 │   │   ├── event_hooks.h
 │   │   ├── keyboard_hooks.c
-│   │   └── mouse_hooks.c
+│   │   ├── loop_hook.c
+│   │   ├── mouse_hooks.c
+│   │   └── window_hooks.c
 │   ├── frame
 │   │   ├── render_background.c
 │   │   ├── render_background.h
@@ -39,17 +46,23 @@ src
 │   │   └── render_lines
 │   │       ├── build_lines.c
 │   │       ├── build_lines.h
-│   │       ├── build_lines_utils.c
-│   │       ├── build_lines_utils.h
 │   │       ├── lines.h
 │   │       ├── update_line.c
 │   │       ├── update_line.h
 │   │       └── update_rotation.c
 │   └── state
+│       ├── actions
+│       │   ├── auto_rotate.c
+│       │   ├── change_z_factor.c
+│       │   ├── projections.c
+│       │   └── reset_camera.c
 │       ├── camera.c
 │       ├── camera.h
+│       ├── modes
+│       │   └── shadow_mode.c
 │       ├── state.c
 │       └── state.h
+├── main.c
 ├── parser
 │   ├── parse_file.c
 │   ├── parse_file.h
@@ -85,7 +98,9 @@ src
     │   │   ├── device_keys.h
     │   │   ├── devices_events.h
     │   │   ├── keyboard_events.c
+    │   │   ├── loop_event.c
     │   │   ├── mouse_events.c
+    │   │   ├── window_events.c
     │   │   └── x11_events.h
     │   ├── minilibx.c
     │   ├── minilibx.h

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 19:59:29 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 21:58:05 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 22:38:22 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_point	update_point(t_state	*state, t_input_point point)
 	t_point	newer_point;
 
 	newer_point = new_point(point.coord, point.color);
-
 	if (!point.has_color && !state->modes.shadow)
 		colorize_point(state, &newer_point);
 	update_z_factor(state, &newer_point);

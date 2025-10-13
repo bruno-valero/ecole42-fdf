@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 19:19:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 21:16:43 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 22:38:12 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	auto_rotate(t_state *state);
 int	handle_loop(t_state *state)
 {
 	t_coord_3d	rotate;
-
 
 	rotate = state->camera.auto_rotate;
 	if (rotate.x || rotate.y || rotate.z)

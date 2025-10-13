@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 01:26:19 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 21:08:07 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/12 22:37:43 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	mouse_move(int x, int y, t_state *state)
 		render_frame(state);
 	return (1);
 }
+
 static void	drag_lb(int x, int y, t_state *state)
 {
 	t_coord_2d	*last;
