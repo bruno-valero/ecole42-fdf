@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:11:38 by valero            #+#    #+#             */
-/*   Updated: 2025/10/13 01:19:23 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/13 19:05:08 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,14 @@ void	render_frame(t_state *state)
 	{
 		render_background(state);
 		build_lines(state);
+		if (state->actions.open_menu)
+			render_menu_bg(state);
 		put_layer(state->viewer_context.window,
 			state->viewer_context.wireframe);
+		if (!state->actions.open_menu)
+			render_menu_info(state);
+		if (state->actions.open_menu)
+			render_menu_text(state);
 		last_time = curr_time;
 	}
 }

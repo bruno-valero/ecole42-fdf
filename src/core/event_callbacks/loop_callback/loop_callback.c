@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_callback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 19:19:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 22:38:12 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/13 13:53:47 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,24 @@ static void	auto_rotate(t_state *state);
 int	handle_loop(t_state *state)
 {
 	t_coord_3d	rotate;
+	static int	pace = 0;
 
+	pace++;
 	rotate = state->camera.auto_rotate;
-	if (rotate.x || rotate.y || rotate.z)
+	if (pace > 80 && (rotate.x || rotate.y || rotate.z))
 	{
 		auto_rotate(state);
 		render_frame(state);
+		pace = 0;
 	}
 	return (1);
 }
 
 static void	auto_rotate(t_state *state)
 {
-	int	matrix_size;
 	int	factor;
 
-	matrix_size = state->parsed_data->width
-		* state->parsed_data->height;
-	factor = pow(matrix_size, 0.2);
-	if (factor < 50)
-		factor = 50;
+	factor = 10;
 	if (state->camera.auto_rotate.x > 0)
 		state->camera.angle.x += 1.0 / factor;
 	if (state->camera.auto_rotate.x < 0)

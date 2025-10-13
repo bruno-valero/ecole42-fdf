@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alpanum_key_release.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:01:44 by valero            #+#    #+#             */
-/*   Updated: 2025/10/13 02:05:47 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/13 15:45:17 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	second_third_alpha_keys(int key, t_state *state)
 	if (key == KEYBOARD_L)
 		release_key(state, low_resolution, &state->keyboard_state.l);
 	if (key == KEYBOARD_M)
-		state->keyboard_state.m = 0;
+		release_key(state, toggle_open_menu, &state->keyboard_state.m);
 	if (key == KEYBOARD_N)
 		state->keyboard_state.n = 0;
 	if (key == KEYBOARD_O)

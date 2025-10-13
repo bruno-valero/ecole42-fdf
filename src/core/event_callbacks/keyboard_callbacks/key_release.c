@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_release.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:29:51 by valero            #+#    #+#             */
-/*   Updated: 2025/10/13 02:06:09 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/13 15:44:58 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	key_release(int key, t_state *state)
 	special_key_release(key, state);
 	if (key == KEYBOARD_R || key == KEYBOARD_1 || key == KEYBOARD_2
 		|| key == KEYBOARD_3 || key == KEYBOARD_4 || key == KEYBOARD_S
-		|| key == KEYBOARD_H || key == KEYBOARD_L)
+		|| key == KEYBOARD_H || key == KEYBOARD_L || key == KEYBOARD_M)
 		render_frame(state);
 	return (1);
 }

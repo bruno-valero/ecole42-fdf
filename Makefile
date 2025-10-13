@@ -42,7 +42,7 @@ src/viewer/minilibx/devices_events/mouse_events.c src/viewer/minilibx/devices_ev
 src/viewer/minilibx/devices_events/loop_event.c
 
 SRC_CORE_STATE_FILES = src/core/state/state.c src/core/state/camera.c src/core/state/actions/reset_camera.c src/core/state/actions/projections.c src/core/state/actions/change_z_factor.c src/core/state/actions/auto_rotate.c \
-src/core/state/modes/shadow_mode.c src/core/state/modes/resolution_mode.c
+src/core/state/modes/shadow_mode.c src/core/state/modes/resolution_mode.c src/core/state/actions/toggle_open_menu.c
 
 SRC_CORE_EVENT_CALLBACKS_FILES = src/core/event_callbacks/mouse_callbacks/mouse_move.c src/core/event_callbacks/mouse_callbacks/mouse_buttons.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/alpanum_key_press.c \
 src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_press.c src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/special_key_release.c \
@@ -51,7 +51,8 @@ src/core/event_callbacks/keyboard_callbacks/keyboard_sessions/key_release_utils.
 
 SRC_CORE_EVENT_HOOKS_FILES = src/core/event_hooks/keyboard_hooks.c src/core/event_hooks/mouse_hooks.c src/core/event_hooks/window_hooks.c src/core/event_hooks/loop_hook.c
 
-SRC_CORE_FRAME_FILES = src/core/frame/render_lines/build_lines.c src/core/frame/render_lines/update_line.c src/core/frame/render_lines/update_rotation.c src/core/frame/render_background.c src/core/frame/render_frame.c
+SRC_CORE_FRAME_FILES = src/core/frame/render_lines/build_lines.c src/core/frame/render_lines/update_line.c src/core/frame/render_lines/update_rotation.c src/core/frame/render_background.c src/core/frame/render_frame.c \
+src/core/frame/menu/menu.c src/core/frame/menu/menu.c src/core/frame/menu/menu_divs.c
 
 SRC_CORE_FILES = src/core/core.c src/core/color/color.c \
 $(SRC_CORE_STATE_FILES) $(SRC_CORE_EVENT_CALLBACKS_FILES) $(SRC_CORE_EVENT_HOOKS_FILES) $(SRC_CORE_FRAME_FILES)

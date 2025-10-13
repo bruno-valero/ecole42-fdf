@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:54:10 by valero            #+#    #+#             */
-/*   Updated: 2025/10/13 02:04:18 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/13 15:44:09 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ struct s_actions
 	t_drag	drag_lb;
 	t_drag	drag_rb;
 	t_drag	drag_mb;
+	int		open_menu;
 };
 
 typedef struct s_modes			t_modes;
@@ -129,6 +130,7 @@ void	auto_rotate_x(t_state *state);
 void	auto_rotate_y(t_state *state);
 void	auto_rotate_z(t_state *state);
 void	auto_rotate_stop(t_state *state);
+void	toggle_open_menu(t_state *state);
 void	shadow_mode(t_state *state);
 void	low_resolution(t_state *state);
 void	high_resolution(t_state *state);

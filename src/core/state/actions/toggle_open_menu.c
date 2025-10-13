@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_hooks.c                                   :+:      :+:    :+:   */
+/*   toggle_open_menu.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 06:43:18 by valero            #+#    #+#             */
-/*   Updated: 2025/10/13 13:19:45 by brunofer         ###   ########.fr       */
+/*   Created: 2025/10/13 15:42:10 by brunofer          #+#    #+#             */
+/*   Updated: 2025/10/13 15:43:45 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "event_hooks.h"
+#include "state.h"
 
-void	keyboard_hooks(t_state *state)
+void	toggle_open_menu(t_state *state)
 {
-	t_minilib_window	window;
-
-	window = state->viewer_context.window;
-	on_key_press(window.ref, key_press, state);
-	on_key_release(window.ref, key_release, state);
+	state->actions.open_menu = !state->actions.open_menu;
 }
