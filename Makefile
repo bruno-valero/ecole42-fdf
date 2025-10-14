@@ -26,7 +26,7 @@ INCLUDES_VIEWER = -I src/viewer -I src/viewer/line -I src/viewer/line/line_algor
 INCLUDES_CORE = -I src/core -I src/core/color -I src/core/state -I src/core/event_callbacks -I src/core/frame -I src/core/frame/render_lines -I src/core/event_hooks
 INCLUDES = -I . $(LIBFT_INCLUDES) -I $(MLX_DIR) -I includes $(INCLUDES_VIEWER) $(INCLUDES_PARSER) $(INCLUDES_UTILS) $(INCLUDES_CORE)
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g3 -O3 -march=native -flto -funroll-loops $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -g3 -Ofast -march=native -flto -funroll-loops $(INCLUDES)
 # CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
 # ============== SRC FILES =================

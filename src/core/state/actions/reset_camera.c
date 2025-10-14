@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 13:30:25 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/11 13:37:09 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/14 13:59:54 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ static void	reset_scale(t_state *state);
 
 void	reset_camera(t_state *state)
 {
-	reset_offset(state);
+	state->camera.auto_rotate = coord_3d(0, 0, 0);
+	state->camera.z_factor = 1.0;
 	projection_isometric(state);
 	reset_scale(state);
-	state->camera.z_factor = 1.0;
-	state->camera.line_tracer = 0;
-	state->camera.projection = 0;
-	state->camera.auto_rotate = coord_3d(0, 0, 0);
+	reset_offset(state);
 }
 
 static void	reset_offset(t_state *state)
