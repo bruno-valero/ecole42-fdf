@@ -7,7 +7,7 @@ LIGHT_CYAN=\033[96m
 
 # ============== MAIN INFO =================
 NAME = fdf
-BONUS = checker
+BONUS = fdf_bonus
 
 # ============== LIBFT COMMANDS =================
 LIBFT_DIR = libft
@@ -62,7 +62,7 @@ SRC_FILES = $(SRC_UTILS_FILES) $(SRC_PARSER_FILES) $(SRC_VIEWER_FILES) $(SRC_COR
 # ============== PROGRAM FILES =================
 TEST_PROGRAM=teste.c
 MAIN_PROGRAM=src/main.c
-BONUS_PROGRAM=src/main.c
+BONUS_PROGRAM=src/main_bonus.c
 
 PROGRAM=teste
 
@@ -88,7 +88,7 @@ bonus: $(BONUS)
 
 $(BONUS): $(BONUS_PROGRAM) $(COMPILATION_DEPENDENCIES)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
-	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
+	@$(CC) $(CFLAGS) $^ -o $(NAME) $(MLX_DEPENDENCIES)
 
 test: $(TEST_PROGRAM) $(COMPILATION_DEPENDENCIES)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)

@@ -52,6 +52,7 @@
 		"system_error": "c",
 		"tuple": "c",
 		"type_traits": "c",
-		"menu.h": "c"
+		"menu.h": "c",
+		"viewer.h": "c"
 	}
 }
