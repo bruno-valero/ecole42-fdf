@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_callback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 19:19:12 by valero            #+#    #+#             */
-/*   Updated: 2025/10/14 13:57:49 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/15 14:26:08 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ static void	auto_rotate(t_state *state)
 {
 	int	factor;
 
-	factor = 10;
+	if (state->lines.size < 60000)
+		factor = 4;
+	else
+		factor = 1;
 	if (state->camera.auto_rotate.x > 0)
 		state->camera.angle.x += 1.0 / factor;
 	if (state->camera.auto_rotate.x < 0)

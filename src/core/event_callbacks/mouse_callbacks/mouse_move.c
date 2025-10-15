@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 01:26:19 by valero            #+#    #+#             */
-/*   Updated: 2025/10/13 14:03:56 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/15 14:11:31 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	drag_lb(int x, int y, t_state *state)
 	t_coord_2d	*last;
 	double		factor;
 
-	factor = 30 * state->camera.scale;
+	factor = (30 + pow(state->lines.size, 0.2)) * state->camera.scale;
 	auto_rotate_stop(state);
 	last = &state->actions.drag_lb.last;
 	if (!state->actions.drag_lb.drag_start)
@@ -58,7 +58,7 @@ static void	drag_mb(int x, int y, t_state *state)
 	t_coord_2d	*last;
 	double		factor;
 
-	factor = 3 * state->camera.scale;
+	factor = 5.9 * state->camera.scale;
 	last = &state->actions.drag_mb.last;
 	if (!state->actions.drag_mb.drag_start)
 	{
@@ -81,7 +81,7 @@ static void	drag_rb(int x, int y, t_state *state)
 	t_coord_2d	*last;
 	double		factor;
 
-	factor = 30 * state->camera.scale;
+	factor = (30 + pow(state->lines.size, 0.2)) * state->camera.scale;
 	auto_rotate_stop(state);
 	last = &state->actions.drag_rb.last;
 	if (!state->actions.drag_rb.drag_start)
@@ -103,10 +103,13 @@ static void	drag_rb(int x, int y, t_state *state)
 
 static void	update_drag(int x, int y, t_state *state, t_coord_2d *last)
 {
-	if (x - last->x > 10 * state->camera.scale
-		|| x - last->x < -10 * state->camera.scale
-		|| y - last->y > 10 * state->camera.scale
-		|| y - last->y < -10 * state->camera.scale)
+	double	factor;
+
+	factor = sqrt(state->camera.scale);
+	if (x - last->x > 5 * factor
+		|| x - last->x < -5 * factor
+		|| y - last->y > 5 * factor
+		|| y - last->y < -5 * factor)
 	{
 		last->x = x;
 		last->y = y;

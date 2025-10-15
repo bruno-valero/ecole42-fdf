@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:55:51 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/12 21:28:49 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/15 13:27:51 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static int	get_color(t_state *state, t_point point)
 
 	z_range = state->parsed_data->bigger_z
 		- state->parsed_data->lower_z;
+	if (!z_range)
+		return (0xffffff);
 	diff_from_lower_z = point.z
 		- state->parsed_data->lower_z;
 	relation = (double)diff_from_lower_z / (double)z_range;

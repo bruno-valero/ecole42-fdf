@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 19:59:29 by valero            #+#    #+#             */
-/*   Updated: 2025/10/12 22:38:22 by valero           ###   ########.fr       */
+/*   Updated: 2025/10/15 13:27:06 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static void	update_z_factor(t_state	*state, t_point *point)
 	double	delta_z;
 
 	delta_z = state->parsed_data->bigger_z - state->parsed_data->lower_z;
+	if (!delta_z)
+		return ;
 	if (delta_z > 100)
 		delta_z = delta_z * 0.1;
 	point->z *= (40 / delta_z);

@@ -7,7 +7,7 @@ LIGHT_CYAN=\033[96m
 
 # ============== MAIN INFO =================
 NAME = fdf
-BONUS = fdf_bonus
+BONUS = fdf
 
 # ============== LIBFT COMMANDS =================
 LIBFT_DIR = libft
@@ -85,10 +85,6 @@ $(NAME): $(MAIN_PROGRAM) $(COMPILATION_DEPENDENCIES)
 	@$(CC) $(CFLAGS) $^ -o $@ $(MLX_DEPENDENCIES)
 
 bonus: $(BONUS)
-
-$(BONUS): $(BONUS_PROGRAM) $(COMPILATION_DEPENDENCIES)
-	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
-	@$(CC) $(CFLAGS) $^ -o $(NAME) $(MLX_DEPENDENCIES)
 
 test: $(TEST_PROGRAM) $(COMPILATION_DEPENDENCIES)
 	@echo "$(LIGHT_GREEN)>> $(BOLD)compiling$(RESET) $(LIGHT_CYAN)./$@$(RESET)..." && sleep $(SLEEP)
